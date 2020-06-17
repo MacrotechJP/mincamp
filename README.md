@@ -4,13 +4,9 @@
 - Herokuデプロイ
 
 # 開発方針
-サーバ起動（ローカルDB使用）
+サーバ起動
 ```bash
-$ python local_manage.py runserver 
-```
-サーバ起動（本番DB使用）
-```bash
-$ python manage.py runserver
+$ python manage.py runserver 
 ```
  
 # Herokuデプロイ
