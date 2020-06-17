@@ -1,0 +1,113 @@
+{% load static %}
+{% load sass_tags %}
+<!DOCTYPE html>
+<html>
+    <head lang="ja">
+        <meta charset="UTF-8">
+        {% comment %} favicon設定 {% endcomment %}
+        <link rel="icon" type="image/png" href="{% static 'img/favicon.png' %}">
+        {% comment %} fontawesome読み込み {% endcomment %}
+        <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+        {% comment %} jQuery読み込み {% endcomment %}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        {% comment %} bootstrap読み込み {% endcomment %}
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+        {% comment %} 内部CSSファイル読み込み {% endcomment %}
+        <link rel="stylesheet" href="{% sass_src 'css/common/header.scss' %}">
+        <link rel="stylesheet" href="{% sass_src 'css/common/footer.scss' %}">
+        {% comment %} 内部JSファイル読み込み {% endcomment %}
+        {% block head %}{% endblock %}
+    </head>
+    <body>
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <a class="navbar-brand" href="/prototype">
+                    <img src="{% static 'img/icon.png' %}" width="130" height="50" class="d-inline-block align-top header-icon" alt="">
+                </a>
+                <div class="btn-group dropright">
+                    <span class="btn dropdown-toggle header-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-globe-asia"></i>&nbsp;Language
+                    </span>
+                    <div class="dropdown-menu">
+                        <button class="dropdown-item active" type="button">日本語</button>
+                        <button class="dropdown-item" type="button">English</button>
+                        <button class="dropdown-item" type="button">中文</button>
+                    </div>
+                </div>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav nav nav-pills">
+                        <li class="nav-item">
+                            <a class="nav-link header-menu search" href="#"><i class="fas fa-search"></i>&nbsp;キャンプ場を探す</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link header-menu" href="#"><i class="fas fa-campground"></i>&nbsp;ホスト登録</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link header-menu" href="#"><i class="fas fa-question-circle"></i>&nbsp;サポート</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link header-menu" href="#"><i class="fas fa-info-circle"></i>&nbsp;お知らせ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link header-menu" href="#"><i class="fas fa-sign-in-alt"></i>&nbsp;ログイン</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link header-menu" href="/prototype/sign_in/"><i class="fas fa-user-plus"></i>&nbsp;新規登録</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        {% block contents %}{% endblock %}
+        <footer>
+            <div class="footer-distributed">
+    			<div class="footer-left">
+    				<a href="/"><h3><img src="{% static 'img/icon.png' %}" height="70" alt=""></h3></a>
+    				<p class="footer-links">
+                        <a href="#">サイトマップ</a>
+                        <a href="#">サポート</a>
+                        <a href="#">プライバシーポリシー</a>
+                        <a href="#">API利用</a>
+                        <a href="#">フィードバック</a>
+                        <a href="#">プレスリリース</a>
+                        <a href="#">メルマガ</a>
+					    <a href="#">広告掲載</a>
+    					<a href="#">利用規約</a>
+	    			</p>
+    				<p class="footer-company-name">mincamp © 2020</p>
+                    <p class="footer-company-name">mincamp及びmincamp.jpのロゴはmincamp, Inc.の登録商標です。無断使用•転載を固く禁じます。外部サイトのコンテンツに関してmincamp, Inc.は一切の責任を負いません。</p>
+	    		</div>
+    			<div class="footer-center">
+    				<div>
+	    				<i class="fa fa-map-marker"></i>
+		    			<p><span>555-0021, 東京都〇〇区</span> 〇〇町〇〇ビル</p>
+			    	</div>
+    				<div>
+	    				<i class="fa fa-phone"></i>
+		    			<p>+81 000-0000-0000</p>
+			    	</div>
+    				<div>
+	    				<i class="fa fa-envelope"></i>
+		    			<p><a href="mailto:support@company.com">sample@sample.com</a></p>
+			    	</div>
+    			</div>
+    			<div class="footer-right">
+    				<p class="footer-company-about">
+	    				<span>mincampについて</span>
+		    			Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.
+			    	</p>
+    				<div class="footer-icons">
+    					<a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-square"></i></a>
+                        <a href="#"><i class="fab fa-twitter-square"></i></a>
+                        <a href="#"><i class="fab fa-pinterest-square"></i></a>
+                        <a href="#"><i class="fab fa-youtube-square"></i></a>
+                        <a href="#"><i class="fab fa-spotify"></i>
+    				</div>
+    			</div>
+            </div>
+		</footer>
+    </body>
+</html>
