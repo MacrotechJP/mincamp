@@ -17,10 +17,10 @@ $(function(){
         console.log($(this).scrollTop());
     });
 
-    $("input").flatpickr({mode: "range",
-    minDate: "today",
-    dateFormat: "Y-m-d",
-    conjunction: " :: "
+    $("input.search-date").flatpickr({mode: "range",
+        minDate: "today",
+        dateFormat: "Y-m-d",
+        conjunction: " :: "
     });
 
     /** キャンプカテゴリー自動スライダー */
