@@ -25,6 +25,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'accounts.apps.AccountsConfig',
     'camp.apps.CampConfig',
     'django.contrib.admin',
     'django.contrib.auth',
