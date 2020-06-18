@@ -427,7 +427,7 @@
                 a {
                     width: 100px;
                     height: 75px;
-                    :hover {background: transparent url(/static/img/jp.png) -85px -3035px no-repeat;}
+                    &:hover {background: transparent url(/static/img/jp.png) -85px -3035px no-repeat;}
                 }
             }
             // 四国
@@ -462,7 +462,8 @@
             }
         }
         iframe{
-
+            width: 600px;
+            height: 480px;
         }
       }
       &_menus{
@@ -477,33 +478,6 @@
             }
         }
       }
-    /* 共通部分 */
-
-
-
-
-
-
-/* ●日本地図下の地域リスト */
-#area {
-	margin: 20px auto;
-	width: 600px;
-}
-#area li {
-	float:left;
-	text-indent:-5px;
-	font-size: 14px;
-	font-family: sans-serif;
-	padding: 0 30px 0 0;
-}
-#area li a {
-	text-decoration: none;
-	color: #2d67ee;
-}
-#area li a:hover {
-	text-decoration: underline;
-	color: #f1710f;
-}
     }
     &_app{
       padding: 0 10% 50px;
