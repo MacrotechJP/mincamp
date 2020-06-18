@@ -1,0 +1,492 @@
+.topimage{
+  width: 100%;
+  height: 80vh;
+  background-image: url(/static/img/toppage.jpg);
+  position: relative;
+  padding-top: 80px;
+  &_cover{
+      width: 100%;
+      height: 80vh;
+      position: absolute;
+      top: 0;
+      background-color: rgba(255,255,255,0.4);
+  }
+  &_slider{
+      width: 70%;
+      height:80%;
+      margin: 0 auto;
+      #carouselExampleIndicators{
+        height:100%;
+        .carousel-inner{
+          height:100%;
+          .carousel-item{
+            height:100%;
+            img{
+              width: 100%;
+              height:100%;
+              object-fit: cover;
+            }
+          }
+        }
+      }
+  }
+  &_search{
+      padding: 0 5%;
+      height: calc(100% - 80%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      form{
+        width: 100%;
+        input[class*="search"]{background-color: white;}
+      }
+  }
+}
+.contents{
+  width: 100%;
+  &_button{
+      padding: 10px 5% 0;
+      height: 10vh;
+      text-align: center;
+      background-color: black;
+      .bnt-massage {
+          display: inline-block;
+          min-width: 40%;
+          text-align: center;
+          background-color: #FFF;
+          font-size: 20px;
+          color: #000;
+          text-decoration: none;
+          font-weight: bold;
+          padding: 10px 16px;
+          position: relative;
+          transition: .9s;
+          border: 1px solid #FFF;
+        }
+        .bnt-massage span {
+          display: block;
+          position: absolute;
+          background-color: #d9385f;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 34px;
+          font-size: 14px;
+          line-height: 34px;
+          border-radius: 0 0 8px 0;
+          z-index: -1;
+          transition: .5s;
+        }
+        
+        .bnt-massage:hover  {
+          border-radius: 8px 0 0;
+        }
+        
+        .bnt-massage:hover span {
+          transform: translateY(50px);
+        }
+  }
+  &_scroll{
+      width: 100%;
+      height: 10vh;
+      position: relative;
+      background-color: black;
+      a {
+          position: absolute;
+          left: 50%;
+          z-index: 2;
+          display: inline-block;
+          -webkit-transform: translate(0, -50%);
+          transform: translate(0, -50%);
+          text-decoration: none;
+        }
+        a span {
+          position: absolute;
+          top: 0;
+          left: 50%;
+          width: 24px;
+          height: 24px;
+          margin-left: -12px;
+          border-left: 1px solid #fff;
+          border-bottom: 1px solid #fff;
+          -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+          -webkit-animation: sdb 2s infinite;
+          animation: sdb 2s infinite;
+          opacity: 0;
+          box-sizing: border-box;
+        }
+        a span:nth-of-type(1) {
+          -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+        }
+        a span:nth-of-type(2) {
+          top: 16px;
+          -webkit-animation-delay: .15s;
+          animation-delay: .15s;
+        }
+        a span:nth-of-type(3) {
+          top: 32px;
+          -webkit-animation-delay: .3s;
+          animation-delay: .3s;
+        }
+        @-webkit-keyframes sdb {
+          0% {
+            opacity: 0;
+          }
+          50% {
+            opacity: 1;
+          }
+          100% {
+            opacity: 0;
+          }
+        }
+        @keyframes sdb {
+          0% {
+            opacity: 0;
+          }
+          50% {
+            opacity: 1;
+          }
+          100% {
+            opacity: 0;
+          }
+        }
+  }
+  &_overview{
+    padding: 0 10%;
+    height: 700px;
+    background-color: black;
+    &_title,&_description{color: white;}
+    &_left{
+      height:570px;
+      width: 50%;
+      float: left;
+      margin-right: 5%;
+      .col.mb-4{height: 100%;.row.row-cols-1{height: 100%;.card{height: 100%;img{height: 100%;object-fit: cover;}}}
+      }
+    }
+    &_right{
+      width: 45%;
+      height:570px;
+      float: left;
+      &_top{
+        height: 50%;
+        margin-bottom: 5%;
+        .card{
+          height: 100%;
+          img{
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+      }
+      &_bottom{
+        height: 45%;
+      }
+    }
+  }
+  &_speed-search{
+    padding: 0 10% 50px;
+    background-color: white;
+    color: white;
+    .card.bg-dark.text-center {
+      img{
+        height: 500px;
+        object-fit: cover;
+      }
+      .card-img-overlay{
+        background-color: rgba(0,0,0,0.5);
+        hr{
+          height: 5px;
+          background: linear-gradient(-135deg, #E4A972, #9941D8);
+          width: 70%;
+          border: none;
+        }
+      }
+    }
+  }
+  &_become-host{
+    padding: 0 10% 50px;
+    .card.bg-dark{
+      img{
+        height: 500px;
+        object-fit: cover;
+      }
+    }
+  }
+  &_categories{
+    padding: 0 10%;
+    height: 550px;
+    background-color: black;
+    %transition_all_03s {
+      transition:all .3s ease;
+    }
+    %backface_visibility_hidden{
+      backface-visibility:hidden;
+      -webkit-backface-visibility:hidden;
+    }
+    *, *:before, *:after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    .swiper-container {
+      width: 80%;
+      height: 500px;
+      float:left;
+      transition:opacity .6s ease, transform .3s ease;
+      &.nav-slider{
+        width:20%;
+        padding-left:5px;
+        .swiper-slide{
+          cursor:pointer;
+          opacity:.4;
+          transition:opacity .3s ease;
+          &.swiper-slide-active{
+            opacity:1;
+          }
+          .content{
+            width:100%;
+            .title{
+              font-size:20px;
+            }
+          }
+        }
+      }
+      &:hover{
+        .swiper-button-prev,
+        .swiper-button-next{
+          transform:translateX(0);
+          opacity:1;
+          visibility:visible;
+        }
+      }
+      &.loading{
+        opacity:0;
+        visibility:hidden;
+      }
+      .swiper-slide{
+        overflow: hidden;
+        @extend %backface_visibility_hidden;
+        .slide-bgimg{
+          position:absolute;
+          top:0;
+          left:0;
+          width:100%;
+          height:100%;
+          background-position:center;
+          background-size:cover;
+        }
+        .entity-img{
+          display:none;
+        }
+        .content{
+          position:absolute;
+          top:40%;
+          left:0;
+          width:50%;
+          padding-left:5%;
+          color:#fff;
+          .title{
+            font-size:2.6em;
+            font-weight:bold;
+            margin-bottom:30px;
+          }
+          .caption{
+            display:block;
+            font-size:13px;
+            line-height:1.4;
+            transform:translateX(50px);
+            opacity:0;
+            transition:opacity .3s ease, transform .7s ease;
+            &.show{
+              transform:translateX(0);
+              opacity:1;
+            }
+          }
+          .btn-gradation {
+            display: inline-block;
+            width: 180px;
+            text-align: center;
+            font-size: 16px;
+            color: #FFF;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 12px 24px;
+            border-radius: 4px;
+            background-image: linear-gradient(-90deg, #FF006E, #FFD500);
+            transition: .5s;
+            background-size: 200%;
+            opacity:0;
+            transition:opacity .3s ease, transform .7s ease;
+            &.show{
+              transform:translateX(0);
+              opacity:1;
+            }
+            &:hover {background-position: right center;}
+          }
+        }
+      }
+      [class^="swiper-button-"]{
+        width:44px;
+        opacity:0;
+        visibility:hidden;
+        @extend %transition_all_03s;
+      }
+      .swiper-button-prev{
+        transform:translateX(50px);
+      }
+      .swiper-button-next{
+        transform:translateX(-50px);
+      }
+    }
+  }
+  &_places{
+    padding: 0 10% 50px;
+    display: flex;
+    &_maps{
+      ul{
+          padding: 0px;
+          background: transparent url(/static/img/jp.png) top left no-repeat;
+          width: 600px;
+          height: 400px;
+          position: relative;
+          li {
+              margin: 0px;
+              padding: 0px;
+              position: absolute;
+              list-style: none;
+              font-size: 14px;
+              a {
+                  position: absolute;
+                  span {display: none;}
+              }
+          }
+          // 北海道
+          #hokkaido {
+              top: 0px;
+              left: 333px;
+              a {
+                  width: 300px;
+                  height: 131px;
+                  &:hover {background: url(/static/img/jp.png) -333px -400px no-repeat;}
+              }
+          }
+          // 東北
+          #touhoku {
+              top: 128px;
+              left: 253px;
+              a {
+                  width: 180px;
+                  height: 145px;
+                  &:hover {background: transparent url(/static/img/jp.png) -253px -928px no-repeat;}
+              }
+          }
+          // 北陸・甲信越
+          #hokuriku {
+              top: 208px;
+              left: 202px;
+              a {
+                  width: 128px;
+                  height: 95px;
+                  &:hover {background: transparent url(/static/img/jp.png) -202px -1408px no-repeat;}
+              }
+          }
+          // 関東
+          #kanto {
+              top: 252px;
+              left: 280px;
+              a {
+                  width: 68px;
+                  height: 148px;
+                  &:hover {background: transparent url(/static/img/jp.png) -280px -1852px no-repeat;}
+              }
+          }
+          // 東海
+          #tokai {
+              top: 260px;
+              left: 202px;
+              a {
+                  width: 88px;
+                  height: 100px;
+                  &:hover {background: transparent url(/static/img/jp.png) -202px -2260px no-repeat;}
+              }
+          }
+          // 関西
+          #kansai {
+              top: 261px;
+              left: 171px;
+              a {
+                  width: 62px;
+                  height: 87px;
+                  &:hover {background: transparent url(/static/img/jp.png) -171px -2661px no-repeat;}
+              }
+          }
+          // 中国
+          #chugoku {
+              top: 235px;
+              left: 85px;
+              a {
+                  width: 100px;
+                  height: 75px;
+                  &:hover {background: transparent url(/static/img/jp.png) -85px -3035px no-repeat;}
+              }
+          }
+          // 四国
+          #shikoku {
+              top: 300px;
+              left: 107px;
+              a {
+                  width: 75px;
+                  height: 50px;
+                  &:hover {background: transparent url(/static/img/jp.png) -107px -3500px no-repeat;}
+              }
+          }
+          // 九州
+          #kyushu {
+              top: 265px;
+              left: 24px;
+              a {
+                  width: 88px;
+                  height: 135px;
+                  &:hover {background: transparent url(/static/img/jp.png) -24px -3865px no-repeat;}
+              }
+          }
+          // 沖縄
+          #okinawa {
+              top: 0px;
+              left: 0px;
+              a {
+                  width: 298px;
+                  height: 155px;
+                  &:hover {background: transparent url(/static/img/jp.png) 0px -4000px no-repeat;}
+              }
+          }
+      }
+      iframe{
+          width: 600px;
+          height: 480px;
+      }
+    }
+    &_menus{
+      width: calc(100% - 600px);
+      ul li{
+          width: 50%;
+          float: left;
+          a{
+              color:#333333;
+              text-decoration: underline;
+              &:hover{opacity: 0.6;}
+          }
+      }
+    }
+  }
+  &_app{
+    padding: 0 10% 50px;
+    background-color: black;
+    .card-footer a{
+      color:inherit;
+    }
+  }
+}
