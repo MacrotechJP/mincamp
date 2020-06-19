@@ -18,4 +18,4 @@ class Login(LoginView):
 
 class Logout(LogoutView):
     """ログアウトページ"""
-    template_name = 'camp/index.html'
+    template_name = 'accounts/sign_out.html'

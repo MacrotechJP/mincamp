@@ -157,4 +157,4 @@ SASS_TEMPLATE_EXTS = ['.html', '.haml']
 
 # ユーザ認証後のルーティング
 LOGIN_REDIRECT_URL = '/'        # ログイン後のリダイレクトURL
-LOGOUT_REDIRECT_URL = '/'       # ログアウト後のリダイレクトURL
+# LOGOUT_REDIRECT_URL = '/'       # ログアウト後のリダイレクトURL

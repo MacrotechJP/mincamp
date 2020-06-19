@@ -16,5 +16,5 @@ app_name = 'accounts'
 urlpatterns = [
     # path('', views.Top.as_view(), name='top'),
     path('sign_in/', views.Login.as_view(), name='sign_in'),
-    path('logout/', views.Logout.as_view(), name='logout'),
+    path('sign_out/', views.Logout.as_view(), name='sign_out'),
 ]
