@@ -19,6 +19,10 @@ environ.Env.read_env('.env')
 # Basic認証
 BASICAUTH_USERS={env('BASIC_USER'):env('BASIC_PASS')}
 
+# カスタムユーザモデル
+AUTH_USER_MODEL = 'accounts.User'
+
+
 ALLOWED_HOSTS = ['*']
 
 
@@ -34,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'sass_processor',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
@@ -148,3 +153,8 @@ SASS_PROCESSOR_INCLUDE_FILE_PATTERN = r'^.+\.(sass|scss)$'
 SASS_PRECISION = 8
 SASS_OUTPUT_STYLE = 'compressed'
 SASS_TEMPLATE_EXTS = ['.html', '.haml']
+
+
+# ユーザ認証後のルーティング
+LOGIN_REDIRECT_URL = '/'        # ログイン後のリダイレクトURL
+LOGOUT_REDIRECT_URL = '/'       # ログアウト後のリダイレクトURL

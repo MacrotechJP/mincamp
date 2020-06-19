@@ -1,6 +1,7 @@
 {% extends 'layout.html' %}
 {% load static %}
 {% load sass_tags %}
+{% load widget_tweaks %}
 
 {% block head %}
 <title>新規登録</title>
@@ -26,13 +27,16 @@
                 <img src="{% static 'img/favicon.png' %}" class="rounded mr-2" style="height:50px;">
                 <strong class="mr-auto">mincampアカウント</strong>
             </div>
+            <form method="post" action="/accounts/login/">
+                {% csrf_token %}
             <div class="toast-body">
                 <div class="col-auto">
                     <div class="input-group mb-2">
                         <div class="input-group-prepend">
                             <div class="input-group-text"><i class="fas fa-envelope-square"></i></div>
                         </div>
-                        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="メールアドレス">
+                        {% comment %} <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="メールアドレス"> {% endcomment %}
+                        {{form.username|attr:"id:inlineFormInputGroup"|attr:"placeholder:メールアドレス"|add_class:"form-control" }}
                     </div>
                 </div>
                 <div class="col-auto">
@@ -40,14 +44,24 @@
                         <div class="input-group-prepend">
                             <div class="input-group-text"><i class="fas fa-lock"></i></div>
                         </div>
-                        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="パスワード">
+                        {% comment %} <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="パスワード"> {% endcomment %}
+                        {{form.password|attr:"id:inlineFormInputGroup"|attr:"placeholder:パスワード"|add_class:"form-control" }}
+                        {% comment %} {{form.password2|attr:"id:inlineFormInputGroup"|attr:"placeholder:パスワード"|add_class:"form-control" }} {% endcomment %}
                     </div>
                 </div>
             </div>
+            {% comment %} <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <p>test</p>
+                {{ form.username }}
+                <button type="submit" class="submit">Sign up</button>
+            </form> {% endcomment %}
             <div class="g-recaptcha google-recaptcha" data-sitekey="6Lf4-aMZAAAAAB6xp53bq79RTZHMo2SxlhRS0Mib"></div>
-            <a href="#" class="btn-social-long mincamp">
+            <button type="submit" class="btn-social-long mincamp">
                 <img src="{% static 'img/favicon.png' %}" style="width:20px;"> <span>mincampで新規登録</span>
-            </a>
+            </button>
+            </form>
         </div><br>
         <div class="toast" style="opacity:1.0;display: inline-block;">
             <div class="toast-header">

@@ -37,18 +37,6 @@
                         <button class="dropdown-item" type="button">中文</button>
                     </div>
                 </div>
-                {% if user.is_authenticated %}
-                <div class="btn-group dropright">
-                    <span class="btn dropdown-toggle header-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-globe-asia"></i>&nbsp;Language
-                    </span>
-                    <div class="dropdown-menu">
-                        <button class="dropdown-item active" type="button">日本語</button>
-                        <button class="dropdown-item" type="button">English</button>
-                        <button class="dropdown-item" type="button">中文</button>
-                    </div>
-                </div>
-                {% endif %}
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                     <ul class="navbar-nav nav nav-pills">
                         <li class="nav-item">
@@ -63,12 +51,21 @@
                         <li class="nav-item">
                             <a class="nav-link header-menu" href="#"><i class="fas fa-info-circle"></i>&nbsp;お知らせ</a>
                         </li>
+                        {% if user.is_authenticated %}
                         <li class="nav-item">
-                            <a class="nav-link header-menu" href="#"><i class="fas fa-sign-in-alt"></i>&nbsp;ログイン</a>
+                            <a class="nav-link header-menu" href="/accounts/logout"><i class="fas fa-user"></i>&nbsp;ログアウト</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link header-menu" href="/prototype/sign_in/"><i class="fas fa-user-plus"></i>&nbsp;新規登録</a>
+                            <a class="nav-link header-menu" href="/accounts/login"><i class="fas fa-user"></i>&nbsp;マイページ</a>
                         </li>
+                        {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link header-menu" href="/accounts/sign_in"><i class="fas fa-sign-in-alt"></i>&nbsp;ログイン</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link header-menu" href="/accounts/signup"><i class="fas fa-user-plus"></i>&nbsp;新規登録</a>
+                        </li>
+                        {% endif %}
                     </ul>
                 </div>
             </nav>

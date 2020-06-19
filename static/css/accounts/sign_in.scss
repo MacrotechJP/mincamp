@@ -9,7 +9,7 @@
         .toast {
             min-width: 350px;
             &-body{padding-bottom: 0.25rem;}
-            .google-recaptcha{
+            .g-recaptcha{
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -26,6 +26,8 @@
                 line-height: 50px;
                 overflow: hidden;
                 text-decoration:none;
+                border: none;
+                margin-bottom: 10px;
             }
             .btn-social-long .fa-twitter {
                 text-shadow: 2px 2px 0px #4287d6;
