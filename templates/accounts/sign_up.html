@@ -15,52 +15,68 @@
 {% comment %} GoogleReCAPTCHA人間認証 {% endcomment %}
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
-<link rel="stylesheet" href="{% sass_src 'css/accounts/sign_in.scss' %}">
+<link rel="stylesheet" href="{% sass_src 'css/accounts/sign_up.scss' %}">
+<script type="text/javascript" src="{% static 'js/accounts/sign_up.js' %}"></script>
 {% endblock %}
 
 {% block contents %}
 <div class="topimage">
-    <div class="topimage_sign-in">
+    <div class="topimage_sign-up">
         <h3>新規登録</h2>
         <div class="toast" style="opacity:1.0;display: inline-block;">
             <div class="toast-header">
                 <img src="{% static 'img/favicon.png' %}" class="rounded mr-2" style="height:50px;">
                 <strong class="mr-auto">mincampアカウント</strong>
             </div>
-            <form method="post" action="/accounts/login/">
+            <form action="" method="POST">
                 {% csrf_token %}
-            <div class="toast-body">
-                <div class="col-auto">
-                    <div class="input-group mb-2">
-                        <div class="input-group-prepend">
-                            <div class="input-group-text"><i class="fas fa-envelope-square"></i></div>
+                <div class="toast-body">
+                    <div class="col-auto">
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="fas fa-envelope-square"></i></div>
+                            </div>
+                            {{ form.email }}
                         </div>
-                        {% comment %} <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="メールアドレス"> {% endcomment %}
-                        {{form.username|attr:"id:inlineFormInputGroup"|attr:"placeholder:メールアドレス"|add_class:"form-control" }}
+                    </div>
+                    <div class="col-auto">
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="fas fa-lock"></i></div>
+                            </div>
+                            {{ form.password1 }}
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="fas fa-lock"></i></div>
+                            </div>
+                            {{ form.password2 }}
+                        </div>
                     </div>
                 </div>
-                <div class="col-auto">
-                    <div class="input-group mb-2">
-                        <div class="input-group-prepend">
-                            <div class="input-group-text"><i class="fas fa-lock"></i></div>
-                        </div>
-                        {% comment %} <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="パスワード"> {% endcomment %}
-                        {{form.password|attr:"id:inlineFormInputGroup"|attr:"placeholder:パスワード"|add_class:"form-control" }}
-                        {% comment %} {{form.password2|attr:"id:inlineFormInputGroup"|attr:"placeholder:パスワード"|add_class:"form-control" }} {% endcomment %}
+                {% if form.email.errors %}
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        {{ form.email.errors }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
-                </div>
-            </div>
-            {% comment %} <form method="post">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <p>test</p>
-                {{ form.username }}
-                <button type="submit" class="submit">Sign up</button>
-            </form> {% endcomment %}
-            <div class="g-recaptcha google-recaptcha" data-sitekey="6Lf4-aMZAAAAAB6xp53bq79RTZHMo2SxlhRS0Mib"></div>
-            <button type="submit" class="btn-social-long mincamp">
-                <img src="{% static 'img/favicon.png' %}" style="width:20px;"> <span>mincampで新規登録</span>
-            </button>
+                {% endif %}
+                {% if form.password2.errors %}
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        {{ form.password2.errors }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endif %}
+                <div class="g-recaptcha" data-sitekey="6Lf4-aMZAAAAAB6xp53bq79RTZHMo2SxlhRS0Mib" data-callback="verifyCallback" data-expired-callback="expiredCallback"></div>
+                <p class="g-recaptcha error" style="color:red;display:none;">新規登録するにはチェックを入れてください</p>
+                <button type="submit" class="btn-social-long mincamp">
+                    <img src="{% static 'img/favicon.png' %}" style="width:20px;"> <span>mincampで新規登録</span>
+                </button>
             </form>
         </div><br>
         <div class="toast" style="opacity:1.0;display: inline-block;">

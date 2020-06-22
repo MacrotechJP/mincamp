@@ -1,0 +1,20 @@
+「mincamp」にて会員登録手続きを行っていただき、誠にありがとうございます。
+
+アカウント情報の「仮登録」を受け付けいたしました。
+下記のリンクよりメール認証を行い、本登録を完了してください。
+
+【本登録用URL】
+{{ protocol}}://{{ domain }}{% url 'accounts:sign_up_complete' token %}
+
+【注意事項】
+・登録用URLの有効期限は24時間となっております。
+・有効期限を超過した場合は、再度初めからご登録ください。
+・本登録用URLのアクセスをもって、本登録となります。
+
+--
+株式会社mincamp
+https://mincamp.com
+
+・よくある質問：https://globis.zendesk.com/hc/ja/
+・お問い合わせ：https://globis.zendesk.com/hc/ja/requests/new
+・本メールは送信専用メールアドレスからお送りしておりますため、ご返信いただいてもお答えできませんのでご了承ください。
