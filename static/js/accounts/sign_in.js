@@ -15,6 +15,8 @@ $(function(){
         if(google_recaptcha==false){
             $(".g-recaptcha.error").show();
             return false;
+        }else{
+            $(".toast-header .spinner-grow").show();
         }
     })
 })

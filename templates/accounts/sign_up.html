@@ -27,6 +27,9 @@
             <div class="toast-header">
                 <img src="{% static 'img/favicon.png' %}" class="rounded mr-2" style="height:50px;">
                 <strong class="mr-auto">mincampアカウント</strong>
+                <div class="spinner-grow spinner-grow-sm" role="status" style="display:none;">
+                    <span class="sr-only">Loading...</span>
+                </div>
             </div>
             <form action="" method="POST">
                 {% csrf_token %}
