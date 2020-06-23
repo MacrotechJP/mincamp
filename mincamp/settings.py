@@ -27,10 +27,10 @@ AUTH_USER_MODEL = 'accounts.User'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'      # メールを実際に送信
 
 # メールサーバーへの接続設定
-EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST = env('EMAIL_HOST')
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'tanakakoyo1999@gmail.com'    # EMAIL_HOST_USER = 'tanakakoyo@macrotech.jp'
-EMAIL_HOST_PASSWORD = 'ltdnhkphhbnzoewj'        # EMAIL_HOST_PASSWORD = 'jpgwipplcoaprxvy'
+EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = True
 
 
