@@ -1,0 +1,19 @@
+「mincamp」にてパスワード再設定を承りました。
+
+アカウント情報の「パスワード再設定」を受け付けいたしました。
+下記のリンクよりパスワード再設定ページへアクセスし、パスワード再設定を行ってください。
+
+【パスワード再設定用URL】
+{{ protocol}}://{{ domain }}{% url 'accounts:password_reset_confirm' uid token %}
+
+【注意事項】
+・パスワード再設定用URLの有効期限は24時間となっております。
+・有効期限を超過した場合は、再度パスワード再設定URLを発行してください。
+
+--
+株式会社mincamp
+https://mincamp.com
+
+・よくある質問：https://globis.zendesk.com/hc/ja/
+・お問い合わせ：https://globis.zendesk.com/hc/ja/requests/new
+・本メールは送信専用メールアドレスからお送りしておりますため、ご返信いただいてもお答えできませんのでご了承ください。

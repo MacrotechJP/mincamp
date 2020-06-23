@@ -1,0 +1,65 @@
+.topimage{
+    width: 100%;
+    height: auto!important;
+    background-image: url(/static/img/toppage.jpg);
+    &_sign-in{
+        padding:80px 10%;
+        text-align: center;
+        background-color: rgba(255,255,255,0.4);
+        .toast {
+            min-width: 350px;
+            &-body{padding-bottom: 0.25rem;}
+            .g-recaptcha{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-bottom: 5px;
+            }
+            .btn-social-long {
+                color: #FFF;
+                border-radius: 7px;
+                display: inline-block;
+                height: 50px;
+                width: 200px;
+                padding: 0 10px;
+                text-align: center;
+                line-height: 50px;
+                overflow: hidden;
+                text-decoration:none;
+                border: none;
+                margin-bottom: 10px;
+            }
+            .btn-social-long .fa-twitter {
+                text-shadow: 2px 2px 0px #4287d6;
+                font-size: 30px;
+            }
+            .btn-social-long span {
+                display:inline-block;
+                transition: .5s;
+            }
+            .btn-social-long:hover span {
+                -webkit-transform: rotateX(360deg);
+                transform: rotateX(360deg);
+            }
+            .btn-social-long.google{background: #D44332;}
+            .btn-social-long.twitter{background: #1da1f3;}
+            .btn-social-long.facebook{background: #4966a0;}
+            .btn-social-long.insta{
+                background: linear-gradient(135deg, #427eff 0%, #f13f79 70%) no-repeat;
+                position: relative;
+                &:before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;/*全体を覆う*/
+                    height: 100%;/*全体を覆う*/
+                    background: linear-gradient(15deg, #ffdb2c, rgb(249, 118, 76) 25%, rgba(255, 77, 64, 0) 50%) no-repeat;
+                }
+            }
+            .btn-social-long.line{background: #31AE36;}
+            .btn-social-long.yahoo{background: #E61018;}
+            .btn-social-long.mincamp{background: linear-gradient(-90deg, #FF006E, #FFD500);}
+        }
+    }
+}

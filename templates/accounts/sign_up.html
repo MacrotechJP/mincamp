@@ -1,0 +1,153 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% load sass_tags %}
+{% load widget_tweaks %}
+
+{% block head %}
+<title>新規登録</title>
+{% comment %} flatpicker読み込み {% endcomment %}   
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/confetti.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+{% comment %} swiper読み込み {% endcomment %} 
+<link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.css">
+<script src="https://unpkg.com/swiper/js/swiper.js"></script>
+{% comment %} GoogleReCAPTCHA人間認証 {% endcomment %}
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+<link rel="stylesheet" href="{% sass_src 'css/accounts/sign_up.scss' %}">
+<script type="text/javascript" src="{% static 'js/accounts/sign_up.js' %}"></script>
+{% endblock %}
+
+{% block contents %}
+<div class="topimage">
+    <div class="topimage_sign-up">
+        <h3>新規登録</h2>
+        <div class="toast" style="opacity:1.0;display: inline-block;">
+            <div class="toast-header">
+                <img src="{% static 'img/favicon.png' %}" class="rounded mr-2" style="height:50px;">
+                <strong class="mr-auto">mincampアカウント</strong>
+                <div class="spinner-grow spinner-grow-sm" role="status" style="display:none;">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
+            <form action="" method="POST">
+                {% csrf_token %}
+                <div class="toast-body">
+                    <div class="col-auto">
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="fas fa-envelope-square"></i></div>
+                            </div>
+                            {{ form.email }}
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="fas fa-lock"></i></div>
+                            </div>
+                            {{ form.password1 }}
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="fas fa-lock"></i></div>
+                            </div>
+                            {{ form.password2 }}
+                        </div>
+                    </div>
+                </div>
+                {% if form.email.errors %}
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        {{ form.email.errors }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endif %}
+                {% if form.password2.errors %}
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        {{ form.password2.errors }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endif %}
+                <div class="g-recaptcha" data-sitekey="6Lf4-aMZAAAAAB6xp53bq79RTZHMo2SxlhRS0Mib" data-callback="verifyCallback" data-expired-callback="expiredCallback"></div>
+                <p class="g-recaptcha error" style="color:red;display:none;">新規登録するにはチェックを入れてください</p>
+                <button type="submit" class="btn-social-long mincamp">
+                    <img src="{% static 'img/favicon.png' %}" style="width:20px;"> <span>mincampで新規登録</span>
+                </button>
+            </form>
+        </div><br>
+        <div class="toast" style="opacity:1.0;display: inline-block;">
+            <div class="toast-header">
+                <img src="{% static 'img/google.png' %}" class="rounded mr-2" style="height:50px;">
+                <strong class="mr-auto">Googleアカウント</strong>
+            </div>
+            <div class="toast-body">
+                <a href="#" class="btn-social-long google">
+                    <i class="fab fa-google fa-lg"></i> <span>Googleで新規登録</span>
+                </a>
+            </div>
+        </div>
+        <div class="toast" style="opacity:1.0;display: inline-block;">
+            <div class="toast-header">
+                <img src="{% static 'img/twitter.png' %}" class="rounded mr-2" style="height:50px;">
+                <strong class="mr-auto">Twitterアカウント</strong>
+            </div>
+            <div class="toast-body">
+                <a href="#" class="btn-social-long twitter">
+                    <i class="fab fa-twitter-square fa-lg"></i> <span>Twitterで新規登録</span>
+                </a>
+            </div>
+        </div>
+        <div class="toast" style="opacity:1.0;display: inline-block;">
+            <div class="toast-header">
+                <img src="{% static 'img/facebook.png' %}" class="rounded mr-2" style="height:50px;">
+                <strong class="mr-auto">Facebookアカウント</strong>
+            </div>
+            <div class="toast-body">
+                <a href="#" class="btn-social-long facebook">
+                    <i class="fab fa-facebook-square fa-lg"></i> <span>Facebookで新規登録</span>
+                </a>
+            </div>
+        </div><br>
+        <div class="toast" style="opacity:1.0;display: inline-block;">
+            <div class="toast-header">
+                <img src="{% static 'img/instagram.png' %}" class="rounded mr-2" style="height:50px;">
+                <strong class="mr-auto">Instagramアカウント</strong>
+            </div>
+            <div class="toast-body">
+                <a href="#" class="btn-social-long insta">
+                    <i class="fab fa-instagram fa-lg"></i> <span>Instagramで新規登録</span>
+                </a>
+            </div>
+        </div>
+        <div class="toast" style="opacity:1.0;display: inline-block;">
+            <div class="toast-header">
+                <img src="{% static 'img/line.png' %}" class="rounded mr-2" style="height:50px;">
+                <strong class="mr-auto">Lineアカウント</strong>
+            </div>
+            <div class="toast-body">
+                <a href="#" class="btn-social-long line">
+                    <i class="fab fa-line fa-lg"></i> <span>Lineで新規登録</span>
+                </a>
+            </div>
+        </div>
+        <div class="toast" style="opacity:1.0;display: inline-block;">
+            <div class="toast-header">
+                <img src="{% static 'img/yahoo.png' %}" class="rounded mr-2" style="height:50px;">
+                <strong class="mr-auto">Yahooアカウント</strong>
+            </div>
+            <div class="toast-body">
+                <a href="#" class="btn-social-long yahoo">
+                    <i class="fab fa-yahoo fa-lg"></i> <span>Yahooで新規登録</span>
+                </a>
+            </div>
+        </div><br>
+    </div>
+</div>
+{% endblock %}

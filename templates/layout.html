@@ -18,6 +18,7 @@
         <link rel="stylesheet" href="{% sass_src 'css/common/header.scss' %}">
         <link rel="stylesheet" href="{% sass_src 'css/common/footer.scss' %}">
         {% comment %} 内部JSファイル読み込み {% endcomment %}
+        <script type="text/javascript" src="{% static 'js/common/header.js' %}"></script>
         {% block head %}{% endblock %}
     </head>
     <body>
@@ -50,12 +51,21 @@
                         <li class="nav-item">
                             <a class="nav-link header-menu" href="#"><i class="fas fa-info-circle"></i>&nbsp;お知らせ</a>
                         </li>
+                        {% if user.is_authenticated %}
                         <li class="nav-item">
-                            <a class="nav-link header-menu" href="#"><i class="fas fa-sign-in-alt"></i>&nbsp;ログイン</a>
+                            <a class="nav-link header-menu" href="/accounts/sign_out"><i class="fas fa-user"></i>&nbsp;ログアウト</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link header-menu" href="/prototype/sign_in/"><i class="fas fa-user-plus"></i>&nbsp;新規登録</a>
+                            <a class="nav-link header-menu" href="/accounts/login"><i class="fas fa-user"></i>&nbsp;マイページ</a>
                         </li>
+                        {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link header-menu" href="/accounts/sign_in"><i class="fas fa-sign-in-alt"></i>&nbsp;ログイン</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link header-menu" href="/accounts/sign_up"><i class="fas fa-user-plus"></i>&nbsp;新規登録</a>
+                        </li>
+                        {% endif %}
                     </ul>
                 </div>
             </nav>

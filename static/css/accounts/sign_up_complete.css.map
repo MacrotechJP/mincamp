@@ -1,0 +1,9 @@
+{
+	"version": 3,
+	"file": "sign_up_complete.css",
+	"sources": [
+		"sign_up_complete.scss"
+	],
+	"names": [],
+	"mappings": "AAAA,AAAA,SAAS,AAAA,CACL,KAAK,CAAE,IAAI,CACX,MAAM,CAAE,IAAI,CAAA,UAAU,CACtB,gBAAgB,CAAE,4BAA4B,CAMjD,AATD,AAII,0BAJK,AAIa,CACd,OAAO,CAAC,QAAQ,CAChB,gBAAgB,CAAE,qBAAqB,CAE1C,AARL,AAOQ,0BAPC,CAOD,KAAK,CAAC,UAAU,CAAC,IAAI,CAAC,SAAS,AAAA,CAAC,aAAa,CAAE,IAAI,CAAG"
+}

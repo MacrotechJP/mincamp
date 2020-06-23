@@ -19,12 +19,28 @@ environ.Env.read_env('.env')
 # Basic認証
 BASICAUTH_USERS={env('BASIC_USER'):env('BASIC_PASS')}
 
+# カスタムユーザモデル
+AUTH_USER_MODEL = 'accounts.User'
+
+# メール設定
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # メールをコンソールに表示する
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'      # メールを実際に送信
+
+# メールサーバーへの接続設定
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'tanakakoyo1999@gmail.com'    # EMAIL_HOST_USER = 'tanakakoyo@macrotech.jp'
+EMAIL_HOST_PASSWORD = 'ltdnhkphhbnzoewj'        # EMAIL_HOST_PASSWORD = 'jpgwipplcoaprxvy'
+EMAIL_USE_TLS = True
+
+
 ALLOWED_HOSTS = ['*']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'accounts.apps.AccountsConfig',
     'camp.apps.CampConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -33,6 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'sass_processor',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
@@ -147,3 +164,8 @@ SASS_PROCESSOR_INCLUDE_FILE_PATTERN = r'^.+\.(sass|scss)$'
 SASS_PRECISION = 8
 SASS_OUTPUT_STYLE = 'compressed'
 SASS_TEMPLATE_EXTS = ['.html', '.haml']
+
+
+# ユーザ認証後のルーティング
+LOGIN_REDIRECT_URL = '/'        # ログイン後のリダイレクトURL
+# LOGOUT_REDIRECT_URL = '/'       # ログアウト後のリダイレクトURL
