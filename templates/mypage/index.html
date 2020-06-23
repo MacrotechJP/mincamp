@@ -1,0 +1,236 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% load sass_tags %}
+
+{% block head %}
+<title>マイページ</title>
+
+<link rel="stylesheet" href="{% sass_src 'css/mypage/index.scss' %}">
+<script type="text/javascript" src="{% static 'js/mypage/index.js' %}"></script>
+{% endblock %}
+
+{% block contents %}
+<div class="contents">
+    <div class="contents_sidebar">
+        <div class="page-wrapper chiller-theme toggled">
+            <nav id="sidebar" class="sidebar-wrapper">
+                <div class="sidebar-content">
+                    <div class="sidebar-brand">
+                        <a href="#">マイページ</a>
+                        <i id="appearance-mode" class="fas fa-adjust fa-lg" title="ライトモードに変更する" style="color:white;"></i>
+                    </div>
+                    <div class="sidebar-header">
+                        <div class="user-pic">
+                            <img class="img-responsive img-rounded" src="{% static 'img/face.png' %}" alt="User picture">
+                        </div>
+                        <div class="user-info">
+                            <span class="user-name"><strong>田中航陽</strong></span>
+                            <span class="user-role">管理者</span>
+                            <span class="user-status">
+                                <i class="fa fa-circle"></i>
+                                <span>Online</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="sidebar-menu">
+                        <ul>
+                            {% comment %} <li class="header-menu">
+                                <span>General</span>
+                            </li> {% endcomment %}
+                            <li class="sidebar-dropdown">
+                                <a style="cursor:pointer;">
+                                    <i class="fas fa-info-circle"></i>
+                                    <span>お知らせ</span>
+                                    <span class="badge badge-pill badge-warning">New</span>
+                                </a>
+                                <div class="sidebar-submenu">
+                                    <ul>
+                                        <li>
+                                            <a href="#">全体のお知らせ<span class="badge badge-pill badge-danger">3</span></a>
+                                        </li>
+                                        <li>
+                                            <a href="#">あなたへのお知らせ<span class="badge badge-pill badge-danger">3</span></a>
+                                        </li>
+                                        <li>
+                                            <a href="#">重要なお知らせ<span class="badge badge-pill badge-danger">3</span></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class="far fa-calendar-alt"></i>
+                                    <span>カレンダー</span>
+                                    <span class="badge badge-pill badge-success">Pro</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-dropdown">
+                                <a style="cursor:pointer;">
+                                    <i class="fas fa-calendar-check"></i>
+                                    <span>予約情報</span>
+                                </a>
+                                <div class="sidebar-submenu">
+                                    <ul>
+                                        <li>
+                                            <a href="#">予約一覧</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">予約状況</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">予約取り消し</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="sidebar-dropdown">
+                                <a style="cursor:pointer;">
+                                    <i class="fas fa-list-alt"></i>
+                                    <span>マイリスト</span>
+                                </a>
+                                <div class="sidebar-submenu">
+                                    <ul>
+                                        <li>
+                                            <a href="#">お気に入り</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="sidebar-dropdown">
+                                <a style="cursor:pointer;">
+                                    <i class="fas fa-book"></i>
+                                    <span>ホスト情報</span>
+                                </a>
+                                <div class="sidebar-submenu">
+                                    <ul>
+                                        <li>
+                                            <a href="#">登録ホスト一覧</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">収益情報</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="sidebar-dropdown">
+                                <a style="cursor:pointer;">
+                                    <i class="fas fa-user-cog"></i>
+                                    <span>ユーザ情報</span>
+                                </a>
+                                <div class="sidebar-submenu">
+                                    <ul>
+                                        <li>
+                                            <a href="#">ログイン方法</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">プロフィール、住所、性別等</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">政府発行の身分証明書</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">お支払い方法</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">お支払い履歴</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">保有ポイント、クーポン</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">キャンパーランク</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="sidebar-dropdown">
+                                <a style="cursor:pointer;">
+                                    <i class="fas fa-cogs"></i>
+                                    <span>設定</span>
+                                </a>
+                                <div class="sidebar-submenu">
+                                    <ul>
+                                        <li>
+                                            <a href="#">通知</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="sidebar-dropdown">
+                                <a style="cursor:pointer;">
+                                    <i class="fas fa-question-circle"></i>
+                                    <span>サポート</span>
+                                </a>
+                                <div class="sidebar-submenu">
+                                    <ul>
+                                        <li>
+                                            <a href="#">カスタマーサポート</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">よくあるご質問</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">予約の管理</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">ご意見</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="sidebar-dropdown">
+                                <a style="cursor:pointer;">
+                                    <i class="fas fa-book"></i>
+                                    <span>法律と方針</span>
+                                    <span class="badge badge-pill badge-primary">Beta</span>
+                                </a>
+                                <div class="sidebar-submenu">
+                                    <ul>
+                                        <li>
+                                            <a href="#">利用規約</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">プライバシーポリシー</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">著作権</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="sidebar-footer">
+                    <a href="#">
+                        <i class="fa fa-bell"></i>
+                        <span class="badge badge-pill badge-warning notification">3</span>
+                    </a>
+                    <a href="#">
+                        <i class="fa fa-envelope"></i>
+                        <span class="badge badge-pill badge-success notification">7</span>
+                    </a>
+                    <a href="#">
+                        <i class="fa fa-cog"></i>
+                        <span class="badge-sonar"></span>
+                    </a>
+                    <a href="#">
+                        <i class="fa fa-power-off"></i>
+                    </a>
+                </div>
+            </nav>
+        </div>
+        <div class="contents_sidebar_advertisement">
+            <div class="card">
+                <img src="https://www.mongoroid.com/blog/wp-content/uploads/2018/09/blog13_main.gif" class="card-img-top" alt="...">
+            </div>
+            <div class="card">
+                <img src="https://ipqcache2.shufoo.net/s/contents/images/top/nyoki/bnr_D.png" class="card-img-top" alt="...">
+            </div>
+        </div>
+    </div>
+    <div class="contents_main">
+
+    </div>
+</div>
+{% endblock  %}
