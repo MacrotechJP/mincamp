@@ -56,7 +56,7 @@ whitenoise==3.3.1
 python-3.7.3
 ```
 
-6. 「settings.py」を編集する。
+5. 「settings.py」を編集する。
 
 ```settings.py
 ...
@@ -98,7 +98,7 @@ DATABASES = {
 ...
 ```
 
-7. Herokuコマンドを実行。
+6. Herokuコマンドを実行。
 
 ```bash
 $ heroku login
