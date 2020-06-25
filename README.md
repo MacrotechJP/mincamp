@@ -131,6 +131,7 @@ $ heroku config
 CLEARDB_DATABASE_URL: mysql://[ユーザ名]:[パスワード]@[ホスト名]/[DB名]?reconnect=true
 $ git add -A . 
 $ git commit -m "Herokuデプロイ"
+$ heroku config:set DISABLE_COLLECTSTATIC=1
 $ git push heroku master
 $ heroku ps:scale web=1
 $ heroku run python manage.py migrate
