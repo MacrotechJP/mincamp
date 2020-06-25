@@ -1,0 +1,1 @@
+web: gunicorn mincamp.wsgi --log-file -
