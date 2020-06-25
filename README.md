@@ -16,7 +16,6 @@ $ python manage.py runserver
 user　👈これは自分の開発環境の名前(terminalの$マークの後ろの文字)
 __pycache__
 staticfiles
-local_settings.py
 db.sqlite3
 *.py[co]
 ```
@@ -57,29 +56,6 @@ whitenoise==3.3.1
 python-3.7.3
 ```
 
-5. 「local_settings.py」を作成する。
-
-```local_settings.py
-import os
-
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-SECRET_KEY = 'dwts2#jr9ct-1ru4xgy7h*^&a-67*n4-j0$wngxk+0avj1py^p'
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'mincamp',
-        'USER': 'root',
-        'PASSWORD': 'Tanaka0911#',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
-    }
-}
-
-DEBUG = True
-```
-
 6. 「settings.py」を編集する。
 
 ```settings.py
@@ -88,6 +64,7 @@ ALLOWED_HOSTS = ['*']
 ...
 MIDDLEWARE = [
     'basicauth.middleware.BasicAuthMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -132,7 +109,7 @@ CLEARDB_DATABASE_URL: mysql://[ユーザ名]:[パスワード]@[ホスト名]/[D
 $ git add -A . 
 $ git commit -m "Herokuデプロイ"
 $ heroku config:set DISABLE_COLLECTSTATIC=1
-$ git push heroku master
+$ git push heroku master    ※特定ブランチのデプロイ👉「$ git push heroku [ブランチ名]:master --force」
 $ heroku ps:scale web=1
 $ heroku run python manage.py migrate
 ```
