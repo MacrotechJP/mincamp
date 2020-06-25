@@ -53,6 +53,8 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'basicauth.middleware.BasicAuthMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -83,6 +85,12 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'mincamp.wsgi.application'
+import dj_database_url
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+db_from_env = dj_database_url.config()
+DATABASES = {
+    'default': dj_database_url.config()
+}
 
 
 # Database
