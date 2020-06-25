@@ -27,10 +27,10 @@ AUTH_USER_MODEL = 'accounts.User'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'      # メールを実際に送信
 
 # メールサーバーへの接続設定
-EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST = env('EMAIL_HOST')
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'tanakakoyo1999@gmail.com'    # EMAIL_HOST_USER = 'tanakakoyo@macrotech.jp'
-EMAIL_HOST_PASSWORD = 'ltdnhkphhbnzoewj'        # EMAIL_HOST_PASSWORD = 'jpgwipplcoaprxvy'
+EMAIL_HOST_USER="tanakakoyo1999@gmail.com"
+EMAIL_HOST_PASSWORD="ccmndpuscddcrkyl"
 EMAIL_USE_TLS = True
 
 
@@ -115,9 +115,9 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'heroku_8b5b85fe5e9855e',
-            'USER': 'bb5588e6a1ff83',
-            'PASSWORD': 'd5fb0c88',
+            'NAME': 'heroku_2300d5f7fe40f0a',
+            'USER': 'bbe3b7e9bfe07b',
+            'PASSWORD': '8aa66136',
             'HOST': 'us-cdbr-east-05.cleardb.net',
             'PORT': '3306',
             'OPTIONS': {
