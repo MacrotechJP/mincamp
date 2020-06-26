@@ -33,6 +33,9 @@ EMAIL_HOST_USER="tanakakoyo1999@gmail.com"
 EMAIL_HOST_PASSWORD="ccmndpuscddcrkyl"
 EMAIL_USE_TLS = True
 
+# ソーシャルログイン環境変数
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = env('SOCIAL_AUTH_GOOGLE_OAUTH2_KEY')
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = env('SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET')
 
 ALLOWED_HOSTS = ['*']
 
@@ -50,6 +53,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'sass_processor',
     'widget_tweaks',
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -62,6 +66,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'mincamp.urls'
@@ -79,6 +84,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -91,6 +98,19 @@ db_from_env = dj_database_url.config()
 DATABASES = {
     'default': dj_database_url.config()
 }
+
+
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.open_id.OpenIdAuth',
+    'social_core.backends.google.GoogleOpenId',
+    'social_core.backends.google.GoogleOAuth2',
+
+    'social_core.backends.github.GithubOAuth2',
+    'social_core.backends.twitter.TwitterOAuth',
+    'social_core.backends.facebook.FacebookOAuth2',
+
+    'django.contrib.auth.backends.ModelBackend',
+)
 
 
 # Database
@@ -175,5 +195,6 @@ SASS_TEMPLATE_EXTS = ['.html', '.haml']
 
 
 # ユーザ認証後のルーティング
+LOGIN_URL = 'accounts:signin'
 LOGIN_REDIRECT_URL = '/'        # ログイン後のリダイレクトURL
 # LOGOUT_REDIRECT_URL = '/'       # ログアウト後のリダイレクトURL
