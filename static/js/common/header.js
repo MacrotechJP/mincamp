@@ -7,7 +7,7 @@ $(function(){
             $("header .header-menu").css({'cssText': 'color: white !important;'});
             $("header .header-menu.search").fadeIn(1000);
         } else {
-            $("header").css("background-color","transparent");
+            $("header").css("background-color","white");
             $("header .header-icon").css("background-color","transparent");
             $("header .header-menu").css({'cssText': 'color: #222222 !important;'});
             $("header .header-menu.search").fadeOut(500);

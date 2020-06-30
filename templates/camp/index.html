@@ -17,81 +17,211 @@
 {% endblock %}
 
 {% block contents %}
-<div class="topimage">
-    <div class="topimage_cover"></div>
-    <div class="topimage_slider">
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="https://nocamping-nolife.com/wp-content/uploads/2016/07/image-e4fc6.jpg" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                        <p>東大沼野営場</p>
+<div class="contents">
+    <div class="contents_top">
+        <div class="contents_top_left">
+            <div class="contents_top_left_slide-images">
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="https://nocamping-nolife.com/wp-content/uploads/2016/07/image-e4fc6.jpg" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <p>東大沼野営場</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://join.biglobe.ne.jp/mobile/sim/gurashi/wp-content/uploads/2018/08/camp_top.jpg" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>.aaa..</h5>
+                                <p>..dddd.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://617mi5y4.user.webaccel.jp/wp-content/uploads/2017/03/FullSizeRender-2-3.jpg?x70517" alt="...">
+                        </div>
                     </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="https://join.biglobe.ne.jp/mobile/sim/gurashi/wp-content/uploads/2018/08/camp_top.jpg" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>.aaa..</h5>
-                        <p>..dddd.</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="https://617mi5y4.user.webaccel.jp/wp-content/uploads/2017/03/FullSizeRender-2-3.jpg?x70517" alt="...">
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
                 </div>
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
+            <div class="contents_top_left_search">
+                <div class="contents_top_left_search_upper">
+                    <div class="contents_top_left_search_upper_place">
+                        <input type="text" id="place" required="required"/>
+                        <label for="place">場所</label>
+                    </div>
+                    <div class="contents_top_left_search_upper_date">
+                        <input type="text" id="date" required="required"/>
+                        <label for="date">日付</label>
+                    </div>
+                    <div class="contents_top_left_search_upper_member">
+                        <input type="text" id="member" required="required"/>
+                        <label for="member">人数</label>
+                    </div>
+                </div>
+                <div class="contents_top_left_search_beneath">
+                    <div class="contents_top_left_search_beneath_checkbox">
+                        <div class="col-sm-10">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="gridCheck1">
+                                <label class="form-check-label" for="gridCheck1">長期特別割引</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-10">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="gridCheck1">
+                                <label class="form-check-label" for="gridCheck1">会員特典</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contents_top_left_search_beneath_submit">
+                        <button>検索</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="contents_top_right">
+            <div class="contents_top_right_user-icon">
+                <div class="contents_top_right_user-icon_main">
+                    <img src="https://publicdomainq.net/images/201710/30s/publicdomainq-0014937ksc.jpg">
+                </div>
+            </div>
+            <div class="contents_top_right_title">
+                <strong>mincamp</strong>へようこそ
+            </div>
+            <div class="contents_top_right_menu">
+                <div class="contents_top_right_menu_signup"><a href=""><span>参加する！</span></a></div>
+                <div class="contents_top_right_menu_signin"><a href=""><span>サインイン</span></a></div>
+                {% comment %} <div class="contents_top_right_menu_mypage"><a href=""><span>マイページ</span></a></div> {% endcomment %}
+            </div>
+            <div class="contents_top_right_info">
+                <div class="contents_top_right_info_cover"></div>
+                {% comment %} <h2>クーポン情報</h2> {% endcomment %}
+                <div class="contents_top_right_info_coupon">
+                    <a href="" class="btn btn-coupon">
+                        <div class="left"><span>20%</span><br>OFF!</div>
+                        <div class="right">SPECIAL<br>クーポン券！<span>有効期限:2050年12月31日</span></div>
+                    </a>
+                </div>
+                <div class="contents_top_right_info_mincamp">
+                    <a href="" class="btn btn-c"><span>動画を見たい方はコチラ！</span><br>mincampとは？（30秒）</a>
+                </div>
+                <div class="contents_top_right_info_media">
+                    <div id="social-container">
+                        <a href="#"><div class="social-button fb">
+                            <i class="fab fa-facebook-f fa-lg"></i><span>Facebook</span>
+                        </div></a>
+                        <a href="#"><div class="social-button tw">
+                            <i class="fab fa-twitter fa-lg"></i><span>Twitter</span>
+                        </div></a>
+                        <a href="#"><div class="social-button ig">
+                            <i class="fab fa-instagram fa-lg"></i><span>Instagram</span>
+                        </div></a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="topimage_search">
-        <form class="needs-validation" novalidate>
-            <div class="form-row">
-                <div class="col-md-6 mb-3">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="validationTooltipUsernamePrepend"><i class="fas fa-map-marked-alt"></i></span>
-                        </div>
-                        <input type="text" class="form-control" id="validationTooltip03" placeholder="場所" required>
+    <div class="contents_category">
+        <p class="contents_category_title"><span>カテゴリーから探す</span>&nbsp;<a href="#">セール会場へ</a></p>
+        <div class="contents_category_slide">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="image"><div class="image_center">
+                            <a href="#"><img src="https://d1f5hsy4d47upe.cloudfront.net/c7/c75881091067f4d8c7cdce93efafeadb_t.jpeg"></a>
+                        </div></div>
+                        <div class="name">BBQ</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="image"><div class="image_center">
+                            <a href="#"><img src="https://publicdomainq.net/images/201710/03s/publicdomainq-0013993ieh.jpg"></a>
+                        </div></div>
+                        <div class="name">登山</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="image"><div class="image_center">
+                            <a href="#"><img src="https://d1f5hsy4d47upe.cloudfront.net/d6/d6c65bc04b71676ae9bb430243a2f036_t.jpeg"></a>
+                        </div></div>
+                        <div class="name">ハイキング</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="image"><div class="image_center">
+                            <a href="#"><img src="https://cdn.plus.amanaimages.com/uploads/items/009/226/34/preview/FYI00922634.jpg"></a>
+                        </div></div>
+                        <div class="name">ピクニック</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="image"><div class="image_center">
+                            <a href="#"><img src="https://life-info.link/wp-content/uploads/2017/04/freesite.jpg"></a>
+                        </div></div>
+                        <div class="name">オートキャンプ</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="image"><div class="image_center">
+                            <a href="#"><img src="https://d1f5hsy4d47upe.cloudfront.net/06/063249c6a7c3bb145d0550a4c06ca6a6_t.jpeg"></a>
+                        </div></div>
+                        <div class="name">釣り</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="image"><div class="image_center">
+                            <a href="#"><img src="https://t.pimg.jp/018/198/212/1/18198212.jpg"></a>
+                        </div></div>
+                        <div class="name">草野球</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="image"><div class="image_center">
+                            <a href="#"><img src="https://st2.depositphotos.com/1011643/8184/i/450/depositphotos_81843850-stock-photo-couple-bird-watching-in-forest.jpg"></a>
+                        </div></div>
+                        <div class="name">バードウォッチング</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="image"><div class="image_center">
+                            <a href="#"><img src="https://media.gettyimages.com/photos/tactical-military-airsoft-soldiers-in-jungle-picture-id1131791542?s=612x612"></a>
+                        </div></div>
+                        <div class="name">サバイバルゲーム</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="image"><div class="image_center">
+                            <a href="#"><img src="https://www.ntt-f.co.jp/column/img/0021/02.png"></a>
+                        </div></div>
+                        <div class="name">星空観測</div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="image"><div class="image_center">
+                            <a href="#"><img src="https://s3-ap-northeast-1.amazonaws.com/static.amanaimages.com/imgroom/cen3tzG4fTr7Gtw1PoeRer/01808/01808013564.jpg"></a>
+                        </div></div>
+                        <div class="name">天体観測</div>
                     </div>
                 </div>
-                <div class="col-md-3 mb-3">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="validationTooltipUsernamePrepend"><i class="far fa-calendar-alt"></i></span>
-                        </div>
-                        <input type="text" class="form-control search-date" id="validationTooltipUsername" placeholder="日時" aria-describedby="validationTooltipUsernamePrepend" required>
-                    </div>
-                </div>
-                <div class="col-md-3 mb-3">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="validationTooltipUsernamePrepend"><i class="fas fa-user"></i></span>
-                        </div>
-                        <input type="text" class="form-control" id="validationTooltipUsername" placeholder="人数" aria-describedby="validationTooltipUsernamePrepend" required>
-                    </div>
-                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
             </div>
-        </form>
+        </div>
+        
+  <script>
+    var swiper = new Swiper('.swiper-container', {
+      slidesPerView: 6,
+      spaceBetween: 30,
+      loop: true,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+  </script>
     </div>
-</div>
-<div class="contents">
-    <div class="contents_button">
-        <a href="/camp/search" class="bnt-massage">
-            <i class="fas fa-search"></i>キャンプ場を探す<span>ゲストとして利用</span>
-        </a>
-    </div>
-    <div class="contents_scroll"><a href="#"><span></span><span></span><span></span></a></div>
     <div class="contents_overview">
         <h1 class="contents_overview_title">非日常という体験を！ <span class="badge badge-light">New</span></h1>
         <p class="contents_overview_description">キャンプを通した非日常な体験は、あなたの人生をより豊かにします。</p>
@@ -115,24 +245,42 @@
                     <div class="card-body">
                         <h5 class="card-title">mincampのオンライン体験</h5>
                         <p class="card-text">カードのタイトルに基づいて、カードのコンテンツの大部分を構成する簡単なテキストの例。</p>
-                        <a href="#" class="btn btn-primary">キャンプ場を探す</a>
+                        <a href="#" class="btn btn-primary">キャンプ場を探す</a><br><br>
+                        {% comment %} 👇モーダル画面 {% endcomment %}
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                            数問の質問でスピード検索！
+                        </button>
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">スピード検索</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="contents_speed-search">
+                                            <div class="card bg-dark text-center">
+                                                <img src="https://www.nap-camp.com/images/top/top01_sp.jpg" class="card-img" alt="...">
+                                                <div class="card-img-overlay">
+                                                    <div class="card-body">
+                                                        <h1 style="color:white;">行きたいキャンプを最速で探そう</h1>
+                                                        <p class="card-text">いくつかの質問に答えることで、あなたへオススメのキャンプ場をピックアップします。</p>
+                                                    </div>
+                                                    <hr><br>
+                                                    <div class="card-body">キャンプは初めてですか？（１/６）</div>
+                                                    <button type="button" class="btn btn-success  btn-lg">初めて</button><br><br>
+                                                    <button type="button" class="btn btn-success  btn-lg">よく行う</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-    <div class="contents_speed-search">
-        <div class="card bg-dark text-center">
-            <img src="https://www.nap-camp.com/images/top/top01_sp.jpg" class="card-img" alt="...">
-            <div class="card-img-overlay">
-                <div class="card-body">
-                    <h1 style="color:white;">行きたいキャンプを最速で探そう</h1>
-                    <p class="card-text">いくつかの質問に答えることで、あなたへオススメのキャンプ場をピックアップします。</p>
-                </div>
-                <hr><br>
-                <div class="card-body">キャンプは初めてですか？（１/６）</div>
-                <button type="button" class="btn btn-success  btn-lg">初めて</button><br><br>
-                <button type="button" class="btn btn-success  btn-lg">よく行う</button>
             </div>
         </div>
     </div>
@@ -259,7 +407,7 @@
             </div>
         </div>
     </div>
-    <div class="contents_categories">
+    <div class="contents_popular">
         <div class="swiper-container main-slider loading">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
@@ -398,32 +546,32 @@
         <div class="contents_places_menus">
 		    <div class="card">
                 <div class="card-header">ゲスト利用可能場所一覧</div>
-                    <div class="card-body">
-                        <blockquote class="blockquote mb-0">
-                            <p>mincampでゲストとして利用可能なキャンプ場の場所は次のようになります。</p>
-                            <ul>
-                                <li><a href="#">北海道</a></li><li><a href="#">青森県</a></li><li><a href="#">岩手県</a></li>
-                                <li><a href="#">宮城県</a></li><li><a href="#">秋田県</a></li><li><a href="#">山形県</a></li>
-                                <li><a href="#">福島県</a></li><li><a href="#">茨城県</a></li><li><a href="#">栃木県</a></li>
-                                <li><a href="#">群馬県</a></li><li><a href="#">埼玉県</a></li><li><a href="#">千葉県</a></li>
-                                <li><a href="#">東京都</a></li><li><a href="#">神奈川県</a></li><li><a href="#">新潟県</a></li>
-                                <li><a href="#">富山県</a></li><li><a href="#">石川県</a></li><li><a href="#">福井県</a></li>
-                                <li><a href="#">山梨県</a></li><li><a href="#">長野県</a></li><li><a href="#">岐阜県</a></li>
-                                <li><a href="#">静岡県</a></li><li><a href="#">愛知県</a></li><li><a href="#">三重県</a></li>
-                                <li><a href="#">滋賀県</a></li><li><a href="#">京都府</a></li><li><a href="#">大阪府</a></li>
-                                <li><a href="#">兵庫県</a></li><li><a href="#">奈良県</a></li><li><a href="#">和歌山県</a></li>
-                                <li><a href="#">鳥取県</a></li><li><a href="#">島根県</a></li><li><a href="#">岡山県</a></li>
-                                <li><a href="#">広島県</a></li><li><a href="#">山口県</a></li><li><a href="#">徳島県</a></li>
-                                <li><a href="#">香川県</a></li><li><a href="#">愛媛県</a></li><li><a href="#">高知県</a></li>
-                                <li><a href="#">福岡県</a></li><li><a href="#">佐賀県</a></li><li><a href="#">長崎県</a></li>
-                                <li><a href="#">熊本県</a></li><li><a href="#">大分県</a></li><li><a href="#">宮崎県</a></li>
-                                <li><a href="#">鹿児島県</a></li><li><a href="#">沖縄県</a></li><li><a href="#">国外</a></li>
-                            </ul>
-                        </blockquote>
-                    </div>
+                <div class="card-body">
+                    <blockquote class="blockquote mb-0">
+                        <p>mincampでゲストとして利用可能なキャンプ場の場所は次のようになります。</p>
+                        <ul>
+                            <li><a href="#">北海道</a></li><li><a href="#">青森県</a></li><li><a href="#">岩手県</a></li>
+                            <li><a href="#">宮城県</a></li><li><a href="#">秋田県</a></li><li><a href="#">山形県</a></li>
+                            <li><a href="#">福島県</a></li><li><a href="#">茨城県</a></li><li><a href="#">栃木県</a></li>
+                            <li><a href="#">群馬県</a></li><li><a href="#">埼玉県</a></li><li><a href="#">千葉県</a></li>
+                            <li><a href="#">東京都</a></li><li><a href="#">神奈川県</a></li><li><a href="#">新潟県</a></li>
+                            <li><a href="#">富山県</a></li><li><a href="#">石川県</a></li><li><a href="#">福井県</a></li>
+                            <li><a href="#">山梨県</a></li><li><a href="#">長野県</a></li><li><a href="#">岐阜県</a></li>
+                            <li><a href="#">静岡県</a></li><li><a href="#">愛知県</a></li><li><a href="#">三重県</a></li>
+                            <li><a href="#">滋賀県</a></li><li><a href="#">京都府</a></li><li><a href="#">大阪府</a></li>
+                            <li><a href="#">兵庫県</a></li><li><a href="#">奈良県</a></li><li><a href="#">和歌山県</a></li>
+                            <li><a href="#">鳥取県</a></li><li><a href="#">島根県</a></li><li><a href="#">岡山県</a></li>
+                            <li><a href="#">広島県</a></li><li><a href="#">山口県</a></li><li><a href="#">徳島県</a></li>
+                            <li><a href="#">香川県</a></li><li><a href="#">愛媛県</a></li><li><a href="#">高知県</a></li>
+                            <li><a href="#">福岡県</a></li><li><a href="#">佐賀県</a></li><li><a href="#">長崎県</a></li>
+                            <li><a href="#">熊本県</a></li><li><a href="#">大分県</a></li><li><a href="#">宮崎県</a></li>
+                            <li><a href="#">鹿児島県</a></li><li><a href="#">沖縄県</a></li><li><a href="#">国外</a></li>
+                        </ul>
+                    </blockquote>
                 </div>
             </div>
         </div>
+    </div>
     <div class="contents_app">
         <div class="card text-center">
             <div class="card-header">
@@ -435,15 +583,15 @@
                 <img src="https://play.google.com/intl/ja/badges/static/images/badges/ja_badge_web_generic.png" height="90">
                 <img src="https://developer.apple.com/app-store/marketing/guidelines/images/badge-example-preferred_2x.png" height="60">
             </div>
-            <div class="card-footer text-muted">
-                <a href="#"><i class="fab fa-instagram fa-2x"></i></a>&nbsp;
-                <a href="#"><i class="fab fa-facebook-square fa-2x"></i></a>&nbsp;&nbsp;
-                <a href="#"><i class="fab fa-twitter-square fa-2x"></i></a>&nbsp;&nbsp;
-                <a href="#"><i class="fab fa-pinterest-square fa-2x"></i></a>&nbsp;&nbsp;
-                <a href="#"><i class="fab fa-youtube-square fa-2x"></i></a>&nbsp;&nbsp;
-                <a href="#"><i class="fab fa-spotify fa-2x"></i>
-            </div>
         </div>
     </div>
 </div>
+
+
+
+
+
+
+
+
 {% endblock %}
