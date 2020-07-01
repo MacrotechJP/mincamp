@@ -55,41 +55,43 @@
                     </a>
                 </div>
             </div>
-            <div class="contents_top_left_search">
-                <div class="contents_top_left_search_upper">
-                    <div class="contents_top_left_search_upper_place">
-                        <input type="text" id="place" required="required"/>
-                        <label for="place">場所</label>
-                    </div>
-                    <div class="contents_top_left_search_upper_date">
-                        <input type="text" id="date" required="required"/>
-                        <label for="date">日付</label>
-                    </div>
-                    <div class="contents_top_left_search_upper_member">
-                        <input type="text" id="member" required="required"/>
-                        <label for="member">人数</label>
-                    </div>
-                </div>
-                <div class="contents_top_left_search_beneath">
-                    <div class="contents_top_left_search_beneath_checkbox">
-                        <div class="col-sm-10">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="gridCheck1">
-                                <label class="form-check-label" for="gridCheck1">長期特別割引</label>
-                            </div>
+            <form method="GET" action="{% url 'camp:search' %}">
+                <div class="contents_top_left_search">
+                    <div class="contents_top_left_search_upper">
+                        <div class="contents_top_left_search_upper_place">
+                            <input type="text" id="place" required="required"/>
+                            <label for="place">場所</label>
                         </div>
-                        <div class="col-sm-10">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="gridCheck1">
-                                <label class="form-check-label" for="gridCheck1">会員特典</label>
-                            </div>
+                        <div class="contents_top_left_search_upper_date">
+                            <input type="text" id="date" required="required"/>
+                            <label for="date">日付</label>
+                        </div>
+                        <div class="contents_top_left_search_upper_member">
+                            <input type="text" id="member" required="required"/>
+                            <label for="member">人数</label>
                         </div>
                     </div>
-                    <div class="contents_top_left_search_beneath_submit">
-                        <button>検索</button>
+                    <div class="contents_top_left_search_beneath">
+                        <div class="contents_top_left_search_beneath_checkbox">
+                            <div class="col-sm-10">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="gridCheck1">
+                                    <label class="form-check-label" for="gridCheck1">長期特別割引</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-10">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="gridCheck1">
+                                    <label class="form-check-label" for="gridCheck1">会員特典</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="contents_top_left_search_beneath_submit">
+                            <button>検索</button>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
         <div class="contents_top_right">
             <div class="contents_top_right_user-icon">

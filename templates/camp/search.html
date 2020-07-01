@@ -17,4 +17,108 @@
 {% endblock %}
 
 {% block contents %}
+<div class="contents">
+    <div class="contents_search">
+        <div class="contents_search_place">
+            <input type="text" id="place" required="required" value="大阪"/>
+            <label for="place">場所</label>
+        </div>
+        <div class="contents_search_date">
+            <input type="text" id="date" required="required" value="7月1日"/>
+            <label for="date">日付</label>
+        </div>
+        <div class="contents_search_member">
+            <input type="text" id="member" required="required" value="大人１名　子供２名"/>
+            <label for="member">人数</label>
+        </div>
+        <div class="contents_search_submit">
+            <button>検索</button>
+        </div>
+    </div>
+    <div class="contents_sidebar">
+        <div class="contents_sidebar_map">
+            <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1kdeVmTSHVfoHf7xtICVoHdbKviUSHS3g"></iframe>
+        </div>
+        <div class="contents_sidebar_search-detail">
+            <button><i class="fas fa-filter"></i>&nbsp;&nbsp;検索条件</button>
+        </div>
+        <div class="contents_sidebar_search-squeeze">
+            <div class="contents_sidebar_search-squeeze_title">
+                <div class="heading"><span>絞り込み条件</span></div>
+            </div>
+            <div class="contents_sidebar_search-squeeze_option">
+                <div class="contents_sidebar_search-squeeze_option_title">
+                    <div class="heading"><span>周辺施設</span></div>
+                </div>
+                <div class="contents_sidebar_search-squeeze_option_body">
+                    
+                    <label class="control control--checkbox">
+                        First checkbox
+                        <input type="checkbox" checked="checked"/><div class="control__indicator"></div>
+                    </label>
+                    <label class="control control--checkbox">
+                        First checkbox
+                        <input type="checkbox" checked="checked"/><div class="control__indicator"></div>
+                    </label>
+
+                    <label class="control control--radio">
+                        Second radio
+                        <input type="radio" name="radio"/><div class="control__indicator"></div>
+                    </label>
+
+                </div>
+            </div>
+            <div class="contents_sidebar_search-squeeze_option">
+                <div class="contents_sidebar_search-squeeze_option_title">
+                    <div class="heading"><span>ご予算</span></div>
+                </div>
+                <div class="contents_sidebar_search-squeeze_option_body">
+                </div>
+            </div>
+            <div class="contents_sidebar_search-squeeze_option">
+                <div class="contents_sidebar_search-squeeze_option_title">
+                    <div class="heading"><span>ゲスト評価</span></div>
+                </div>
+                <div class="contents_sidebar_search-squeeze_option_body">
+                </div>
+            </div>
+            <div class="contents_sidebar_search-squeeze_option">
+                <div class="contents_sidebar_search-squeeze_option_title">
+                    <div class="heading"><span>お支払い方法</span></div>
+                </div>
+                <div class="contents_sidebar_search-squeeze_option_body">
+                </div>
+            </div>
+            <div class="contents_sidebar_search-squeeze_option">
+                <div class="contents_sidebar_search-squeeze_option_title">
+                    <div class="heading"><span>ご予算</span></div>
+                </div>
+                <div class="contents_sidebar_search-squeeze_option_body">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="contents_main">
+        <div class="contents_main_header">
+            <div class="contents_main_header_sort">
+            </div>
+            <div class="contents_main_header_message">
+            </div>
+        </div>
+        <div class="contents_main_hosts">
+            <ol>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ol>
+        </div>
+    </div>
+</div>
 {% endblock %}
