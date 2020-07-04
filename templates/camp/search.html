@@ -8,13 +8,420 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/confetti.css">
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-{% comment %} swiper読み込み {% endcomment %} 
-<link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.css">
-<script src="https://unpkg.com/swiper/js/swiper.js"></script>
+{% comment %} IZIMODAL読み込み {% endcomment %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izimodal/1.5.1/css/iziModal.min.css">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/izimodal/1.5.1/js/iziModal.min.js"></script>
 
 <link rel="stylesheet" href="{% sass_src 'css/camp/search.scss' %}">
 <script type="text/javascript" src="{% static 'js/camp/search.js' %}"></script>
 {% endblock %}
 
 {% block contents %}
+<div class="contents">
+    <div class="contents_search">
+        <div class="contents_search_place">
+            <input type="text" id="place" required="required" value="大阪"/>
+            <label for="place">場所</label>
+        </div>
+        <div class="contents_search_date">
+            <input type="text" id="date" required="required" value="7月1日"/>
+            <label for="date">日付</label>
+        </div>
+        <div class="contents_search_member">
+            <input type="text" id="member" required="required" value="大人１名　子供２名"/>
+            <label for="member">人数</label>
+        </div>
+        <div class="contents_search_submit">
+            <button>検索</button>
+        </div>
+    </div>
+    <div class="contents_sidebar">
+        <div class="contents_sidebar_map">
+            <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1kdeVmTSHVfoHf7xtICVoHdbKviUSHS3g"></iframe>
+        </div>
+        <div class="contents_sidebar_search-detail">
+            <button><i class="fas fa-filter"></i>&nbsp;&nbsp;検索条件</button>
+        </div>
+        <div class="contents_sidebar_search-squeeze">
+            <div class="contents_sidebar_search-squeeze_title">
+                <div class="heading"><span>絞り込み条件</span></div>
+            </div>
+            <div class="contents_sidebar_search-squeeze_option">
+                <div class="contents_sidebar_search-squeeze_option_title">
+                    <div class="heading"><span>周辺施設</span></div>
+                </div>
+                <div class="contents_sidebar_search-squeeze_option_body">
+                    <label class="control control--checkbox">
+                        施設トイレ、仮設トイレ
+                        <input type="checkbox" checked="checked"/><div class="control__indicator"></div>
+                    </label>
+                    <label class="control control--checkbox">
+                        温泉
+                        <input type="checkbox" checked="checked"/><div class="control__indicator"></div>
+                    </label>
+                    <label class="control control--checkbox">
+                        WiFi無料
+                        <input type="checkbox" checked="checked"/><div class="control__indicator"></div>
+                    </label>
+                    <label class="control control--checkbox">
+                        駐車場あり
+                        <input type="checkbox" checked="checked"/><div class="control__indicator"></div>
+                    </label>
+                    <label class="control control--checkbox">
+                        自動販売機あり
+                        <input type="checkbox" checked="checked"/><div class="control__indicator"></div>
+                    </label>
+                </div>
+            </div>
+            <div class="contents_sidebar_search-squeeze_option">
+                <div class="contents_sidebar_search-squeeze_option_title">
+                    <div class="heading"><span>ご予算</span></div>
+                </div>
+                <div class="contents_sidebar_search-squeeze_option_body">
+                    <label class="control control--radio">
+                        ￥6,000 未満
+                        <input type="radio" name="radio"/><div class="control__indicator"></div>
+                    </label>
+                    <label class="control control--radio">
+                        ￥6,000 ～ ￥12,000
+                        <input type="radio" name="radio"/><div class="control__indicator"></div>
+                    </label>
+                    <label class="control control--radio">
+                        ￥12,000 ～ ￥20,000
+                        <input type="radio" name="radio"/><div class="control__indicator"></div>
+                    </label>
+                    <label class="control control--radio">
+                        ￥20,000 ～ ￥30,000
+                        <input type="radio" name="radio"/><div class="control__indicator"></div>
+                    </label>
+                    <label class="control control--radio">
+                        ￥30,000 以上
+                        <input type="radio" name="radio"/><div class="control__indicator"></div>
+                    </label>
+                </div>
+            </div>
+            <div class="contents_sidebar_search-squeeze_option">
+                <div class="contents_sidebar_search-squeeze_option_title">
+                    <div class="heading"><span>ゲスト評価</span></div>
+                </div>
+                <div class="contents_sidebar_search-squeeze_option_body">
+                    <label class="control control--checkbox">
+                        全て
+                        <input type="checkbox" checked="checked"/><div class="control__indicator"></div>
+                    </label>
+                    <label class="control control--checkbox">
+                        とても素晴らしい (4.5 以上)
+                        <input type="checkbox" checked="checked"/><div class="control__indicator"></div>
+                    </label>
+                    <label class="control control--checkbox">
+                        とても良い (4 以上)
+                        <input type="checkbox" checked="checked"/><div class="control__indicator"></div>
+                    </label>
+                    <label class="control control--checkbox">
+                        良い (3.5 以上)
+                        <input type="checkbox" checked="checked"/><div class="control__indicator"></div>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="contents_main">
+        <div class="contents_main_header">
+            <div class="contents_main_header_sort">
+                
+                <select class="old-select">
+                    <option selected>おすすめ順</option>
+                    <option>料金</option>
+                    <option>料金・おすすめ</option>
+                    <option>お得情報</option>
+                    <option>ゲスト評価・人気</option>
+                    <option>梅田から近い順</option>
+                </select>
+                <div class="new-select">
+                    <div class="selection">
+                        <p>
+                            <span></span>
+                            <i></i>
+                        </p>
+                        <span></span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div class="contents_main_header_tag">
+
+                <p class="contents_main_header_tag_message"><i class="fas fa-info-circle"></i>&nbsp;並べ替え順は、当社に支払われる手数料によって変動することがあります</p>
+                <select multiple data-placeholder="カテゴリータグを追加する">
+                    <option>Sketch</option>
+                    <option>Framer X</option>
+                    <option>Photoshop</option>
+                    <option>Principle</option>
+                    <option>Invision</option>
+                </select>
+                
+                
+            </div>
+
+
+        </div>
+        <div class="contents_main_hosts">
+            <ol>
+                <li data-id="000000">
+                    <div class="images">
+                        <figure data-id="000000"><img src="https://mincamp.jp/img/%E3%80%90%E3%82%88%E3%81%AA%E3%81%84%E3%81%95%E3%82%93%E6%A7%98%E3%80%91%E2%91%A0.jpg"/></figure>
+                        <figure data-id="000000"><img src="https://mincamp.jp/img/%E3%80%90%E3%82%88%E3%81%AA%E3%81%84%E3%81%95%E3%82%93%E6%A7%98%E3%80%91%E2%91%A2.jpg"/></figure>
+                        <figure data-id="000000"><img src="https://mincamp.jp/img/%E3%80%90%E3%82%88%E3%81%AA%E3%81%84%E3%81%95%E3%82%93%E6%A7%98%E3%80%91%E2%91%A3.jpg"/></figure>
+                        <figure data-id="000000"><img src="https://mincamp.jp/img/%E3%80%90%E3%82%88%E3%81%AA%E3%81%84%E3%81%95%E3%82%93%E6%A7%98%E3%80%91%E2%91%A1.jpg"/></figure>
+                        <div class="images_control">
+                            <div class="prev" data-id="000000" disabled><div class="icon ion-chevron-left"><i class="fas fa-angle-left"></i></div></div>
+                            <div class="next" data-id="000000"><div class="icon ion-chevron-right"><i class="fas fa-angle-right"></i></div></div>
+                        </div>
+                        <div class="images_rotation" data-id="000000">
+                            <div class="images_rotation_view" data-id="000000" data-izimodal-iframeurl="https://www.google.com/maps/embed?pb=!4v1593856185811!6m8!1m7!1sCAoSLEFGMVFpcFBjaGNaRVVfaDJKdGhXUFRlalVrcWNqNlNLN012aEUtTjQxTHJQ!2m2!1d35.8112639!2d139.1591324!3f207.4026590878841!4f-7.942552031826594!5f0.7820865974627469"></div>
+                        </div>
+                    </div>
+                    <div class="details">
+                        <div class="details_header">
+                            <div class="details_header_left" data-id="000000">
+                                <h5 class="details_header_left_title" title="エアストリームやカフェもあるオシャレ空間で自然を堪能しましょう！">エアストリームやカフェもあるオシャレ空間で自然を堪能しましょう！</h5>
+                                <h6 class="details_header_left_place text-muted">東京・西多摩</h6>
+                            </div>
+                            <div class="details_header_right">
+                                <button data-id="000000">興味なし</button>
+                            </div>
+                        </div>
+                        <div class="details_main" data-id="000000">
+                            <div class="details_main_left">
+                                <div class="details_main_left_tag">
+                                    <span class="badge badge-pill badge-danger"><i class="fas fa-award"></i>グッドホスト</span>
+                                    <span class="badge badge-pill badge-warning">会員料金</span>
+                                    <span class="badge badge-pill badge-success">BBQ</span>
+                                    <span class="badge badge-pill badge-success">キャンプ</span>
+                                    <span class="badge badge-pill badge-info">トイレ有り</span>
+                                    <span class="badge badge-pill badge-info">お風呂•シャワー有り</span>
+                                </div>
+                                <div class="details_main_left_review">
+                                    <span class="details_main_left_review_average">4.2/5</span>
+                                    <span class="details_main_left_review_message">とても良い（口コミ244件）</span>
+                                </div>
+                            </div>
+                            <div class="details_main_right">
+                                <div class="details_main_right_price">
+                                    <span>¥ 6,500</span><h5>¥ 5,000</h5>
+                                </div>
+                                <div class="details_main_right_message">
+                                    <span>（１泊あたり）</span>
+                                    <span>税およびサービス料別</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li data-id="000001">
+                    <div class="images">
+                        <figure data-id="000001"><img src="https://mincamp.jp/img/%E3%80%90%E5%8F%A4%E9%87%8C%E4%B8%AD%E5%AD%A6%E6%A0%A1%E3%80%91%E2%91%A3.JPG"/></figure>
+                        <figure data-id="000001"><img src="https://mincamp.jp/img/%E3%80%90%E5%8F%A4%E9%87%8C%E4%B8%AD%E5%AD%A6%E6%A0%A1%E3%80%91%E2%91%A2.JPG"/></figure>
+                        <figure data-id="000001"><img src="https://mincamp.jp/img/%E3%80%90%E5%8F%A4%E9%87%8C%E4%B8%AD%E5%AD%A6%E6%A0%A1%E3%80%91%E2%91%A0.JPG"/></figure>
+                        <figure data-id="000001"><img src="https://mincamp.jp/img/%E3%80%90%E5%8F%A4%E9%87%8C%E4%B8%AD%E5%AD%A6%E6%A0%A1%E3%80%91%E2%91%A1.JPG"/></figure>
+                        <div class="images_control">
+                            <div class="prev" data-id="000001" disabled><div class="icon ion-chevron-left"><i class="fas fa-angle-left"></i></div></div>
+                            <div class="next" data-id="000001"><div class="icon ion-chevron-right"><i class="fas fa-angle-right"></i></div></div>
+                        </div>
+                        <div class="images_rotation" data-id="000001">
+                            <div class="images_rotation_view" data-id="000001" data-izimodal-iframeurl="https://www.google.com/maps/embed?pb=!4v1593853867572!6m8!1m7!1su-xwe5t0j8Rs0RY7qIhzNQ!2m2!1d34.54056085956472!2d135.5031337268155!3f34.056343!4f0!5f0.7820865974627469"></div>
+                        </div>
+                    </div>
+                    <div class="details">
+                        <div class="details_header">
+                            <div class="details_header_left">
+                                <h5 class="details_header_left_title" title="エアストリームやカフェもあるオシャレ空間で自然を堪能しましょう！">廃校である旧古里中学校の中庭で、山と広い校庭を見渡しながらいつもと違うひと時を</h5>
+                                <h6 class="details_header_left_place text-muted">東京・西多摩</h6>
+                            </div>
+                            <div class="details_header_right">
+                                <button data-id="000001">興味なし</button>
+                            </div>
+                        </div>
+                        <div class="details_main">
+                            <div class="details_main_left">
+                                <div class="details_main_left_tag">
+                                    <span class="badge badge-pill badge-danger"><i class="fas fa-award"></i>グッドホスト</span>
+                                    <span class="badge badge-pill badge-success">BBQ</span>
+                                    <span class="badge badge-pill badge-success">キャンプ</span>
+                                    <span class="badge badge-pill badge-info">トイレ有り</span>
+                                </div>
+                                <div class="details_main_left_review">
+                                    <span class="details_main_left_review_average">4.2/5</span>
+                                    <span class="details_main_left_review_message">とても良い（口コミ244件）</span>
+                                </div>
+                            </div>
+                            <div class="details_main_right">
+                                <div class="details_main_right_price">
+                                    <span>¥ 6,500</span><h5>¥ 5,000</h5>
+                                </div>
+                                <div class="details_main_right_message">
+                                    <span>（１泊あたり）</span>
+                                    <span>税およびサービス料別</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li data-id="000002">
+                    <div class="images">
+                        <figure data-id="000002"><img src="https://mincamp.jp/img/%E3%80%90%E3%81%8B%E3%81%AA%E3%81%8B%E3%81%AA_%E3%82%A8%E3%82%A2%E3%82%B9%E3%83%88%E3%83%AA%E3%83%BC%E3%83%A0%E3%80%91%E2%91%A3.jpg"/></figure>
+                        <figure data-id="000002"><img src="https://mincamp.jp/img/%E3%80%90%E3%81%8B%E3%81%AA%E3%81%8B%E3%81%AA_%E3%82%A8%E3%82%A2%E3%82%B9%E3%83%88%E3%83%AA%E3%83%BC%E3%83%A0%E3%80%91%E2%91%A2.jpg"/></figure>
+                        <figure data-id="000002"><img src="https://mincamp.jp/img/%E3%80%90%E3%81%8B%E3%81%AA%E3%81%8B%E3%81%AA_%E3%82%A8%E3%82%A2%E3%82%B9%E3%83%88%E3%83%AA%E3%83%BC%E3%83%A0%E3%80%91%E2%91%A1.jpg"/></figure>
+                        <figure data-id="000002"><img src="https://mincamp.jp/img/%E3%80%90%E3%81%8B%E3%81%AA%E3%81%8B%E3%81%AA_%E3%82%A8%E3%82%A2%E3%82%B9%E3%83%88%E3%83%AA%E3%83%BC%E3%83%A0%E3%80%91%E2%91%A0.jpg"/></figure>
+                        <div class="images_control">
+                            <div class="prev" data-id="000002" disabled><div class="icon ion-chevron-left"><i class="fas fa-angle-left"></i></div></div>
+                            <div class="next" data-id="000002"><div class="icon ion-chevron-right"><i class="fas fa-angle-right"></i></div></div>
+                        </div>
+                        <div class="images_rotation" data-id="000002">
+                            <div class="images_rotation_view" data-id="000002" data-izimodal-iframeurl="https://www.google.com/maps/embed?pb=!4v1593853867572!6m8!1m7!1su-xwe5t0j8Rs0RY7qIhzNQ!2m2!1d34.54056085956472!2d135.5031337268155!3f34.056343!4f0!5f0.7820865974627469"></div>
+                        </div>
+                    </div>
+                    <div class="details">
+                        <div class="details_header">
+                            <div class="details_header_left">
+                                <h5 class="details_header_left_title" title="山と川に囲まれたテラスでわいわいBBQ、エアストリームでゆっくりくつろぐおしゃれ空間">山と川に囲まれたテラスでわいわいBBQ、エアストリームでゆっくりくつろぐおしゃれ空間</h5>
+                                <h6 class="details_header_left_place text-muted">東京・西多摩</h6>
+                            </div>
+                            <div class="details_header_right">
+                                <button data-id="000002">興味なし</button>
+                            </div>
+                        </div>
+                        <div class="details_main">
+                            <div class="details_main_left">
+                                <div class="details_main_left_tag">
+                                    <span class="badge badge-pill badge-danger"><i class="fas fa-award"></i>グッドホスト</span>
+                                    <span class="badge badge-pill badge-success">BBQ</span>
+                                    <span class="badge badge-pill badge-success">キャンプ</span>
+                                    <span class="badge badge-pill badge-info">トイレ有り</span>
+                                    <span class="badge badge-pill badge-info">お風呂•シャワー有り</span>
+                                </div>
+                                <div class="details_main_left_review">
+                                    <span class="details_main_left_review_average">4.2/5</span>
+                                    <span class="details_main_left_review_message">とても良い（口コミ244件）</span>
+                                </div>
+                            </div>
+                            <div class="details_main_right">
+                                <div class="details_main_right_price">
+                                    <h5>¥ 20,000</h5>
+                                </div>
+                                <div class="details_main_right_message">
+                                    <span>（１泊あたり）</span>
+                                    <span>税およびサービス料別</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li data-id="000003">
+                    <div class="images">
+                        <figure data-id="000003"><img src="https://mincamp.jp/img/%E3%80%90%E5%8F%A4%E9%87%8C%E4%B8%AD%E5%AD%A6%E6%A0%A1_%E5%B1%8B%E4%B8%8A%E3%80%91%E2%91%A3.jpg"/></figure>
+                        <figure data-id="000003"><img src="https://mincamp.jp/img/%E3%80%90%E5%8F%A4%E9%87%8C%E4%B8%AD%E5%AD%A6%E6%A0%A1_%E5%B1%8B%E4%B8%8A%E3%80%91%E2%91%A2.jpg"/></figure>
+                        <figure data-id="000003"><img src="https://mincamp.jp/img/%E3%80%90%E5%8F%A4%E9%87%8C%E4%B8%AD%E5%AD%A6%E6%A0%A1_%E5%B1%8B%E4%B8%8A%E3%80%91%E2%91%A0.jpg"/></figure>
+                        <figure data-id="000003"><img src="https://mincamp.jp/img/%E3%80%90%E5%8F%A4%E9%87%8C%E4%B8%AD%E5%AD%A6%E6%A0%A1_%E5%B1%8B%E4%B8%8A%E3%80%91%E2%91%A1.jpg"/></figure>
+                        <div class="images_control">
+                            <div class="prev" data-id="000003" disabled><div class="icon ion-chevron-left"><i class="fas fa-angle-left"></i></div></div>
+                            <div class="next" data-id="000003"><div class="icon ion-chevron-right"><i class="fas fa-angle-right"></i></div></div>
+                        </div>
+                        <div class="images_rotation" data-id="000003">
+                            <div class="images_rotation_view" data-id="000003" data-izimodal-iframeurl="https://www.google.com/maps/embed?pb=!4v1593853867572!6m8!1m7!1su-xwe5t0j8Rs0RY7qIhzNQ!2m2!1d34.54056085956472!2d135.5031337268155!3f34.056343!4f0!5f0.7820865974627469"></div>
+                        </div>
+                    </div>
+                    <div class="details">
+                        <div class="details_header">
+                            <div class="details_header_left">
+                                <h5 class="details_header_left_title" title="誰もが憧れた学校の屋上で、山と星に囲まれながら贅沢キャンプをしましょう">誰もが憧れた学校の屋上で、山と星に囲まれながら贅沢キャンプをしましょう</h5>
+                                <h6 class="details_header_left_place text-muted">東京・西多摩</h6>
+                            </div>
+                            <div class="details_header_right">
+                                <button data-id="000003">興味なし</button>
+                            </div>
+                        </div>
+                        <div class="details_main">
+                            <div class="details_main_left">
+                                <div class="details_main_left_tag">
+                                    <span class="badge badge-pill badge-danger"><i class="fas fa-award"></i>グッドホスト</span>
+                                    <span class="badge badge-pill badge-success">BBQ</span>
+                                    <span class="badge badge-pill badge-success">キャンプ</span>
+                                    <span class="badge badge-pill badge-info">トイレ有り</span>
+                                </div>
+                                <div class="details_main_left_review">
+                                    <span class="details_main_left_review_average">4.2/5</span>
+                                    <span class="details_main_left_review_message">とても良い（口コミ244件）</span>
+                                </div>
+                            </div>
+                            <div class="details_main_right">
+                                <div class="details_main_right_price">
+                                    <span>¥ 6,500</span><h5>¥ 5,000</h5>
+                                </div>
+                                <div class="details_main_right_message">
+                                    <span>（１泊あたり）</span>
+                                    <span>税およびサービス料別</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li data-id="000004">
+                    <div class="images">
+                        <figure data-id="000004"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/111167/img5.jpeg"/></figure>
+                        <figure data-id="000004"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/111167/img4.jpeg"/></figure>
+                        <figure data-id="000004"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/111167/img3.jpeg"/></figure>
+                        <figure data-id="000004"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/111167/img2.jpeg"/></figure>
+                        <figure data-id="000004"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/111167/img1.jpeg"/></figure>
+                        <div class="images_control">
+                            <div class="prev" data-id="000004" disabled><div class="icon ion-chevron-left"><i class="fas fa-angle-left"></i></div></div>
+                            <div class="next" data-id="000004"><div class="icon ion-chevron-right"><i class="fas fa-angle-right"></i></div></div>
+                        </div>
+                        <div class="images_rotation" data-id="000004">
+                            <div class="images_rotation_view" data-id="000004" data-izimodal-iframeurl="https://www.google.com/maps/embed?pb=!4v1593857644152!6m8!1m7!1sdm58V1IX4KM4Pz3MfTcFxw!2m2!1d35.34333216204152!2d134.2053180920104!3f1.9357033837027355!4f0!5f0.7820865974627469"></div>
+                        </div>
+                    </div>
+                    <div class="details">
+                        <div class="details_header">
+                            <div class="details_header_left">
+                                <h5 class="details_header_left_title" title="エアストリームやカフェもあるオシャレ空間で自然を堪能しましょう！">エアストリームやカフェもあるオシャレ空間で自然を堪能しましょう！</h5>
+                                <h6 class="details_header_left_place text-muted">大阪・難波</h6>
+                            </div>
+                            <div class="details_header_right">
+                                <button data-id="000004">興味なし</button>
+                            </div>
+                        </div>
+                        <div class="details_main">
+                            <div class="details_main_left">
+                                <div class="details_main_left_tag">
+                                    <span class="badge badge-pill badge-primary">トイレ付き</span>
+                                    <span class="badge badge-pill badge-success">BBQ</span>
+                                    <span class="badge badge-pill badge-success">キャンプ</span>
+                                    <span class="badge badge-pill badge-info">WiFi完備</span>
+                                </div>
+                                <div class="details_main_left_review">
+                                    <span class="details_main_left_review_average">4.2/5</span>
+                                    <span class="details_main_left_review_message">とても良い（口コミ244件）</span>
+                                </div>
+                            </div>
+                            <div class="details_main_right">
+                                <div class="details_main_right_price">
+                                    <span>¥ 8,500</span><h5>¥ 8,174</h5>
+                                </div>
+                                <div class="details_main_right_message">
+                                    <span>（１泊あたり）</span>
+                                    <span>税およびサービス料別</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ol>
+        </div>
+        <div class="contents_main_pagenation">
+            <div class="contents_main_pagenation_next"><button>次を表示</button></div>
+            <div class="contents_main_pagenation_all"><span>全て表示（時間がかかります）</span></div>
+        </div>
+    </div>
+</div>
 {% endblock %}
