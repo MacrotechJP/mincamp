@@ -4,7 +4,7 @@ $(function(){
      */
 $(document).ready(function(){
     
-    var countOption = $('.old-select option').size();
+    var countOption = $('.old-select option').length;
     
     function openSelect(){
         var heightSelect = $('.new-select').height();
@@ -51,7 +51,7 @@ $(document).ready(function(){
     }
     
     // Initialisation
-    if($('.old-select option[selected]').size() === 1){
+    if($(".old-select option[selected]").length === 1){
         $('.selection p span').html($('.old-select option[selected]').html());
     }
     else{
@@ -204,81 +204,64 @@ $(document).ready(function() {
 
 });
 
-
+    /**
+     * ホスト詳細を開く
+     */
+    $(".contents_main_hosts .details .details_header .details_header_left, .contents_main_hosts .details .details_main").on("click",function(){
+        host_id = $(this).data("id")
+        window.open('http://localhost:8000/');
+    })
 
 
 
     /**
      * ホスト画像スライドショー
+     * 「右へスライド」
+     * 「左へスライド」
      */
-    // buttons
-    var sliderControl = document.querySelector(".slider-control");
+    $(".images_control .next").on("click",function(){
+        host_id = $(this).data("id");
+        image_total = $("figure[data-id^="+host_id+"]").length-1;
+        image_current = $("figure.slide-on[data-id^="+host_id+"]").length;
 
-// slides informations
-var slides = document.querySelectorAll(".slide"),
-    slidesLength = slides.length;
+        $("figure[data-id^="+host_id+"]").eq(image_total-image_current).attr("class","slide-on");
 
-// slides array
-var slidesArr = [].slice.call(slides);
+        if (image_current+1 > 0) $(this).prev().attr("disabled",false);     // 左矢印を表示する
+        if (image_total == image_current+1) $(this).attr("disabled",true);  // 右矢印を非表示にする
+    })
+    $(".images_control .prev").on("click",function(){
+        host_id = $(this).data("id");
+        image_total = $("figure[data-id^="+host_id+"]").length-1;
+        image_current = $("figure.slide-on[data-id^="+host_id+"]").length;
 
-// reverse array sorting
-slidesArr = slidesArr.reverse();
+        $("figure[data-id^="+host_id+"]").eq(image_total - image_current + 1).attr("class","");
 
-// slide current
-var slideCurrent = 0;
+        if (image_current == 1) $(this).attr("disabled",true);                      // 左矢印を非表示にする
+        if (image_total == image_current) $(this).next().attr("disabled",false);    // 右矢印を表示する
+    })
 
-sliderControl.addEventListener("click", function(e){
-  target = e.target;
-  
-  // get next button
-  if(target.classList.contains("next")){
 
-    next = e.target,
-    prev = next.previousElementSibling,
-    nextSlide = slidesArr[slideCurrent + 1],
-    slide = slidesArr[slideCurrent];
+    /**
+     * Googleストリートビュー定義
+     * 「360度アイコン」押下時、Googleストリートビュー表示
+     */
+    $('.images_rotation_view').iziModal({
+        iframe: true,
+        width:  "50vw",
+        height: "60vh"
+    });
+    $(".images_rotation").on("click", function(){
+        $(".images_rotation_view[data-id="+$(this).data("id")+"]").iziModal('open');
+    })
+
+
+    /**
+     * 「興味なし」ボタン
+     * 該当ホスト非表示
+     */
+    $(".details_header_right button").on("click", function(){
+        host_id = $(this).data("id");
+        $(".contents_main_hosts ol li[data-id="+host_id+"]").fadeOut(500);
+    })
     
-    slide.classList.add("slide-on");
-    slide.classList.remove("text-on");
-    nextSlide.classList.add("text-on");
-    
-    slideCurrent += 1;
-    
-    if(slideCurrent > 0) {
-      prev.classList.remove("disabled");
-    }
-    
-    if(slideCurrent === slidesLength - 1){
-      next.classList.add("disabled");
-    }
-  }
-  
-  // get prev button
-  if(target.classList.contains("prev")){
-    
-    slideCurrent -= 1;
-    
-    prev = e.target,
-    next = prev.nextElementSibling,
-    prevSlide = slidesArr[slideCurrent + 1],
-    slide = slidesArr[slideCurrent];
-    
-    prevSlide.classList.remove("text-on");
-    slide.classList.remove("slide-on");
-    slide.classList.add("text-on");
-    
-    if(slideCurrent === slidesLength - 2){
-      next.classList.remove("disabled");
-    }
-
-    if(slideCurrent === 0){
-      prev.classList.add("disabled");
-    }
-    
-  }
-
-});
-
-// balapaCop("Image Slider", "#999");
-
 })
