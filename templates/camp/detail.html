@@ -1,0 +1,52 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% load sass_tags %}
+
+{% block head %}
+<title>検索結果</title>
+{% comment %} flatpicker読み込み {% endcomment %}   
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/confetti.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+{% comment %} IZIMODAL読み込み {% endcomment %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izimodal/1.5.1/css/iziModal.min.css">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/izimodal/1.5.1/js/iziModal.min.js"></script>
+
+<link rel="stylesheet" href="{% sass_src 'css/camp/detail.scss' %}">
+<script type="text/javascript" src="{% static 'js/camp/detail.js' %}"></script>
+{% endblock %}
+
+{% block contents %}
+<div class="contents">
+    <div class="contents_breadcrumbs">
+        <nav>
+            <ul>
+                <li><a href="/"><i class="fas fa-home"></i>ホーム</a></li>
+                <li><a href="/camp/search">検索結果</a></li>
+                <li class="active"><a href="#">エアストリームやカフェもあるオシャレ空間で自然を堪能しましょう！</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="contents_images">
+        <div class="contents_images_main">
+            <img src="https://mincamp.jp/img/%E3%80%90%E3%82%88%E3%81%AA%E3%81%84%E3%81%95%E3%82%93%E6%A7%98%E3%80%91%E2%91%A0.jpg">
+            <button><i class="far fa-images"></i>&nbsp;&nbsp;全て表示</button>
+        </div>
+        <div class="contents_images_sub">
+            <div class="contents_images_sub_image">
+                <img src="https://mincamp.jp/img/%E3%80%90%E3%82%88%E3%81%AA%E3%81%84%E3%81%95%E3%82%93%E6%A7%98%E3%80%91%E2%91%A3.jpg"/>
+            </div>
+            <div class="contents_images_sub_image">
+                <img src="https://mincamp.jp/img/%E3%80%90%E3%82%88%E3%81%AA%E3%81%84%E3%81%95%E3%82%93%E6%A7%98%E3%80%91%E2%91%A2.jpg"/>
+            </div>
+            <div class="contents_images_sub_image">
+                <img src="https://mincamp.jp/img/%E3%80%90%E3%82%88%E3%81%AA%E3%81%84%E3%81%95%E3%82%93%E6%A7%98%E3%80%91%E2%91%A0.jpg"/>
+            </div>
+            <div class="contents_images_sub_image">
+                <img src="https://mincamp.jp/img/%E3%80%90%E3%82%88%E3%81%AA%E3%81%84%E3%81%95%E3%82%93%E6%A7%98%E3%80%91%E2%91%A0.jpg">
+            </div>
+        </div>
+    </div>
+    
+</div>
+{% endblock %}

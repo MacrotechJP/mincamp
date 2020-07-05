@@ -8,3 +8,6 @@ def index(request):
 
 def search(request):
    return render(request, 'camp/search.html')
+
+def detail(request):
+   return render(request, 'camp/detail.html')
