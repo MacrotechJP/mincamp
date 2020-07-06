@@ -52,6 +52,7 @@
     &_images{
         width: 100%;
         height: 325px;
+        margin-bottom: 10px;
         display: flex;
         position: relative;
         &_main{
@@ -99,5 +100,10 @@
                 }
             }
         }
+    }
+    &_detail{
+        width: 70%;
+        height: 325px;
+        background-color: red;
     }
 }
