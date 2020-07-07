@@ -9,4 +9,7 @@ $(function(){
         fullscreen: true,
         headerColor: "#91b500",
     });
+
+
+    $('[data-toggle="tooltip"]').tooltip();
 })

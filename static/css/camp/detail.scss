@@ -101,9 +101,175 @@
             }
         }
     }
-    &_detail{
-        width: 70%;
-        height: 325px;
-        background-color: red;
+    &_main-info{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        &_left{
+            width: 70%;
+            height: 425px;
+            margin: 10px;
+            border-radius: 10px;
+            background-color: red;
+        }
+        &_right{
+            width: 30%;
+            // height: 725px;
+            margin: 10px;
+            &_booking{
+                width: 100%;
+                // height: 400px;
+                padding: 15px;
+                border-radius: 10px;
+                background-color: white;
+                margin-bottom: 10px;
+                box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
+                &_price-then{
+                    width: 100%;
+                    .old-price{text-decoration: line-through;}
+                    span{
+                        color: #6C757D;
+                        margin-right: 10px;
+                    }
+                    h4{
+                        font-weight: 700;
+                        display: inline-block;
+                        margin: 0;
+                    }
+                }
+                &_date{
+                    margin-top: 25px;
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-between;
+                    &-start,&-end{
+                        width: 45%;
+                        position: relative;
+                        label {
+                            position: absolute;
+                            top: 7px;
+                            font: 400 15px Roboto;
+                            color: #FF9933;
+                            cursor: text;
+                            transition: .2s;
+                        }
+                        input {
+                            background: linear-gradient(to bottom, transparent 92%, #FF9933 8%) no-repeat;
+                            background-position: -700px 0;
+                            background-size: 700px 100%;
+                            display: block;
+                            width: 100%;
+                            padding: 5px;
+                            border: none;
+                            border-bottom: solid 1px #FF9933;
+                            font-size: 1.0rem;
+                            transition: all 0.3s;
+                            &:focus, &:valid {
+                            background-position: right;
+                            outline: none;
+                            color: #5f5f5f;
+                                ~label {
+                                    top: -12px;
+                                    color: #FF9933;
+                                    font: 700 12px Roboto;
+                                }
+                            }
+                        }
+                    }
+                }
+                &_members{
+                    margin-top: 25px;
+                    position: relative;
+                    label {
+                        position: absolute;
+                        top: 7px;
+                        font: 400 15px Roboto;
+                        color: #FF9933;
+                        cursor: text;
+                        transition: .2s;
+                    }
+                    input {
+                        background: linear-gradient(to bottom, transparent 92%, #FF9933 8%) no-repeat;
+                        background-position: -700px 0;
+                        background-size: 700px 100%;
+                        display: block;
+                        width: 100%;
+                        padding: 5px;
+                        border: none;
+                        border-bottom: solid 1px #FF9933;
+                        font-size: 1.0rem;
+                        transition: all 0.3s;
+                        &:focus, &:valid {
+                        background-position: right;
+                        outline: none;
+                        color: #5f5f5f;
+                            ~label {
+                                top: -12px;
+                                color: #FF9933;
+                                font: 700 12px Roboto;
+                            }
+                        }
+                    }
+                }
+                &_price-total{
+                    margin-top: 25px;
+                    padding-bottom: 5px;
+                    .normal,.discount,.sub-total,.all-total{
+                        margin-bottom: 5px;
+                        display: flex;
+                        justify-content: space-between;
+                        font-size: 1.0rem;
+                        color: gray;
+                    }
+                    .normal{color: gray;}
+                    .discount{
+                        color: #FF8C00;
+                        background: -webkit-linear-gradient(0deg, #40E0D0, #FF8C00, #FF0080);
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                    }
+                    .sub-total{color: black;}
+                    .all-total{
+                        color: black;
+                        font-weight: bold;
+                        font-size: 1.2rem;
+                    }
+                    hr{margin: 0.5rem 0;}
+                }
+                &_button{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin-bottom: 10px;
+                    button {
+                        margin: 0 auto;
+                        width: 80%;
+                        background: #FF9933;
+                        padding-top: 10px;
+                        padding-bottom: 10px;
+                        border: none;
+                        border-radius: 5px;
+                        color: white;
+                        cursor: pointer;
+                        font-weight: bold;
+                    }
+                }
+                &_step-bar{
+                    width: 100%;
+                    height: 200px;
+                    background-color: red;
+                    
+                    
+                }
+            }
+            &_map{
+                width: 100%;
+                height: 200px;
+                padding: 10px;
+                border-radius: 10px;
+                background-color: gray;
+                box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
+            }
+        }
     }
 }
