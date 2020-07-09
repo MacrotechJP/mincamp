@@ -92,10 +92,6 @@
                         <p class="title">シャワー完備</p>
                         <div class="image"><i class="fas fa-shower fa-2x"></i></div>
                     </li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
                 </ul>
             </div>
             <div class="contents_main-info_left_option">
@@ -104,13 +100,27 @@
                     <div class="card mb-3">
                         <div class="row no-gutters">
                             <div class="col-md-4">
-                                <img src="https://images-na.ssl-images-amazon.com/images/I/71uBGPdU-XL._AC_SX679_.jpg" class="card-img" style="height:100%;object-fit:cover;">
+                                <img src="https://www.photolibrary.jp/mhd1/img641/450-20181012164351.jpg" class="card-img" style="height:100%;object-fit:cover;">
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body">
-                                    <h5 class="card-title">バブルテント</h5>
-                                    <p class="card-text"><small class="text-muted">¥ 2,000</small></p>
-                                    <p class="card-button"><a href="#" class="btn btn-primary">追加する</a><a href="#" class="btn btn-primary">使い方を見る</a></p>
+                                    <h5 class="card-title">次回50%オフクーポン</h5>
+                                    <p class="card-text"><small class="text-muted">無料</small></p>
+                                    <p class="card-button"><a href="#" class="btn btn-primary" data-iziModal-open=".no-implementation">追加する</a><a href="#" class="btn btn-primary" data-iziModal-open=".no-implementation">使い方を見る</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card mb-3">
+                        <div class="row no-gutters">
+                            <div class="col-md-4">
+                                <img src="https://d1f5hsy4d47upe.cloudfront.net/76/76e0fb541f9d3328b89aade9e08b6710_t.jpeg" class="card-img" style="height:100%;object-fit:cover;">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">常時カスタマーサポート</h5>
+                                    <p class="card-text"><small class="text-muted">¥ 500</small></p>
+                                    <p class="card-button"><a href="#" class="btn btn-primary" data-iziModal-open=".no-implementation">追加する</a><a href="#" class="btn btn-primary" data-iziModal-open=".no-implementation">使い方を見る</a></p>
                                 </div>
                             </div>
                         </div>
@@ -124,7 +134,7 @@
                                 <div class="card-body">
                                     <h5 class="card-title">バブルテント</h5>
                                     <p class="card-text"><small class="text-muted">¥ 2,000</small></p>
-                                    <p class="card-button"><a href="#" class="btn btn-primary">追加する</a><a href="#" class="btn btn-primary">使い方を見る</a></p>
+                                    <p class="card-button"><a href="#" class="btn btn-primary" data-iziModal-open=".no-implementation">追加する</a><a href="#" class="btn btn-primary" data-iziModal-open=".no-implementation">使い方を見る</a></p>
                                 </div>
                             </div>
                         </div>
@@ -132,13 +142,13 @@
                     <div class="card mb-3">
                         <div class="row no-gutters">
                             <div class="col-md-4">
-                                <img src="https://images-na.ssl-images-amazon.com/images/I/71uBGPdU-XL._AC_SX679_.jpg" class="card-img" style="height:100%;object-fit:cover;">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQMpm9dTj_Pp6btfpyejoiWCKaT7wmFgasWOQ&usqp=CAU" class="card-img" style="height:100%;object-fit:cover;">
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body">
-                                    <h5 class="card-title">バブルテント</h5>
-                                    <p class="card-text"><small class="text-muted">¥ 2,000</small></p>
-                                    <p class="card-button"><a href="#" class="btn btn-primary">追加する</a><a href="#" class="btn btn-primary">使い方を見る</a></p>
+                                    <h5 class="card-title">予約キャンセル可能</h5>
+                                    <p class="card-text"><small class="text-muted">¥ 100</small></p>
+                                    <p class="card-button"><a href="#" class="btn btn-primary" data-iziModal-open=".no-implementation">追加する</a><a href="#" class="btn btn-primary" data-iziModal-open=".no-implementation">使い方を見る</a></p>
                                 </div>
                             </div>
                         </div>
@@ -147,6 +157,9 @@
             </div>
             <div class="contents_main-info_left_rental">
                 <p>用具レンタル</p>
+
+                
+
             </div>
         </div>
         <div class="contents_main-info_right">
@@ -179,7 +192,7 @@
                     <p class="all-total"><span>合計</span><span>¥ 14,750</span></p>
                 </div>
                 <div class="contents_main-info_right_booking_button">
-                    <button>予約へ進む</button>
+                    <button data-iziModal-open=".no-implementation">予約へ進む</button>
                 </div>
                 <div class="contents_main-info_right_booking_message">
                     <p>まだ、請求されません。</p>
@@ -192,4 +205,16 @@
         </div>
     </div>
 </div>
+
+{% comment %} 未実装部分のポップアップお知らせ {% endcomment %}
+<div class="no-implementation" data-izimodal-title="未実装部分となります" data-izimodal-subtitle="5秒で非表示になります"></div>
+<script type="text/javascript">$(function(){
+    $(".no-implementation").iziModal({
+        headerColor: '#d43838',
+        width: 400,
+        timeout: 5000,
+        pauseOnHover: true,
+        timeoutProgressbar: true,
+    });
+})</script>
 {% endblock %}
