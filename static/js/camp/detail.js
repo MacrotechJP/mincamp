@@ -1,26 +1,38 @@
 $(function(){
-    /**
-     * 画像スライドショー
-     * ポップアップ画面
-     */
-    $(".host-images").iziModal({
-        group: "group01",
-        loop: true,
-        fullscreen: true,
-        headerColor: "#91b500",
-    });
+  /**
+   * 画像スライドショー
+   * ポップアップ画面
+   */
+  $(".host-images").iziModal({
+      group: "group01",
+      loop: true,
+      fullscreen: true,
+      headerColor: "#91b500",
+  });
 
-    /** 
-     * 合計金額計算部分の補足情報表示
-     */
-    $('[data-toggle="tooltip"]').tooltip();
+  /** 
+   * 合計金額計算部分の補足情報表示
+   */
+  $('[data-toggle="tooltip"]').tooltip();
 
-    /**
-     * 用具レンタル
-     * 画像スライドショー
-     */
-    
-
+  /**
+   * 用具レンタル
+   * 「続きを表示」ボタンで、ショップを表示。
+   * 「閉じる」ボタンで、ショップを非表示。
+   */
+  $(".contents_main-info_left_rental_box_continue p").on("click", function(){
+    $(".contents_main-info_left_rental_box_list").css("overflow","auto");
+    list_height = $(".contents_main-info_left_rental_box_list").height()+50;
+    $(".contents_main-info_left_rental_box_list").css("overflow","visible");
+    $(".contents_main-info_left_rental_box").css("height",list_height);
+    $(".contents_main-info_left_rental_box_continue").hide();
+    $(".contents_main-info_left_rental_box_close").css("display","flex");
+  });
+  $(".contents_main-info_left_rental_box_close p").on("click", function(){
+    $(".contents_main-info_left_rental_box").css("height","200px");
+    $(".contents_main-info_left_rental_box_continue").show();
+    $(".contents_main-info_left_rental_box_close").css("display","none");
+  });
 
     /** 
      * プロフィールアニメーション
@@ -39,12 +51,6 @@ $('a.follow').click(function () {
     }
   });
     
-    /**
-     * 用具レンタル
-     */
-
-
-
     /**
      * 周辺のアクティビティー
      */
