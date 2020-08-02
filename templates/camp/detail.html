@@ -358,69 +358,26 @@
                 </div>
             </div>
             <div class="contents_main-info_right_map">
-                {% comment %} <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1kdeVmTSHVfoHf7xtICVoHdbKviUSHS3g"></iframe> {% endcomment %}
+                <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1kdeVmTSHVfoHf7xtICVoHdbKviUSHS3g"></iframe>
             </div>
         </div>
     </div>
     <div class="contents_activity">
         <h1>周辺のアクティビティー</h1>
-
         <div class="contents_activity_slideshow owl-carousel owl-theme">
-            
-            <div class="contents_activity_slideshow_card">
-                <section class="container">
-                    <div class="row active-with-click">
-                        <div class="">
-                            <article class="material-card Pink">
-                                <h2>
-                                    <span>農業体験</span>
-                                    <strong>
-                                        <i class="fa fa-fw fa-star"></i>
-                                        人気急上昇
-                                    </strong>
-                                </h2>
-                                <div class="mc-content">
-                                    <div class="img-container">
-                                        <img style="height:100%;object-fit:cover;" class="img-responsive" src="https://mincamp.jp/img/%E3%80%90%E3%82%88%E3%81%AA%E3%81%84%E3%81%95%E3%82%93%E6%A7%98%E3%80%91%E2%91%A3.jpg">
-                                    </div>
-                                    <div class="mc-description">
-                                        He has won two Academy Awards, for his roles in the mystery drama Mystic River (2003) and the biopic Milk (2008). Penn began his acting career in television with a brief appearance in a 1974 episode of Little House on the Prairie ...
-                                    </div>
-                                </div>
-                                <a class="mc-btn-action">
-                                    <i class="fa fa-bars"></i>
-                                </a>
-                                <div class="mc-footer">
-                                    <h4>
-                                        Social
-                                    </h4>
-                                    <a class="fa fa-fw fa-facebook"></a>
-                                    <a class="fa fa-fw fa-twitter"></a>
-                                    <a class="fa fa-fw fa-linkedin"></a>
-                                    <a class="fa fa-fw fa-google-plus"></a>
-                                </div>
-                            </article>
-                        </div>
-                    </div>
-                </section>
-            </div>
-            <div class="contents_activity_slideshow_card"><h4>2</h4></div>
-            <div class="contents_activity_slideshow_card"><h4>3</h4></div>
-            <div class="contents_activity_slideshow_card"><h4>4</h4></div>
-            <div class="contents_activity_slideshow_card"><h4>5</h4></div>
-            <div class="contents_activity_slideshow_card"><h4>6</h4></div>
-            <div class="contents_activity_slideshow_card"><h4>7</h4></div>
-            <div class="contents_activity_slideshow_card"><h4>8</h4></div>
-            <div class="contents_activity_slideshow_card"><h4>9</h4></div>
-            <div class="contents_activity_slideshow_card"><h4>10</h4></div>
-            <div class="contents_activity_slideshow_card"><h4>11</h4></div>
-            <div class="contents_activity_slideshow_card"><h4>12</h4></div>
-            <div class="contents_activity_slideshow_card"><h4>13</h4></div>
-            <div class="contents_activity_slideshow_card"><h4>14</h4></div>
+            {% with ''|center:15 as range %}
+            {% for _ in range %}
+                <div class="contents_activity_slideshow_card">
+                    <img src="https://d9azwowyrl3gq.cloudfront.net/admin_files/public/027/27_medium">
+                    <h3>田植え体験</h3>
+                    <p>新緑が気持ちのいい気候の中、親子で田植え体験はいかがでしょうか。中には田植えだけでなく、親子でどろんこになって遊べるようなものもあり、きっと親子でかけがえのない思い出になるはずです。</p>
+                    <a target="_blank">詳細</a>
+                </div>
+            {% endfor %}
+            {% endwith %}
         </div>
-
     </div>
-    
+
     <div class="contents_tabs">
 
 <input id="panel-1-ctrl"
