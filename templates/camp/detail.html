@@ -377,60 +377,44 @@
             {% endwith %}
         </div>
     </div>
-
     <div class="contents_tabs">
-
         <input id="panel-1-ctrl" class="panel-radios" type="radio" name="tab-radios" checked>
         <input id="panel-2-ctrl" class="panel-radios" type="radio" name="tab-radios">
         <input id="panel-3-ctrl" class="panel-radios" type="radio" name="tab-radios">
         <input id="panel-4-ctrl" class="panel-radios" type="radio" name="tab-radios">
         <input id="panel-5-ctrl" class="panel-radios" type="radio" name="tab-radios">
         <input id="nav-ctrl" class="panel-radios" type="checkbox" name="nav-checkbox">
-
-        <ul id="tabs-list">
+        <ul id="tabs-list">{% comment %} タブヘッダー {% endcomment %}
             <label id="open-nav-label" for="nav-ctrl"></label>
-            <li id="li-for-panel-1">
-                <label class="panel-label" for="panel-1-ctrl">概要</label>
-            </li>
-            <li id="li-for-panel-2">
-                <label class="panel-label" for="panel-2-ctrl">口コミ</label>
-            </li>
-            <li id="li-for-panel-3">
-                <label class="panel-label" for="panel-3-ctrl">エリア</label>
-            </li>
-            <li id="li-for-panel-4">
-                <label class="panel-label" for="panel-4-ctrl">ポリシー</label>
-            </li>
-            <li id="li-for-panel-5" class="last">
-                <label class="panel-label" for="panel-5-ctrl">キャンペーン</label>
-            </li>
+            <li id="li-for-panel-1"><label class="panel-label" for="panel-1-ctrl">概要</label></li>
+            <li id="li-for-panel-2"><label class="panel-label" for="panel-2-ctrl">口コミ</label></li>
+            <li id="li-for-panel-3"><label class="panel-label" for="panel-3-ctrl">エリア</label></li>
+            <li id="li-for-panel-4"><label class="panel-label" for="panel-4-ctrl">ポリシー</label></li>
+            <li id="li-for-panel-5"><label class="panel-label" for="panel-5-ctrl">キャンペーン</label></li>
             <label id="close-nav-label" for="nav-ctrl">Close</label>
         </ul>
-
-        <article id="panels">
+        <article id="panels">{% comment %} タブコンテンツ {% endcomment %}
             <div class="container">
                 <section id="panel-1">
                     <main>
-                        <h1>Radio Toggles</h1>
-                        <p>In this demo, <code>labels</code> for hidden <code>radios</code> toggle the content. This is based on the behavior in which clicked <code>labels</code> for a <code>radio</code> or <code>checkbox</code> input will check that <code>input</code>.</p> 
-                        <label for="radio-1" class="demo-label">Toggle #radio-1</label>
-                        <label for="radio-2" class="demo-label">Toggle #radio-2</label>
-                        <p>Click one of the labels above and see its effect on the radios above it.</p>
-                        <p>The radios for this pen's tabs are displayed semi-transparently at the top of this demo page.</p>
+                    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+                    <script>
+                    markdoun_text = "# Marked in the browserRendered by **marked**.\n"+
+                                    "## ここはマークダウン形式の内容にする。\n"+
+                                    "### ここは目次3つ目。\n"+
+                                    "#### ここは目次4つ目。\n"+
+                                    "##### ここは目次5つ目。\n"+
+                                    "![エビフライトライアングル](http://i.imgur.com/Jjwsc.jpg 'サンプル')\n"+
+                                    "[![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/j9Hyjo-Y_Zo/0.jpg)](http://www.youtube.com/watch?v=j9Hyjo-Y_Zo)";
+                    $(function(){
+                        $("#panel-1 main").append(marked(markdoun_text));
+                    })
+                    </script>
                     </main>
                 </section>
                 <section id="panel-2">
                     <main>
-                        <h1>Input :checked</h1>
-                        <p>To demonstrate, we will do a simplified version of this with a checkbox:</p>
-                        <input id="demo-child-toggle" type="checkbox">
-                        <label class="demo-label" for="demo-child-toggle">Toggle #demo-child</label>
-                        <div id="demo-parent">
-                            <div id="demo-child">#demo-child</div>
-                        </div>
-                        <hr>
-                        <p>As you can see, we can control the style of content that comes after a hidden input by toggling it via its label.</p>
-                        <p>At this point you can probably get the picture for how we can conditionally display the tabbed panel content in this pen.</p>
+                        <p>2222222222222222</p>
                     </main>
                 </section>
                 <section id="panel-3">
@@ -439,18 +423,32 @@
                         </iframe>
                     </main>
                 </section>
-                <section id="panel-4">
+                <section id="panel-4" class="keiyaku">
                     <main>
-                        <h1>Tab :hover</h1>
-                        <p>When designing the <code>:hover</code> and "active" states I had a dilemma.</p>
+                        <script>
+                        markdoun_texts = "#### ここもマークダウンの記載方法とする\n"+
+                                        "○○の実施はおやめ下さい。発見次第○○いたします。";
+                        $(function(){
+                            $("#panel-4 main").append(marked(markdoun_texts));
+                        })
+                        </script>
                     </main>
                 </section>
                 <section id="panel-5">
-                    <main>
-                        <h1>Menu</h1>
-                        <p>On small screens, the tabs fold down into an expandable menu. To trigger the menu, I use a <code>checkbox</code> (note that it appears at the top of the screen on smaller screen sizes). There are two labels that trigger this checkbox. One opens and the other closes the menu. The one that opens is absolutely positioned invisibly over the "active" menu item. The closing label is at the bottom of the open menu.</p>
-                        <p>The best way I have found to show and hide content without using absolute positioning is to use a combination of <code>max-height</code> and <code>opacity</code>. When "inactive", the content has a <code>max-height: 0</code> and <code>opacity: 0</code>.</p>
-                        <p>It also has a <code>transition: opacity</code> when I don't know the future height (this panel's content for example) and <code>transition: opacity, max-height</code> when I do know the future height (like the menu). When "active", the <code>max-height</code> and <code>opacity</code> get positive values and the content will transition in. I'm sure flexbox could get me around this hack, but this works for now.</p>   
+                    <main class="contents_tabs_campaign">
+                        
+                        <div class="grid-container">
+                        <div class="grid-item type-b two-col">
+                            <div class="icon"></div>
+                            <h3>Service Name</h3>
+                            <p class="grid-description">When you leave an empty space between the track values, the grid lines are automatically assigned numerical names</p>
+                            <div class="grid-buttons">
+                            <a href="#" class="more-link">Link to X</a>
+                            <span class="coupon-link">25%OFF</span>
+                            </div>
+                        </div>
+                        </div>
+
                     </main>
                 </section>
             </div>
