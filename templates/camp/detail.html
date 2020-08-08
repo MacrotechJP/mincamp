@@ -1,0 +1,547 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% load sass_tags %}
+
+{% block head %}
+<title>検索結果</title>
+{% comment %} flatpicker読み込み {% endcomment %}   
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/confetti.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+{% comment %} IZIMODAL読み込み {% endcomment %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izimodal/1.5.1/css/iziModal.min.css">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/izimodal/1.5.1/js/iziModal.min.js"></script>
+{% comment %} owl.carousel.js読み込み {% endcomment %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+<link rel="stylesheet" href="{% sass_src 'css/camp/detail.scss' %}">
+<script type="text/javascript" src="{% static 'js/camp/detail.js' %}"></script>
+{% endblock %}
+
+{% block contents %}
+<div class="contents">
+    <div class="contents_breadcrumbs">
+        <nav>
+            <ul>
+                <li><a href="/"><i class="fas fa-home"></i>ホーム</a></li>
+                <li><a href="/camp/search">検索結果</a></li>
+                <li class="active"><a href="#">エアストリームやカフェもあるオシャレ空間で自然を堪能しましょう！</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="contents_images">
+        <div class="contents_images_main">
+            <img src="https://mincamp.jp/img/%E3%80%90%E3%82%88%E3%81%AA%E3%81%84%E3%81%95%E3%82%93%E6%A7%98%E3%80%91%E2%91%A0.jpg">
+            <button data-izimodal-open=".host-images"><i class="far fa-images"></i>&nbsp;&nbsp;全て表示</button>
+            <div class="host-images" data-izimodal-title="グループの1つ目のコンテンツです" data-izimodal-subtitle="直立。※ヘッダータイトル下部説明文">
+                <figure style="margin:0;">
+                    <img src="https://mincamp.jp/img/%E3%80%90%E3%82%88%E3%81%AA%E3%81%84%E3%81%95%E3%82%93%E6%A7%98%E3%80%91%E2%91%A0.jpg" width="100%" height="100%"/>
+                </figure>
+            </div>
+            <div class="host-images" data-izimodal-title="グループの2つ目のコンテンツです" data-izimodal-subtitle="直立。※ヘッダータイトル下部説明文">
+                <figure style="margin:0;">
+                    <img src="https://a0.muscache.com/im/pictures/a1115318-6331-4f65-96a5-d6a640c1a030.jpg?aki_policy=xx_large" width="100%" height="100%"/>
+                </figure>
+            </div>
+            <div class="host-images" data-izimodal-title="グループの3つ目のコンテンツです" data-izimodal-subtitle="直立。※ヘッダータイトル下部説明文">
+                <figure style="margin:0;">
+                    <img src="https://a0.muscache.com/im/pictures/f765d77f-f4da-4fa1-a2dd-009ce0c56f3b.jpg?aki_policy=x_large" width="100%" height="100%"/>
+                </figure>
+            </div>
+        </div>
+        <div class="contents_images_sub">
+            <div class="contents_images_sub_image">
+                <img src="https://mincamp.jp/img/%E3%80%90%E3%82%88%E3%81%AA%E3%81%84%E3%81%95%E3%82%93%E6%A7%98%E3%80%91%E2%91%A3.jpg"/>
+            </div>
+            <div class="contents_images_sub_image">
+                <img src="https://mincamp.jp/img/%E3%80%90%E3%82%88%E3%81%AA%E3%81%84%E3%81%95%E3%82%93%E6%A7%98%E3%80%91%E2%91%A2.jpg"/>
+            </div>
+            <div class="contents_images_sub_image">
+                <img src="https://mincamp.jp/img/%E3%80%90%E3%82%88%E3%81%AA%E3%81%84%E3%81%95%E3%82%93%E6%A7%98%E3%80%91%E2%91%A0.jpg"/>
+            </div>
+            <div class="contents_images_sub_image">
+                <img src="https://mincamp.jp/img/%E3%80%90%E3%82%88%E3%81%AA%E3%81%84%E3%81%95%E3%82%93%E6%A7%98%E3%80%91%E2%91%A0.jpg">
+            </div>
+        </div>
+    </div>
+    <div class="contents_main-info">
+        <div class="contents_main-info_left">
+            <div class="contents_main-info_left_title">
+                <p>エアストリームやカフェもあるオシャレ空間で自然を堪能しましょう！</p>
+            </div>
+            <div class="contents_main-info_left_review">
+                <span class="contents_main-info_left_review_rate rate4-5"></span>
+            </div>
+            <div class="contents_main-info_left_tag">
+                <span class="badge badge-pill badge-danger"><i class="fas fa-award"></i>グッドホスト</span>
+                <span class="badge badge-pill badge-success">BBQ</span>
+                <span class="badge badge-pill badge-success">キャンプ</span>
+                <span class="badge badge-pill badge-info">トイレ有り</span>
+            </div>
+            <hr>
+            <div class="contents_main-info_left_facility">
+                <p>ホストスペースの設備</p>
+                <ul>
+                    <li>
+                        <p class="title">WiFi完備</p>
+                        <div class="image"><i class="fas fa-wifi fa-2x"></i></div>
+                    </li>
+                    <li>
+                        <p class="title">トイレ完備</p>
+                        <div class="image"><i class="fas fa-toilet fa-2x"></i></div>
+                    </li>
+                    <li>
+                        <p class="title">シャワー完備</p>
+                        <div class="image"><i class="fas fa-shower fa-2x"></i></div>
+                    </li>
+                </ul>
+            </div>
+            <div class="contents_main-info_left_option">
+                <p>オプション</p>
+                <div class="contents_main-info_left_option_block">
+                    <div class="card mb-3">
+                        <div class="row no-gutters">
+                            <div class="col-md-4">
+                                <img src="https://www.photolibrary.jp/mhd1/img641/450-20181012164351.jpg" class="card-img" style="height:100%;object-fit:cover;">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">次回50%オフクーポン</h5>
+                                    <p class="card-text"><small class="text-muted">無料</small></p>
+                                    <p class="card-button"><a href="#" class="btn btn-primary" data-iziModal-open=".no-implementation">追加する</a><a href="#" class="btn btn-primary" data-iziModal-open=".no-implementation">使い方を見る</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card mb-3">
+                        <div class="row no-gutters">
+                            <div class="col-md-4">
+                                <img src="https://d1f5hsy4d47upe.cloudfront.net/76/76e0fb541f9d3328b89aade9e08b6710_t.jpeg" class="card-img" style="height:100%;object-fit:cover;">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">常時カスタマーサポート</h5>
+                                    <p class="card-text"><small class="text-muted">¥ 500</small></p>
+                                    <p class="card-button"><a href="#" class="btn btn-primary" data-iziModal-open=".no-implementation">追加する</a><a href="#" class="btn btn-primary" data-iziModal-open=".no-implementation">使い方を見る</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card mb-3">
+                        <div class="row no-gutters">
+                            <div class="col-md-4">
+                                <img src="https://images-na.ssl-images-amazon.com/images/I/71uBGPdU-XL._AC_SX679_.jpg" class="card-img" style="height:100%;object-fit:cover;">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">バブルテント</h5>
+                                    <p class="card-text"><small class="text-muted">¥ 2,000</small></p>
+                                    <p class="card-button"><a href="#" class="btn btn-primary" data-iziModal-open=".no-implementation">追加する</a><a href="#" class="btn btn-primary" data-iziModal-open=".no-implementation">使い方を見る</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card mb-3">
+                        <div class="row no-gutters">
+                            <div class="col-md-4">
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQMpm9dTj_Pp6btfpyejoiWCKaT7wmFgasWOQ&usqp=CAU" class="card-img" style="height:100%;object-fit:cover;">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">予約キャンセル可能</h5>
+                                    <p class="card-text"><small class="text-muted">¥ 100</small></p>
+                                    <p class="card-button"><a href="#" class="btn btn-primary" data-iziModal-open=".no-implementation">追加する</a><a href="#" class="btn btn-primary" data-iziModal-open=".no-implementation">使い方を見る</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="contents_main-info_left_rental">
+                <p>用具レンタル</p>
+                <div class="contents_main-info_left_rental_box">
+                    <ul class="contents_main-info_left_rental_box_list">
+                        <li>
+                            <img src="https://mincamp.s3-ap-northeast-1.amazonaws.com/Shops/CAMP+RENTAL.com.png">
+                            <h3>♦︎商品数No.１</h3>
+                            <div class="content">
+                                <p class='content_detail'>kokwaodfohuhdroae</p>
+                                {% comment %} <div class='content_button'>レンタルグッズを追加</div> {% endcomment %}
+                                <a class='content_button' href="https://www.camp-rental.com/" target="_blank">外部サイトへ</a>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="https://mincamp.s3-ap-northeast-1.amazonaws.com/Shops/そらのした.png">
+                            <h3>♦︎商品数No.１</h3>
+                            <div class="content">
+                                <p class='content_detail'>kokwaodfohuhdroae</p>
+                                {% comment %} <div class='content_button'>レンタルグッズを追加</div> {% endcomment %}
+                                <a class='content_button' href="https://www.soranoshita.net/" target="_blank">外部サイトへ</a>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="https://mincamp.s3-ap-northeast-1.amazonaws.com/Shops/Tental.png">
+                            <h3>♦︎商品数No.１</h3>
+                            <div class="content">
+                                <p class='content_detail'>kokwaodfohuhdroae</p>
+                                {% comment %} <div class='content_button'>レンタルグッズを追加</div> {% endcomment %}
+                                <a class='content_button' href="https://kauriru.com/tental" target="_blank">外部サイトへ</a>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="https://mincamp.s3-ap-northeast-1.amazonaws.com/Shops/hinataレンタル.png">
+                            <h3>♦︎商品数No.１</h3>
+                            <div class="content">
+                                <p class='content_detail'>kokwaodfohuhdroae</p>
+                                {% comment %} <div class='content_button'>レンタルグッズを追加</div> {% endcomment %}
+                                <a class='content_button' href="https://hinata-rental.me/" target="_blank">外部サイトへ</a>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="https://mincamp.s3-ap-northeast-1.amazonaws.com/Shops/OUTDOOR+LIFE.png">
+                            <h3>♦︎商品数No.１</h3>
+                            <div class="content">
+                                <p class='content_detail'>kokwaodfohuhdroae</p>
+                                {% comment %} <div class='content_button'>レンタルグッズを追加</div> {% endcomment %}
+                                <a class='content_button' href="https://outdoorlife.camp/" target="_blank">外部サイトへ</a>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="https://mincamp.s3-ap-northeast-1.amazonaws.com/Shops/CAMPDAYS.png">
+                            <h3>♦︎商品数No.１</h3>
+                            <div class="content">
+                                <p class='content_detail'>kokwaodfohuhdroae</p>
+                                {% comment %} <div class='content_button'>レンタルグッズを追加</div> {% endcomment %}
+                                <a class='content_button' href="https://campdays.jp/" target="_blank">外部サイトへ</a>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="https://mincamp.s3-ap-northeast-1.amazonaws.com/Shops/MISSION+RENTAL+GEAR.png">
+                            <h3>♦︎商品数No.１</h3>
+                            <div class="content">
+                                <p class='content_detail'>kokwaodfohuhdroae</p>
+                                {% comment %} <div class='content_button'>レンタルグッズを追加</div> {% endcomment %}
+                                <a class='content_button' href="https://mission-rg.com/" target="_blank">外部サイトへ</a>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="https://mincamp.s3-ap-northeast-1.amazonaws.com/Shops/NEW+LEAVES.png">
+                            <h3>♦︎商品数No.１</h3>
+                            <div class="content">
+                                <p class='content_detail'>kokwaodfohuhdroae</p>
+                                {% comment %} <div class='content_button'>レンタルグッズを追加</div> {% endcomment %}
+                                <a class='content_button' href="https://newleaves.shop/" target="_blank">外部サイトへ</a>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="https://mincamp.s3-ap-northeast-1.amazonaws.com/Shops/レンタルショップ+ダーリング.png">
+                            <h3>♦︎商品数No.１</h3>
+                            <div class="content">
+                                <p class='content_detail'>kokwaodfohuhdroae</p>
+                                {% comment %} <div class='content_button'>レンタルグッズを追加</div> {% endcomment %}
+                                <a class='content_button' href="https://www.darling.co.jp/item-category/outdoors" target="_blank">外部サイトへ</a>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="https://mincamp.s3-ap-northeast-1.amazonaws.com/Shops/Just+Time.png">
+                            <h3>♦︎商品数No.１</h3>
+                            <div class="content">
+                                <p class='content_detail'>kokwaodfohuhdroae</p>
+                                {% comment %} <div class='content_button'>レンタルグッズを追加</div> {% endcomment %}
+                                <a class='content_button' href="https://justtime.jp/category/camp" target="_blank">外部サイトへ</a>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="https://mincamp.s3-ap-northeast-1.amazonaws.com/Shops/Campify.png">
+                            <h3>♦︎商品数No.１</h3>
+                            <div class="content">
+                                <p class='content_detail'>kokwaodfohuhdroae</p>
+                                {% comment %} <div class='content_button'>レンタルグッズを追加</div> {% endcomment %}
+                                <a class='content_button' href="https://campify.jp/" target="_blank">外部サイトへ</a>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="https://mincamp.s3-ap-northeast-1.amazonaws.com/Shops/Ren+Camp.png">
+                            <h3>♦︎商品数No.１</h3>
+                            <div class="content">
+                                <p class='content_detail'>kokwaodfohuhdroae</p>
+                                {% comment %} <div class='content_button'>レンタルグッズを追加</div> {% endcomment %}
+                                <a class='content_button' href="https://teburacamp.com/shop/" target="_blank">外部サイトへ</a>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="https://mincamp.s3-ap-northeast-1.amazonaws.com/Shops/Camp+Smile.png">
+                            <h3>♦︎商品数No.１</h3>
+                            <div class="content">
+                                <p class='content_detail'>kokwaodfohuhdroae</p>
+                                {% comment %} <div class='content_button'>レンタルグッズを追加</div> {% endcomment %}
+                                <a class='content_button' href="https://campsmile.jp/" target="_blank">外部サイトへ</a>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="https://mincamp.s3-ap-northeast-1.amazonaws.com/Shops/Cample.png">
+                            <h3>♦︎商品数No.１</h3>
+                            <div class="content">
+                                <p class='content_detail'>kokwaodfohuhdroae</p>
+                                {% comment %} <div class='content_button'>レンタルグッズを追加</div> {% endcomment %}
+                                <a class='content_button' href="https://cample.store/" target="_blank">外部サイトへ</a>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="contents_main-info_left_rental_box_continue">
+                        <p>⬇︎ 続きを表示</p>
+                    </div>
+                    <div class="contents_main-info_left_rental_box_close">
+                        <p>⬆︎ 閉じる</p>
+                    </div>
+                </div>
+            </div>
+            <div class="contents_main-info_left_host">
+                <p>ホスト情報</p>
+                <div class="contents_main-info_left_host_profile">
+                    <div class="contents_main-info_left_host_profile_name">
+                        <img src="https://i.pinimg.com/originals/dc/40/6c/dc406c8b7615c7b6b37aef97b94eb83c.jpg">
+                        <p>テスト 太郎&nbsp;
+                            <span class="badge badge-warning"><i class="fas fa-crown"></i>ゴールドホスト</span>
+                        </p>
+                    </div>
+                    <div class="contents_main-info_left_host_profile_status">
+                        <ul>
+                            <li>2    <span>ホスト</span></li>
+                            <li>50   <span>レビュワー</span></li>
+                            <li>5分前 <span>最終アクセス</span></li>
+                        </ul>
+                    </div>
+                    <div class="contents_main-info_left_host_profile_image">
+                        <img src="https://cdn.snkrdunk.com/uploads/33072/20200425120248.jpeg">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="contents_main-info_right">
+            <div class="contents_main-info_right_booking">
+                <div class="contents_main-info_right_booking_price-then">
+                    <span class="old-price">¥ 6,500</span><h4>¥ 5,000</h4><span>/泊</span>
+                </div>
+                <div class="contents_main-info_right_booking_date">
+                    <div class="contents_main-info_right_booking_date-start">
+                        <input type="text" id="start-date" required="required" value="7月1日18時00分"/>
+                        <label for="start-date">開始日時</label>
+                    </div>
+                    <span style="display: flex;align-items: center;"><i class="fas fa-angle-double-right"></i></span>
+                    <div class="contents_main-info_right_booking_date-end">
+                        <input type="text" id="end-date" required="required" value="7月2日09時00分"/>
+                        <label for="end-date">終了日時</label>
+                    </div>
+                </div>
+                <div class="contents_main-info_right_booking_members">
+                    <input type="text" id="members" required="required" value="大人２名 子供３名"/>
+                    <label for="members">利用人数</label>
+                </div>
+                <div class="contents_main-info_right_booking_price-total">
+                    <p class="normal"><span>利用料金（¥ 2,000 x 5H）</span><span>¥ 10,000</span></p>
+                    <p class="normal"><span>オプション料金&nbsp;<i class="fas fa-info-circle"></i></span><span>¥ 5,000</span></p>
+                    <p class="discount"><span>10% クーポン割引</span><span>-¥ 1,500</span></p>
+                    <p class="discount"><span>宿泊割引</span><span>-¥ 1,000</span></p>
+                    <hr>
+                    <p class="sub-total"><span>小計&nbsp;<i class="fas fa-info-circle" data-toggle="tooltip" data-placement="top" title="税及びサービス料を含みません。税は小計の10%、サービス料は利用料金の10%となります。）"></i></span><span>¥ 12,500</span></p>
+                    <p class="all-total"><span>合計</span><span>¥ 14,750</span></p>
+                </div>
+                <div class="contents_main-info_right_booking_button">
+                    <button data-iziModal-open=".no-implementation">予約へ進む</button>
+                </div>
+                <div class="contents_main-info_right_booking_message">
+                    <p>まだ、請求されません。</p>
+                    <p>予約内容の入力画面へ移動します。</p>
+                </div>
+            </div>
+            <div class="contents_main-info_right_map">
+                <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1kdeVmTSHVfoHf7xtICVoHdbKviUSHS3g"></iframe>
+            </div>
+        </div>
+    </div>
+    <div class="contents_activity">
+        <h1>周辺のアクティビティー</h1>
+        <div class="contents_activity_slideshow owl-carousel owl-theme">
+            {% with ''|center:15 as range %}
+            {% for _ in range %}
+                <div class="contents_activity_slideshow_card">
+                    <img src="https://d9azwowyrl3gq.cloudfront.net/admin_files/public/027/27_medium">
+                    <h3>田植え体験</h3>
+                    <p>新緑が気持ちのいい気候の中、親子で田植え体験はいかがでしょうか。中には田植えだけでなく、親子でどろんこになって遊べるようなものもあり、きっと親子でかけがえのない思い出になるはずです。</p>
+                    <a target="_blank">詳細</a>
+                </div>
+            {% endfor %}
+            {% endwith %}
+        </div>
+    </div>
+    <div class="contents_tabs">
+        <input id="panel-1-ctrl" class="panel-radios" type="radio" name="tab-radios" checked>
+        <input id="panel-2-ctrl" class="panel-radios" type="radio" name="tab-radios">
+        <input id="panel-3-ctrl" class="panel-radios" type="radio" name="tab-radios">
+        <input id="panel-4-ctrl" class="panel-radios" type="radio" name="tab-radios">
+        <input id="panel-5-ctrl" class="panel-radios" type="radio" name="tab-radios">
+        <input id="nav-ctrl" class="panel-radios" type="checkbox" name="nav-checkbox">
+        <ul id="tabs-list">{% comment %} タブヘッダー {% endcomment %}
+            <label id="open-nav-label" for="nav-ctrl"></label>
+            <li id="li-for-panel-1"><label class="panel-label" for="panel-1-ctrl">概要</label></li>
+            <li id="li-for-panel-2"><label class="panel-label" for="panel-2-ctrl">口コミ</label></li>
+            <li id="li-for-panel-3"><label class="panel-label" for="panel-3-ctrl">エリア</label></li>
+            <li id="li-for-panel-4"><label class="panel-label" for="panel-4-ctrl">ポリシー</label></li>
+            <li id="li-for-panel-5"><label class="panel-label" for="panel-5-ctrl">キャンペーン</label></li>
+            <label id="close-nav-label" for="nav-ctrl">Close</label>
+        </ul>
+        <article id="panels">{% comment %} タブコンテンツ {% endcomment %}
+            <div class="container">
+                <section id="panel-1">
+                    <main>
+                    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+                    <script>
+                    markdoun_text = "# Marked in the browserRendered by **marked**.\n"+
+                                    "## ここはマークダウン形式の内容にする。\n"+
+                                    "### ここは目次3つ目。\n"+
+                                    "#### ここは目次4つ目。\n"+
+                                    "##### ここは目次5つ目。\n"+
+                                    "![エビフライトライアングル](http://i.imgur.com/Jjwsc.jpg 'サンプル')\n"+
+                                    "[![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/j9Hyjo-Y_Zo/0.jpg)](http://www.youtube.com/watch?v=j9Hyjo-Y_Zo)";
+                    $(function(){
+                        $("#panel-1 main").append(marked(markdoun_text));
+                    })
+                    </script>
+                    </main>
+                </section>
+                <section id="panel-2">
+                    <main class="contents_tabs_review">
+                        <div class="contents_tabs_review_left">
+                            <div class="contents_tabs_review_left_block">
+                                <span class="icon">5 <i class="fas fa-star"></i></span>
+                                <div class="progress">
+                                    <div class="progress-done" data-done="90"></div>
+                                </div>
+                                <span class="percent">90%</span>
+                            </div>
+                            <div class="contents_tabs_review_left_block">
+                                <span class="icon">4 <i class="fas fa-star"></i></span>
+                                <div class="progress">
+                                    <div class="progress-done" data-done="13"></div>
+                                </div>
+                                <span class="percent">13%</span>
+                            </div>
+                            <div class="contents_tabs_review_left_block">
+                                <span class="icon">3 <i class="fas fa-star"></i></span>
+                                <div class="progress">
+                                    <div class="progress-done" data-done="9"></div>
+                                </div>
+                                <span class="percent">9%</span>
+                            </div>
+                            <div class="contents_tabs_review_left_block">
+                                <span class="icon">2 <i class="fas fa-star"></i></span>
+                                <div class="progress">
+                                    <div class="progress-done" data-done="3"></div>
+                                </div>
+                                <span class="percent">3%</span>
+                            </div>
+                            <div class="contents_tabs_review_left_block">
+                                <span class="icon">1 <i class="fas fa-star"></i></span>
+                                <div class="progress">
+                                    <div class="progress-done" data-done="7"></div>
+                                </div>
+                                <span class="percent">7%</span>
+                            </div>
+                        </div>
+                        <div class="contents_tabs_review_right">
+                            <ul>
+                                {% with ''|center:10 as range %}
+                                {% for _ in range %}
+                                    <li>
+                                        <h4>とても優しくまた来たくなった</h4>
+                                        <p class="star"><span class="rate4-5"></span></p>
+                                        <div class="content">
+                                            <img src="http://localhost:8000/static/img/icon.png">
+                                            <span>『メッセージ』は、テッド・チャンの短編小説「あなたの人生の物語」を基にエリック・ハイセラーが脚本を執筆し、ドゥニ・ヴィルヌーヴが監督を務めた2016年のアメリカ合衆国のSFドラマ映画である。出演はエイミー・アダムス、ジェレミー・レナー、フォレスト・ウィテカーらである。</span>
+                                        </div>
+                                        <p class="more-content"><a href="#">続きを読む</a></p>
+                                        <p class="meta">2020年3月28日17時56分26秒</p>
+                                    </li>
+                                {% endfor %}
+                                {% endwith %}
+                            </ul>
+                            <div class="pagenation">
+                                <a href="#"> < </a>
+                                <a href="#" class="active">1</a>
+                                <a href="#">2</a>
+                                <a href="#">3</a>
+                                <a href="#">4</a>
+                                <a href="#">5</a>
+                                <a href="#">6</a>
+                                <a href="#">7</a>
+                                <a href="#"> > </a>
+                            </div>
+                        </div>
+                    </main>
+                </section>
+                <section id="panel-3">
+                    <main>
+                        <iframe src='https://api.mapbox.com/styles/v1/tanakakoyo/ckd4iwrns13971iqt68oa44sv.html?fresh=true&title=copy&access_token=pk.eyJ1IjoidGFuYWtha295byIsImEiOiJja2NrZWxubjQxMzd2MnVvZWw1dzI5MXl3In0.dvor5Fw1IM4833fS51ABUw' width='100%' height='400px'>
+                        </iframe>
+                    </main>
+                </section>
+                <section id="panel-4" class="keiyaku">
+                    <main>
+                        <script>
+                        markdoun_texts = "#### ここもマークダウンの記載方法とする\n"+
+                                        "○○の実施はおやめ下さい。発見次第○○いたします。";
+                        $(function(){
+                            $("#panel-4 main").append(marked(markdoun_texts));
+                        })
+                        </script>
+                    </main>
+                </section>
+                <section id="panel-5">
+                    <main class="contents_tabs_campaign">
+                        <div class="contents_tabs_campaign_container">
+                            <div class="contents_tabs_campaign_container_item">
+                                <div class="icon"></div>
+                                <h3>暑い夏を乗り切ろうキャンペーン</h3>
+                                <p class="description">
+                                    8月3日より、宿泊料金を25%引きにする「暑い夏を乗り切ろうキャンペーン」を実施します。<br>
+                                    みんなで、今年の暑い夏を乗り切りましょう。
+                                </p>
+                                <div class="cards">
+                                    <span class="cards_time">2020/08/03 〜 2020/10/05</span>
+                                    <span class="cards_proportion">25%OFF</span>
+                                </div>
+                            </div>
+                            <div class="contents_tabs_campaign_container_item">
+                                <div class="icon"></div>
+                                <h3>連泊割引キャンペーン</h3>
+                                <p class="description">
+                                    連続して3泊以上宿泊になった方限定で、合計宿泊料金を30%引きにするキャンペーンを実施します。
+                                </p>
+                                <div class="cards">
+                                    <span class="cards_time">2020/05/03 〜 </span>
+                                    <span class="cards_proportion">30%OFF</span>
+                                </div>
+                            </div>
+                        </div>
+                    </main>
+                </section>
+            </div>
+        </article>
+    </div>
+</div>
+
+{% comment %} 未実装部分のポップアップお知らせ {% endcomment %}
+<div class="no-implementation" data-izimodal-title="未実装部分となります" data-izimodal-subtitle="5秒で非表示になります"></div>
+<script type="text/javascript">$(function(){
+    $(".no-implementation").iziModal({
+        headerColor: '#d43838',
+        width: 400,
+        timeout: 5000,
+        pauseOnHover: true,
+        timeoutProgressbar: true,
+    });
+})</script>
+{% endblock %}
