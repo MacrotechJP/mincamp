@@ -413,8 +413,73 @@
                     </main>
                 </section>
                 <section id="panel-2">
-                    <main>
-                        <p>2222222222222222</p>
+                    <main class="contents_tabs_review">
+                        <div class="contents_tabs_review_left">
+                            <div class="contents_tabs_review_left_block">
+                                <span class="icon">5 <i class="fas fa-star"></i></span>
+                                <div class="progress">
+                                    <div class="progress-done" data-done="90"></div>
+                                </div>
+                                <span class="percent">90%</span>
+                            </div>
+                            <div class="contents_tabs_review_left_block">
+                                <span class="icon">4 <i class="fas fa-star"></i></span>
+                                <div class="progress">
+                                    <div class="progress-done" data-done="13"></div>
+                                </div>
+                                <span class="percent">13%</span>
+                            </div>
+                            <div class="contents_tabs_review_left_block">
+                                <span class="icon">3 <i class="fas fa-star"></i></span>
+                                <div class="progress">
+                                    <div class="progress-done" data-done="9"></div>
+                                </div>
+                                <span class="percent">9%</span>
+                            </div>
+                            <div class="contents_tabs_review_left_block">
+                                <span class="icon">2 <i class="fas fa-star"></i></span>
+                                <div class="progress">
+                                    <div class="progress-done" data-done="3"></div>
+                                </div>
+                                <span class="percent">3%</span>
+                            </div>
+                            <div class="contents_tabs_review_left_block">
+                                <span class="icon">1 <i class="fas fa-star"></i></span>
+                                <div class="progress">
+                                    <div class="progress-done" data-done="7"></div>
+                                </div>
+                                <span class="percent">7%</span>
+                            </div>
+                        </div>
+                        <div class="contents_tabs_review_right">
+                            <ul>
+                                {% with ''|center:10 as range %}
+                                {% for _ in range %}
+                                    <li>
+                                        <h4>とても優しくまた来たくなった</h4>
+                                        <p class="star"><span class="rate4-5"></span></p>
+                                        <div class="content">
+                                            <img src="http://localhost:8000/static/img/icon.png">
+                                            <span>『メッセージ』は、テッド・チャンの短編小説「あなたの人生の物語」を基にエリック・ハイセラーが脚本を執筆し、ドゥニ・ヴィルヌーヴが監督を務めた2016年のアメリカ合衆国のSFドラマ映画である。出演はエイミー・アダムス、ジェレミー・レナー、フォレスト・ウィテカーらである。</span>
+                                        </div>
+                                        <p class="more-content"><a href="#">続きを読む</a></p>
+                                        <p class="meta">2020年3月28日17時56分26秒</p>
+                                    </li>
+                                {% endfor %}
+                                {% endwith %}
+                            </ul>
+                            <div class="pagenation">
+                                <a href="#"> < </a>
+                                <a href="#" class="active">1</a>
+                                <a href="#">2</a>
+                                <a href="#">3</a>
+                                <a href="#">4</a>
+                                <a href="#">5</a>
+                                <a href="#">6</a>
+                                <a href="#">7</a>
+                                <a href="#"> > </a>
+                            </div>
+                        </div>
                     </main>
                 </section>
                 <section id="panel-3">
