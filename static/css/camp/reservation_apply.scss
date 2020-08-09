@@ -78,14 +78,28 @@
         &_host{
             width: 30%;
             height: auto;
-            background-color: gray;
+            // background-color: gray;
             &_image{
                 width: 100%;
                 height: 200px;
                 object-fit: cover;
             }
             &_info{
+                list-style: none;
                 padding: 10px;
+                background-color: white;
+                border-radius: 0 0 15px 15px;
+                li{
+                    span{
+                        float: right;
+                    }
+                }
+                p{
+                    font-size: 0.8rem;
+                }
+                &_breakdown{
+                    span{cursor: pointer;}
+                }
             }
         }
     }

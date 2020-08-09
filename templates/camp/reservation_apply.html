@@ -138,17 +138,62 @@
         </div>
         <div class="contents_apply_host">
             <img class="contents_apply_host_image" src="https://mincamp.jp/img/%E3%80%90%E3%82%88%E3%81%AA%E3%81%84%E3%81%95%E3%82%93%E6%A7%98%E3%80%91%E2%91%A0.jpg">
-            <div class="contents_apply_host_info">
-                <p>チェックイン日：</p>
-                <p>チェックアウト日：</p>
+            <ul class="contents_apply_host_info">
+                <li class="contents_apply_host_info_checkin">
+                    <label>チェックイン日：</label>
+                    <span>2020年8月23日</span>
+                </li>
+                <li class="contents_apply_host_info_checkout">
+                    <label>チェックアウト日：</label>
+                    <span>2020年8月25日</span>
+                </li>
                 <hr>
-                <p>お支払い合計金額</p>
-                <p>内訳を確認する</p>
+                <li class="contents_apply_host_info_pay">
+                    <label>お支払い合計金額</label>
+                    <span><strong>15,000円</strong></span>
+                </li>
+                <li class="contents_apply_host_info_breakdown">
+                    <label></label>
+                    <span class="badge badge-dark">料金の内訳</span>
+                    <div id="price-breakdown">
+                        <table class="table table-fixed">
+                            <thead  style="background-color: #f39c12;color:white;">
+                                <tr>
+                                    <th class="col-xs-3">料金概要</th>
+                                    <th class="col-xs-3">料金詳細</th>
+                                    <th class="col-xs-6">料金小計</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="col-xs-3">宿泊費用</td>
+                                    <td class="col-xs-3">1泊</td>
+                                    <td class="col-xs-6">3000円</td>
+                                </tr>
+                                <tr>
+                                    <td class="col-xs-3">オプション費用</td>
+                                    <td class="col-xs-3">キャンセル可</td>
+                                    <td class="col-xs-6">100円</td>
+                                </tr>
+                                <tr>
+                                    <td class="col-xs-3">レンタル費用</td>
+                                    <td class="col-xs-3">椅子(mincamp)</td>
+                                    <td class="col-xs-6">10000円</td>
+                                </tr>
+                                <tr>
+                                    <td class="col-xs-3">その他</td>
+                                    <td class="col-xs-3">税金(10%)</td>
+                                    <td class="col-xs-6">1500円</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </li>
                 <hr>
                 <p>クーポン又はプロモーションコードを利用する</p>
-
                 <p>表示金額の元の通過は日本円です。施設でお支払いいただく税およびサービス料の金額はすべて現在の為替レートに基づくものであり、現地通貨でのお支払いとなります。</p>
-            </div>
+            </ul>
             <button type="button" class="btn btn-success btn-block">次へ進む</button>
         </div>
     </div>
