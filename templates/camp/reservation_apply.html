@@ -1,0 +1,201 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% load sass_tags %}
+
+{% block head %}
+<title>予約申し込み</title>
+{% comment %} flatpicker読み込み {% endcomment %}   
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/confetti.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+{% comment %} IZIMODAL読み込み {% endcomment %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izimodal/1.5.1/css/iziModal.min.css">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/izimodal/1.5.1/js/iziModal.min.js"></script>
+{% comment %} owl.carousel.js読み込み {% endcomment %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+<link rel="stylesheet" href="{% sass_src 'css/camp/reservation_apply.scss' %}">
+<script type="text/javascript" src="{% static 'js/camp/reservation_apply.js' %}"></script>
+{% endblock %}
+
+{% block contents %}
+<div class="contents">
+    <div class="contents_progress">
+        <ol>
+            <li class="current">予約申込</li>
+            <li>予約内容確認</li>
+            <li>予約申込完了</li>
+        </ol>
+    </div>
+    <div class="contents_apply">
+        <div class="contents_apply_input">
+            <div class="contents_apply_input_guest">
+                <h5><i class="fas fa-user"></i>&nbsp;ゲスト情報</h5>
+                <hr>
+                <div class="form-group">
+                    <label for="inputName">お名前</label>
+                    <input type="text" class="form-control" id="inputName" placeholder="例）田中太郎">
+                </div>
+                <div class="form-group">
+                    <label for="inputTell">電話番号</label>
+                    <input type="tel" class="form-control" id="inputTell" placeholder="例）000-0123-4567">
+                </div>
+            </div>
+            <div class="contents_apply_input_payment">
+                <h5><i class="fas fa-money-check"></i>&nbsp;支払い方法</h5>
+                <hr>
+                {% comment %} <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                    <label class="form-check-label" for="inlineRadio1">クレジット決済</label>
+                </div> {% endcomment %}
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2" checked>
+                    <label class="form-check-label" for="inlineRadio2">現地決済</label>
+                </div>
+                {% comment %} <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+                    <label class="form-check-label" for="inlineRadio3">銀行口座決済</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="option4">
+                    <label class="form-check-label" for="inlineRadio4">Paypay決済</label>
+                </div> {% endcomment %}
+                <hr>
+                {% comment %} <div class="form-group">
+                    <label for="inputCreditNumber">クレジット/デビット番号</label>
+                    <input type="tel" class="form-control" id="inputCreditNumber">
+                </div>
+                <div class="form-group">
+                    <label for="inputCreditNumber">有効期限</label>
+                    <div class="row">
+                        <div class="col">
+                            <select id="inputCreditNumber" class="form-control">
+                                <option selected>月</option>
+                                <option>１</option><option>２</option><option>３</option><option>４</option><option>５</option>
+                                <option>６</option><option>７</option><option>８</option><option>９</option><option>１０</option>
+                                <option>１１</option><option>１２</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <select id="inputCreditNumber" class="form-control">
+                                <option selected>年</option>
+                                <option>２０</option><option>２１</option><option>２２</option><option>２３</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputCreditNumber">CVV/CVC（３桁または４桁）</label>
+                    <input type="tel" class="form-control" id="inputCreditNumber">
+                </div>
+                <div class="form-group">
+                    <label for="inputCreditNumber">カード所有者の氏名</label>
+                    <input type="tel" class="form-control" id="inputCreditNumber">
+                </div> {% endcomment %}
+                <ul>
+                    <li>現地決済は、ホスト・ゲスト間で金銭のやり取りを行います。</li>
+                    <li>不安事項がございましたら、運営へご連絡ください。</li>
+                </ul>
+            </div>
+            <div class="contents_apply_input_conform">
+                <h5><i class="fas fa-receipt"></i>&nbsp;予約に関する重要なお知らせ</h5>
+                <hr>
+                <ul>
+                    <li>キャンセル / 変更が行われた場合や、ノーショーの場合は、予約時に支払われた合計金額の 100% に相当する手数料が施設から請求されます。</li>
+                    <li>ご到着時にはフロントデスクのスタッフがお迎えします。</li>
+                    <li>詳細は、予約確認通知に記載されている宿泊施設の連絡先までお問い合わせください。</li>
+                </ul>
+                <ul style="list-style:none;">
+                    <li>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                                <a href="#">規則および制限事項</a>を読み、その内容に同意します。
+                            </label>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                                <a href="#">利用条件</a>を読み、その内容に同意します。
+                            </label>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                                <a href="#">プライバシー ポリシー</a>を読み、その内容に同意します。
+                            </label>
+                        </div>
+                    </li>
+                </ul>
+                <button type="button" class="btn btn-success btn-block" style="width:50%;">次へ進む</button>
+            </div>
+        </div>
+        <div class="contents_apply_host">
+            <img class="contents_apply_host_image" src="https://mincamp.jp/img/%E3%80%90%E3%82%88%E3%81%AA%E3%81%84%E3%81%95%E3%82%93%E6%A7%98%E3%80%91%E2%91%A0.jpg">
+            <ul class="contents_apply_host_info">
+                <li class="contents_apply_host_info_checkin">
+                    <label>チェックイン日：</label>
+                    <span>2020年8月23日</span>
+                </li>
+                <li class="contents_apply_host_info_checkout">
+                    <label>チェックアウト日：</label>
+                    <span>2020年8月25日</span>
+                </li>
+                <hr>
+                <li class="contents_apply_host_info_pay">
+                    <label>お支払い合計金額</label>
+                    <span><strong>15,000円</strong></span>
+                </li>
+                <li class="contents_apply_host_info_breakdown">
+                    <label></label>
+                    <span class="badge badge-dark">料金の内訳</span>
+                    <div id="price-breakdown">
+                        <table class="table table-fixed">
+                            <thead  style="background-color: #f39c12;color:white;">
+                                <tr>
+                                    <th class="col-xs-3">料金概要</th>
+                                    <th class="col-xs-3">料金詳細</th>
+                                    <th class="col-xs-6">料金小計</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="col-xs-3">宿泊費用</td>
+                                    <td class="col-xs-3">1泊</td>
+                                    <td class="col-xs-6">3000円</td>
+                                </tr>
+                                <tr>
+                                    <td class="col-xs-3">オプション費用</td>
+                                    <td class="col-xs-3">キャンセル可</td>
+                                    <td class="col-xs-6">100円</td>
+                                </tr>
+                                <tr>
+                                    <td class="col-xs-3">レンタル費用</td>
+                                    <td class="col-xs-3">椅子(mincamp)</td>
+                                    <td class="col-xs-6">10000円</td>
+                                </tr>
+                                <tr>
+                                    <td class="col-xs-3">その他</td>
+                                    <td class="col-xs-3">税金(10%)</td>
+                                    <td class="col-xs-6">1500円</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </li>
+                <hr>
+                <p>クーポン又はプロモーションコードを利用する</p>
+                <p>表示金額の元の通過は日本円です。施設でお支払いいただく税およびサービス料の金額はすべて現在の為替レートに基づくものであり、現地通貨でのお支払いとなります。</p>
+            </ul>
+            <button type="button" class="btn btn-success btn-block">次へ進む</button>
+        </div>
+    </div>
+</div>
+{% endblock %}
