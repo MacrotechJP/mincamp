@@ -11,3 +11,6 @@ def search(request):
 
 def detail(request):
    return render(request, 'camp/detail.html')
+
+def reservation_apply(request):
+   return render(request, 'camp/reservation_apply.html')
