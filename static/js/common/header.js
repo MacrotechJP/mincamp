@@ -12,6 +12,5 @@ $(function(){
             $("header .header-menu").css({'cssText': 'color: #222222 !important;'});
             $("header .header-menu.search").fadeOut(500);
         }
-        console.log($(this).scrollTop());
     });
 })
