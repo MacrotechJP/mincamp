@@ -1,0 +1,50 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% load sass_tags %}
+
+{% block head %}
+<title>予約申し込み</title>
+{% comment %} flatpicker読み込み {% endcomment %}   
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/confetti.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+{% comment %} IZIMODAL読み込み {% endcomment %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izimodal/1.5.1/css/iziModal.min.css">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/izimodal/1.5.1/js/iziModal.min.js"></script>
+{% comment %} owl.carousel.js読み込み {% endcomment %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+<link rel="stylesheet" href="{% sass_src 'css/camp/reservation_complite.scss' %}">
+{% comment %} <script type="text/javascript" src="{% static 'js/camp/reservation_apply.js' %}"></script> {% endcomment %}
+{% endblock %}
+
+{% block contents %}
+<div class="contents">
+    <div class="contents_progress">
+        <ol>
+            <li>予約申込</li>
+            <li>予約内容確認</li>
+            <li class="current">予約申込完了</li>
+        </ol>
+    </div>
+    <div class="contents_info">
+        <div class="card text-center">
+            <div class="card-header">
+                予約が完了しました。<br>ご予約ありがとうございます。
+            </div>
+            <div class="card-body">
+                <p class="card-text">予約番号：<strong>F＆SDUGUW＆</strong></p>
+                <p class="card-text">予約完了のメールをお送り致しました。</p>
+                <p class="card-text">ご予約キャンセルやお問い合わせに関しては、メールに記載されておりますURLにアクセスして下さい。</p>
+                <p class="card-text" style="color:red;">※予約番号は、弊社にてご予約を確認する為に必要な情報です。必ずお控え下さい。</p>
+            </div>
+            <div class="card-footer text-muted">
+                <a href="#" class="btn btn-info"><i class="fas fa-chevron-circle-right"></i>&nbsp;予約内容を確認する</a>
+                <a href="#" class="btn btn-info"><i class="fas fa-chevron-circle-right"></i>&nbsp;予約確認書を表示する</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

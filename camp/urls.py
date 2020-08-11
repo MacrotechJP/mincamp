@@ -8,4 +8,5 @@ urlpatterns = [
    path('camp/search', views.search, name='search'),
    path('camp/detail', views.detail, name='detail'),
    path('camp/reservation_apply', views.reservation_apply, name='reservation_apply'),
+   path('camp/reservation_complite', views.reservation_complite, name='reservation_complite'),
 ]

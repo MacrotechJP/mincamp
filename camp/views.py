@@ -14,3 +14,6 @@ def detail(request):
 
 def reservation_apply(request):
    return render(request, 'camp/reservation_apply.html')
+
+def reservation_complite(request):
+   return render(request, 'camp/reservation_complite.html')
