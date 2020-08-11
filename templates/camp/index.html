@@ -57,19 +57,20 @@
                     </a>
                 </div>
             </div>
-            <form method="GET" action="{% url 'camp:search' %}">
+            <form method="POST" action="{% url 'camp:search' %}">
+                {% csrf_token %}
                 <div class="contents_top_left_search">
                     <div class="contents_top_left_search_upper">
                         <div class="contents_top_left_search_upper_place">
-                            <input type="text" id="place" required="required"/>
+                            <input type="text" id="place" name="place" required/>
                             <label for="place">場所</label>
                         </div>
                         <div class="contents_top_left_search_upper_date">
-                            <input type="text" id="date" required="required"/>
+                            <input type="text" id="date" name="date" required/>
                             <label for="date">日付</label>
                         </div>
                         <div class="contents_top_left_search_upper_member">
-                            <input type="text" id="member" required="required"/>
+                            <input type="text" id="member" name="member" required/>
                             <label for="member">人数</label>
                         </div>
                     </div>
@@ -89,7 +90,7 @@
                             </div>
                         </div>
                         <div class="contents_top_left_search_beneath_submit">
-                            <button>検索</button>
+                            <button type="submit">検索</button>
                         </div>
                     </div>
                 </div>
@@ -106,7 +107,7 @@
             </div>
             <div class="contents_top_right_menu">
                 <div class="contents_top_right_menu_signup"><a href=""><span>参加する！</span></a></div>
-                <div class="contents_top_right_menu_signin"><a href=""><span>サインイン</span></a></div>
+                <div class="contents_top_right_menu_signin"><a href="/accounts/sign_in"><span>サインイン</span></a></div>
                 {% comment %} <div class="contents_top_right_menu_mypage"><a href=""><span>マイページ</span></a></div> {% endcomment %}
             </div>
             <div class="contents_top_right_info">

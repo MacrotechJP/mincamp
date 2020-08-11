@@ -1,15 +1,52 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from basicauth.decorators import basic_auth_required
+from .models import *
 
 @basic_auth_required
 def index(request):
+   print("aaaa")
    return render(request, 'camp/index.html')
 
 def search(request):
-   return render(request, 'camp/search.html')
+   if request.POST:  # TOP、検索画面より検索時
+      search_param = {
+         "place": request.POST.get('place'),
+         "date": request.POST.get('date'),
+         "member": request.POST.get('member')
+      }
+      hosts = Host.objects.all()
+      host_images = Host_Image.objects.all()
+      host_places = Host_Place.objects.all()
+      host_prices = Host_Price.objects.all()
+      host_tags = Host_Tag.objects.all()
+   else:
+      search_param = { "place": "", "date": "", "member": "" }
+      hosts = Host.objects.all()
+      host_images = Host_Image.objects.all()
+      host_places = Host_Place.objects.all()
+      host_prices = Host_Price.objects.all()
+      host_tags = Host_Tag.objects.all()
+      
+   for host in hosts:   # ホストIDを暗号化
+      host.id = crypto_text_to_hex(str(host.id), "mincamp")
+   # print(hosts[0].id)
+   # print(crypto_text_to_hex(str(hosts[0].id), "mincamp"))
+   # print(decrypto_hex_to_text(crypto_text_to_hex(str(hosts[0].id), "mincamp"), "mincamp"))
+   context = {
+      "search_param": search_param,
+      "hosts": {
+         "infos": hosts,
+         "images": host_images,
+         "places": host_places,
+         "prices": host_prices,
+         "host_tags": host_tags
+      }
+   }
+   return render(request, 'camp/search.html', context)
 
-def detail(request):
+def detail(request, id):
+   host_id = decrypto_hex_to_text(id, "mincamp")   # ホストIDを複合
    return render(request, 'camp/detail.html')
 
 def reservation_apply(request):
@@ -17,3 +54,32 @@ def reservation_apply(request):
 
 def reservation_complite(request):
    return render(request, 'camp/reservation_complite.html')
+
+# 暗号化：引数の２つの文字列をXORした結果をhex文字列で返す
+# src_text=暗号化したい文字列
+# key=暗号化するためのキー文字列
+def crypto_text_to_hex(src_text, key):
+   if src_text and key:
+      xor_code = key
+      # keyが短い場合は、繰り返して必要バイト数を準備する
+      while len(src_text) > len(xor_code):
+         xor_code += key
+      return "".join([chr(ord(data) ^ ord(code))
+                     for (data, code) in zip(src_text, xor_code)]).encode().hex()
+# 複号：引数のHex文字列とkeyをXORして戻した文字列で返す
+# hex_text=暗号化されているhex文字列
+# key=複号するためのキー文字列
+def decrypto_hex_to_text(hex_text, key):
+   if hex_text and key:
+      try:
+         crypt_data = bytes.fromhex(hex_text).decode()
+      except ValueError:
+         crypt_data = None
+
+      if crypt_data:
+         xor_code = key
+         # keyが短い場合は、繰り返して必要バイト数を準備する
+         while len(crypt_data) > len(xor_code):
+               xor_code += key
+         return "".join([chr(ord(data) ^ ord(code))
+                           for (data, code) in zip(crypt_data, xor_code)])

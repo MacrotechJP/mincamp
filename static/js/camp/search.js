@@ -209,7 +209,7 @@ $(document).ready(function() {
      */
     $(".contents_main_hosts .details .details_header .details_header_left, .contents_main_hosts .details .details_main").on("click",function(){
         host_id = $(this).data("id")
-        window.open('http://localhost:8000/');
+        window.open('http://localhost:8000/camp/detail/'+host_id);
     })
 
 

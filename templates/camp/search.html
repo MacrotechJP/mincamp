@@ -18,23 +18,26 @@
 
 {% block contents %}
 <div class="contents">
-    <div class="contents_search">
-        <div class="contents_search_place">
-            <input type="text" id="place" required="required" value="大阪"/>
-            <label for="place">場所</label>
+    <form method="POST" action="{% url 'camp:search' %}">
+        {% csrf_token %}
+        <div class="contents_search">
+            <div class="contents_search_place">
+                <input type="text" id="place" name="place" value="{{ search_param.place }}" required/>
+                <label for="place">場所</label>
+            </div>
+            <div class="contents_search_date">
+                <input type="text" id="date" name="date" value="{{ search_param.date }}" required/>
+                <label for="date">日付</label>
+            </div>
+            <div class="contents_search_member">
+                <input type="text" id="member" name="member" value="{{ search_param.member }}" required/>
+                <label for="member">人数</label>
+            </div>
+            <div class="contents_search_submit">
+                <button type="submit">検索</button>
+            </div>
         </div>
-        <div class="contents_search_date">
-            <input type="text" id="date" required="required" value="7月1日"/>
-            <label for="date">日付</label>
-        </div>
-        <div class="contents_search_member">
-            <input type="text" id="member" required="required" value="大人１名　子供２名"/>
-            <label for="member">人数</label>
-        </div>
-        <div class="contents_search_submit">
-            <button>検索</button>
-        </div>
-    </div>
+    </form>
     <div class="contents_sidebar">
         <div class="contents_sidebar_map">
             <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1kdeVmTSHVfoHf7xtICVoHdbKviUSHS3g"></iframe>
@@ -167,6 +170,71 @@
         </div>
         <div class="contents_main_hosts">
             <ol>
+                {% comment %} {% for host in hosts %}
+                    <p>ホスト：{{ host.id }}</p>
+                    <p>ホスト：{{ host.title }}</p>
+                {% endfor %} {% endcomment %}
+                {% comment %} <p>{{ hosts.id }}</p> {% endcomment %}
+                {% comment %} <p>{{ message }}</p> {% endcomment %}
+                {% comment %} <p>{{ search_param.place }}</p> {% endcomment %}
+                <p>aaaaaaaa</p>
+
+
+                {% for host in hosts.infos %}
+                    <p>ホスト：{{ host.id }}</p>
+                    <p>ホスト：{{ host.title }}</p>
+
+                    <li data-id="{{ host.id }}">
+                        <div class="images">
+                            <figure data-id="{{ host.id }}"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/111167/img5.jpeg"/></figure>
+                            <figure data-id="{{ host.id }}"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/111167/img4.jpeg"/></figure>
+                            <figure data-id="{{ host.id }}"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/111167/img3.jpeg"/></figure>
+                            <figure data-id="{{ host.id }}"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/111167/img2.jpeg"/></figure>
+                            <figure data-id="{{ host.id }}"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/111167/img1.jpeg"/></figure>
+                            <div class="images_control">
+                                <div class="prev" data-id="{{ host.id }}" disabled><div class="icon ion-chevron-left"><i class="fas fa-angle-left"></i></div></div>
+                                <div class="next" data-id="{{ host.id }}"><div class="icon ion-chevron-right"><i class="fas fa-angle-right"></i></div></div>
+                            </div>
+                            <div class="images_rotation" data-id="{{ host.id }}">
+                                <div class="images_rotation_view" data-id="{{ host.id }}" data-izimodal-iframeurl="https://www.google.com/maps/embed?pb=!4v1593857644152!6m8!1m7!1sdm58V1IX4KM4Pz3MfTcFxw!2m2!1d35.34333216204152!2d134.2053180920104!3f1.9357033837027355!4f0!5f0.7820865974627469"></div>
+                            </div>
+                        </div>
+                        <div class="details">
+                            <div class="details_header">
+                                <div class="details_header_left" data-id="{{ host.id }}">
+                                    <h5 class="details_header_left_title" title="{{ host.title }}">{{ host.title }}</h5>
+                                    <h6 class="details_header_left_place text-muted">大阪・難波</h6>
+                                </div>
+                                <div class="details_header_right">
+                                    <button data-id="{{ host.id }}">興味なし</button>
+                                </div>
+                            </div>
+                            <div class="details_main" data-id="{{ host.id }}">
+                                <div class="details_main_left">
+                                    <div class="details_main_left_tag">
+                                        <span class="badge badge-pill badge-primary">トイレ付き</span>
+                                        <span class="badge badge-pill badge-success">BBQ</span>
+                                        <span class="badge badge-pill badge-success">キャンプ</span>
+                                        <span class="badge badge-pill badge-info">WiFi完備</span>
+                                    </div>
+                                    <div class="details_main_left_review">
+                                        <span class="details_main_left_review_average">4.2/5</span>
+                                        <span class="details_main_left_review_message">とても良い（口コミ244件）</span>
+                                    </div>
+                                </div>
+                                <div class="details_main_right">
+                                    <div class="details_main_right_price">
+                                        <span>¥ 8,500</span><h5>¥ 8,174</h5>
+                                    </div>
+                                    <div class="details_main_right_message">
+                                        <span>（１泊あたり）</span>
+                                        <span>税およびサービス料別</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                {% endfor %}
                 <li data-id="000000">
                     <div class="images">
                         <figure data-id="000000"><img src="https://mincamp.jp/img/%E3%80%90%E3%82%88%E3%81%AA%E3%81%84%E3%81%95%E3%82%93%E6%A7%98%E3%80%91%E2%91%A0.jpg"/></figure>
@@ -357,56 +425,6 @@
                             <div class="details_main_right">
                                 <div class="details_main_right_price">
                                     <span>¥ 6,500</span><h5>¥ 5,000</h5>
-                                </div>
-                                <div class="details_main_right_message">
-                                    <span>（１泊あたり）</span>
-                                    <span>税およびサービス料別</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li data-id="000004">
-                    <div class="images">
-                        <figure data-id="000004"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/111167/img5.jpeg"/></figure>
-                        <figure data-id="000004"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/111167/img4.jpeg"/></figure>
-                        <figure data-id="000004"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/111167/img3.jpeg"/></figure>
-                        <figure data-id="000004"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/111167/img2.jpeg"/></figure>
-                        <figure data-id="000004"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/111167/img1.jpeg"/></figure>
-                        <div class="images_control">
-                            <div class="prev" data-id="000004" disabled><div class="icon ion-chevron-left"><i class="fas fa-angle-left"></i></div></div>
-                            <div class="next" data-id="000004"><div class="icon ion-chevron-right"><i class="fas fa-angle-right"></i></div></div>
-                        </div>
-                        <div class="images_rotation" data-id="000004">
-                            <div class="images_rotation_view" data-id="000004" data-izimodal-iframeurl="https://www.google.com/maps/embed?pb=!4v1593857644152!6m8!1m7!1sdm58V1IX4KM4Pz3MfTcFxw!2m2!1d35.34333216204152!2d134.2053180920104!3f1.9357033837027355!4f0!5f0.7820865974627469"></div>
-                        </div>
-                    </div>
-                    <div class="details">
-                        <div class="details_header">
-                            <div class="details_header_left">
-                                <h5 class="details_header_left_title" title="エアストリームやカフェもあるオシャレ空間で自然を堪能しましょう！">エアストリームやカフェもあるオシャレ空間で自然を堪能しましょう！</h5>
-                                <h6 class="details_header_left_place text-muted">大阪・難波</h6>
-                            </div>
-                            <div class="details_header_right">
-                                <button data-id="000004">興味なし</button>
-                            </div>
-                        </div>
-                        <div class="details_main">
-                            <div class="details_main_left">
-                                <div class="details_main_left_tag">
-                                    <span class="badge badge-pill badge-primary">トイレ付き</span>
-                                    <span class="badge badge-pill badge-success">BBQ</span>
-                                    <span class="badge badge-pill badge-success">キャンプ</span>
-                                    <span class="badge badge-pill badge-info">WiFi完備</span>
-                                </div>
-                                <div class="details_main_left_review">
-                                    <span class="details_main_left_review_average">4.2/5</span>
-                                    <span class="details_main_left_review_message">とても良い（口コミ244件）</span>
-                                </div>
-                            </div>
-                            <div class="details_main_right">
-                                <div class="details_main_right_price">
-                                    <span>¥ 8,500</span><h5>¥ 8,174</h5>
                                 </div>
                                 <div class="details_main_right_message">
                                     <span>（１泊あたり）</span>
