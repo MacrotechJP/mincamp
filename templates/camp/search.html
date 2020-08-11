@@ -1,5 +1,6 @@
 {% extends 'layout.html' %}
 {% load static %}
+{% load humanize %}
 {% load sass_tags %}
 
 {% block head %}
@@ -180,42 +181,45 @@
                 <p>aaaaaaaa</p>
 
 
-                {% for host in hosts.infos %}
+                {% for host in hosts %}
                     <p>ホスト：{{ host.id }}</p>
+                    <p>ホスト：{{ host.cipher }}</p>
                     <p>ホスト：{{ host.title }}</p>
+                    <p>ホスト：{{ host.street_view }}</p>
 
-                    <li data-id="{{ host.id }}">
+                    <li data-id="{{ host.cipher }}">
                         <div class="images">
-                            <figure data-id="{{ host.id }}"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/111167/img5.jpeg"/></figure>
-                            <figure data-id="{{ host.id }}"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/111167/img4.jpeg"/></figure>
-                            <figure data-id="{{ host.id }}"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/111167/img3.jpeg"/></figure>
-                            <figure data-id="{{ host.id }}"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/111167/img2.jpeg"/></figure>
-                            <figure data-id="{{ host.id }}"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/111167/img1.jpeg"/></figure>
+                            {% for host_images in host.host_images %}
+                                <figure data-id="{{ host.cipher }}"><img src="{{ host_images.url }}"/></figure>
+                            {% endfor %}
                             <div class="images_control">
-                                <div class="prev" data-id="{{ host.id }}" disabled><div class="icon ion-chevron-left"><i class="fas fa-angle-left"></i></div></div>
-                                <div class="next" data-id="{{ host.id }}"><div class="icon ion-chevron-right"><i class="fas fa-angle-right"></i></div></div>
+                                <div class="prev" data-id="{{ host.cipher }}" disabled><div class="icon ion-chevron-left"><i class="fas fa-angle-left"></i></div></div>
+                                <div class="next" data-id="{{ host.cipher }}"><div class="icon ion-chevron-right"><i class="fas fa-angle-right"></i></div></div>
                             </div>
-                            <div class="images_rotation" data-id="{{ host.id }}">
-                                <div class="images_rotation_view" data-id="{{ host.id }}" data-izimodal-iframeurl="https://www.google.com/maps/embed?pb=!4v1593857644152!6m8!1m7!1sdm58V1IX4KM4Pz3MfTcFxw!2m2!1d35.34333216204152!2d134.2053180920104!3f1.9357033837027355!4f0!5f0.7820865974627469"></div>
+                            <div class="images_rotation" data-id="{{ host.cipher }}">
+                                <div class="images_rotation_view" data-id="{{ host.cipher }}" data-izimodal-iframeurl="https://www.google.com/maps/embed?pb=!4v1593856185811!6m8!1m7!1sCAoSLEFGMVFpcFBjaGNaRVVfaDJKdGhXUFRlalVrcWNqNlNLN012aEUtTjQxTHJQ!2m2!1d35.8112639!2d139.1591324!3f207.4026590878841!4f-7.942552031826594!5f0.7820865974627469"></div>
                             </div>
                         </div>
                         <div class="details">
                             <div class="details_header">
-                                <div class="details_header_left" data-id="{{ host.id }}">
+                                <div class="details_header_left" data-id="{{ host.cipher }}">
                                     <h5 class="details_header_left_title" title="{{ host.title }}">{{ host.title }}</h5>
-                                    <h6 class="details_header_left_place text-muted">大阪・難波</h6>
+                                    <h6 class="details_header_left_place text-muted">{{host.host_places.country}}・{{host.host_places.prefectures}}・{{host.host_places.city}}</h6>
                                 </div>
                                 <div class="details_header_right">
-                                    <button data-id="{{ host.id }}">興味なし</button>
+                                    <button data-id="{{ host.cipher }}">興味なし</button>
                                 </div>
                             </div>
-                            <div class="details_main" data-id="{{ host.id }}">
+                            <div class="details_main" data-id="{{ host.cipher }}">
                                 <div class="details_main_left">
                                     <div class="details_main_left_tag">
-                                        <span class="badge badge-pill badge-primary">トイレ付き</span>
+                                        {% for host_tags in host.host_tags %}
+                                            <span class="badge badge-pill badge-primary">{{ host_tags.name }}</span>
+                                        {% endfor %}
+                                        {% comment %} <span class="badge badge-pill badge-primary">トイレ付き</span>
                                         <span class="badge badge-pill badge-success">BBQ</span>
                                         <span class="badge badge-pill badge-success">キャンプ</span>
-                                        <span class="badge badge-pill badge-info">WiFi完備</span>
+                                        <span class="badge badge-pill badge-info">WiFi完備</span> {% endcomment %}
                                     </div>
                                     <div class="details_main_left_review">
                                         <span class="details_main_left_review_average">4.2/5</span>
@@ -224,7 +228,8 @@
                                 </div>
                                 <div class="details_main_right">
                                     <div class="details_main_right_price">
-                                        <span>¥ 8,500</span><h5>¥ 8,174</h5>
+                                        {% comment %} <span>¥ 8,500</span><h5>¥ 8,174</h5> {% endcomment %}
+                                        <h5>¥ {{ host.host_prices | intcomma }}</h5>
                                     </div>
                                     <div class="details_main_right_message">
                                         <span>（１泊あたり）</span>

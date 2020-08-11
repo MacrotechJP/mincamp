@@ -37,6 +37,9 @@ EMAIL_USE_TLS = True
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = env('SOCIAL_AUTH_GOOGLE_OAUTH2_KEY')
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = env('SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET')
 
+# テンプレート数値区切り桁数
+NUMBER_GROUPING = 3
+
 ALLOWED_HOSTS = ['*']
 
 
@@ -54,6 +57,7 @@ INSTALLED_APPS = [
     'sass_processor',
     'widget_tweaks',
     'social_django',
+    'django.contrib.humanize',
 ]
 
 MIDDLEWARE = [

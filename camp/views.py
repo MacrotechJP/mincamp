@@ -28,25 +28,21 @@ def search(request):
       host_prices = Host_Price.objects.all()
       host_tags = Host_Tag.objects.all()
       
-   for host in hosts:   # ホストIDを暗号化
-      host.id = crypto_text_to_hex(str(host.id), "mincamp")
-   # print(hosts[0].id)
-   # print(crypto_text_to_hex(str(hosts[0].id), "mincamp"))
-   # print(decrypto_hex_to_text(crypto_text_to_hex(str(hosts[0].id), "mincamp"), "mincamp"))
+   for host in hosts:
+      host.cipher = crypto_text_to_hex(str(host.id), "mincamp")   # ホストIDを暗号化
+      host.host_images = Host_Image.objects.filter(host_id__exact=host.id).all()
+      host.host_places = Host_Place.objects.get(host_id=host.id)
+      host.host_prices = "7000"
+      host.host_tags = Tag.objects.filter(pk__in=Host_Tag.objects.filter(host_id__exact=host.id).values_list('tag_id', flat=True))
+
    context = {
       "search_param": search_param,
-      "hosts": {
-         "infos": hosts,
-         "images": host_images,
-         "places": host_places,
-         "prices": host_prices,
-         "host_tags": host_tags
-      }
+      "hosts": hosts
    }
    return render(request, 'camp/search.html', context)
 
 def detail(request, id):
-   host_id = decrypto_hex_to_text(id, "mincamp")   # ホストIDを複合
+   host_id = decrypto_hex_to_text(id, "mincamp")                  # ホストIDを複合
    return render(request, 'camp/detail.html')
 
 def reservation_apply(request):
