@@ -40,7 +40,32 @@
           height: 50%;
           display: flex;
           justify-content: space-between;
-          &_place{width: 45%;}
+          &_place{
+            width: 45%;
+            &_candidate{
+              position: absolute;
+              top: 35px;
+              width: 100%;
+              height: auto;
+              background: rgba(255,255,255,1.0);
+              z-index: 20;
+              ul{
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                li{
+                  color: silver;
+                  line-height: 40px;
+                  padding-left: 40px;
+                  border: 1px solid #FF9933;
+                  border-bottom: none;
+                  border-radius: 15px;
+                  cursor: pointer;
+                  &:last-of-type{border-bottom: 1px solid #FF9933;}
+                }
+              }
+            }
+          }
           &_date{width: 25%;}
           &_member{width: 25%;}
           &_place,&_date,&_member{

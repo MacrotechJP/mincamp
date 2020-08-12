@@ -1,12 +1,32 @@
 $(function(){
     $("header .header-menu.search").hide();
 
-    
+    /**
+     * 検索欄「場所」
+     */
+    $(".contents_top_left_search_upper_place_candidate ul li").on("click",function(){
+        $("input#place").val($(this).attr("value"));
+    })
+    // $("datalist#place_candidate").hide()
+    $("input#place").keyup(function() {
+        // alert()
+        console.log($(this).val())
+        $(this).attr('list', 'place_candidate');
+    });
 
-    $("input.search-date").flatpickr({mode: "range",
+
+
+    /**
+     * 検索欄「日付」
+     */
+    $("input#date").flatpickr({mode: "range",
         minDate: "today",
-        dateFormat: "Y-m-d",
+        dateFormat: "m月d日",
         conjunction: " :: "
+    });
+    $("input#date").prop('readonly', false);
+    $("input#date").change(function() {
+        $(this).val($(this).val().replace(/to/,"〜"))
     });
 
     /** キャンプカテゴリー自動スライダー */
