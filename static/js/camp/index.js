@@ -4,14 +4,32 @@ $(function(){
     /**
      * 検索欄「場所」
      */
-    $(".contents_top_left_search_upper_place_candidate ul li").on("click",function(){
+    $(document).on("click", ".contents_top_left_search_upper_place_candidate ul li", function(){
         $("input#place").val($(this).attr("value"));
+        $(".contents_top_left_search_upper_place_candidate ul").empty();
     })
-    // $("datalist#place_candidate").hide()
     $("input#place").keyup(function() {
-        // alert()
-        console.log($(this).val())
-        $(this).attr('list', 'place_candidate');
+        input_word = $(this).val();
+        $.ajax({
+            url: 'https://maps.googleapis.com/maps/api/geocode/json',
+            data: {
+                address: input_word,
+                key: 'AIzaSyC_Pzh7Jp3VFP77rv62gO5rSWz8NYMStGY'
+            },
+            dataType:"json",
+            success: function(data) {
+                if (data.status == "OK") {
+                    $(".contents_top_left_search_upper_place_candidate ul").empty();
+                    console.log(data.results);
+                    $.each(data.results, function(index, place) {
+                        $(".contents_top_left_search_upper_place_candidate ul").append("<li value='"+place.formatted_address+"'><i class='fas fa-map-marker-alt'></i>&nbsp;"+place.formatted_address+"</li>");
+                    })
+                }
+            },
+            error: function(data) {
+                console.log("非同期通信エラー")
+            }
+        });
     });
 
 
