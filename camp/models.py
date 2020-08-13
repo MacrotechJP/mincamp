@@ -62,6 +62,7 @@ class Reservation(models.Model):
         verbose_name_plural = '予約'
     host = models.ForeignKey(Host, on_delete=models.CASCADE,  verbose_name='ホスト外部キー')
     guest = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='ゲスト外部キー')
+    stutas = models.IntegerField(                             verbose_name='状態区分')
     start_date = models.DateField(                            verbose_name='開始日時')
     end_date = models.DateField(                              verbose_name='終了日時')
     created_at = models.DateTimeField(auto_now_add=True,      verbose_name='作成日時')

@@ -23,7 +23,16 @@ $(function(){
                     $(".contents_top_left_search_upper_place_candidate ul").empty();
                     console.log(data.results);
                     $.each(data.results, function(index, place) {
-                        $(".contents_top_left_search_upper_place_candidate ul").append("<li value='"+place.formatted_address+"'><i class='fas fa-map-marker-alt'></i>&nbsp;"+place.formatted_address+"</li>");
+                        search_address = ""
+                        $(place.address_components.reverse()).each(function(index, value){
+                            if (value.types[0] == "country" || value.types[0] == "administrative_area_level_1") {
+                                search_address += value.long_name+"、"
+                            } else if (value.types[0] == "postal_code") {
+                            } else {
+                                search_address += value.long_name
+                            }
+                        });
+                        $(".contents_top_left_search_upper_place_candidate ul").append("<li value='"+search_address+"'><i class='fas fa-map-marker-alt'></i>&nbsp;"+search_address+"</li>");
                     })
                 }
             },

@@ -10,9 +10,78 @@
         justify-content: space-between;
         background-color: white;
         border-radius: 10px;
-        &_place{width: 40%;}
+        position: relative;
+        &_place{
+            width: 40%;
+            &_candidate{
+                position: absolute;
+                top: 40px;
+                width: 100%;
+                height: auto;
+                background: rgba(255,255,255,1.0);
+                z-index: 30;
+                ul{
+                  list-style: none;
+                  padding: 0;
+                  margin: 0;
+                  li{
+                    color: silver;
+                    line-height: 40px;
+                    padding-left: 40px;
+                    border: 1px solid #FF9933;
+                    border-bottom: none;
+                    border-radius: 15px;
+                    cursor: pointer;
+                    &:last-of-type{border-bottom: 1px solid #FF9933;}
+                  }
+                }
+            }
+        }
         &_date{width: 20%;}
-        &_member{width: 20%;}
+        &_member{
+            width: 20%;
+            &_candidate{
+                position: absolute;
+                top: 40px;
+                width: 100%;
+                height: auto;
+                background: rgba(255,255,255,1.0);
+                z-index: 20;
+                border: 1px solid #FF9933;
+                border-radius: 15px;
+                overflow: hidden;
+                &_adult,&_child{
+                    padding: 5px;
+                    span{
+                    display: inline-block;
+                    position: relative;
+                    width: 60px;
+                    color: #fff;
+                    line-height: 20px;
+                    text-align: center;
+                    border-radius: 3px;
+                    background: #2c3e50;
+                    padding: 5px 10px;
+                    margin-left: 8px;
+                    &:after {
+                        position: absolute;
+                        top: 8px;
+                        left: -7px;
+                        width: 0;
+                        height: 0;
+                        border-top: 7px solid transparent;
+                        border-right: 7px solid #2c3e50;
+                        border-bottom: 7px solid transparent;
+                        content: '';
+                    }
+                    }
+                }
+                &_update{
+                    padding-bottom: 5px;
+                    text-align: center;
+                }
+            }
+        }
         &_place,&_date,&_member{
             margin-top: 10px;
             position: relative;

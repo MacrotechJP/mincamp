@@ -1,4 +1,83 @@
 $(function(){
+
+    /**
+     * 検索欄「場所」
+     */
+    $(document).on("click", ".contents_search_place_candidate ul li", function(){
+        $("input#place").val($(this).attr("value"));
+        $(".contents_search_place_candidate ul").empty();
+    })
+    $("input#place").keyup(function() {
+        input_word = $(this).val();
+        $(".contents_search_place_candidate ul").empty();
+        $.ajax({
+            url: 'https://maps.googleapis.com/maps/api/geocode/json',
+            data: {
+                address: input_word,
+                key: 'AIzaSyC_Pzh7Jp3VFP77rv62gO5rSWz8NYMStGY'
+            },
+            dataType:"json",
+            success: function(data) {
+                if (data.status == "OK") {
+                    $(".contents_search_place_candidate ul").empty();
+                    console.log(data.results);
+                    $.each(data.results, function(index, place) {
+                        search_address = ""
+                        $(place.address_components.reverse()).each(function(index, value){
+                            if (value.types[0] == "country" || value.types[0] == "administrative_area_level_1") {
+                                search_address += value.long_name+"、"
+                            } else if (value.types[0] == "postal_code") {
+                            } else {
+                                search_address += value.long_name
+                            }
+                        });
+                        $(".contents_search_place_candidate ul").append("<li value='"+search_address+"'><i class='fas fa-map-marker-alt'></i>&nbsp;"+search_address+"</li>");
+                    })
+                }
+            },
+            error: function(data) {
+                console.log("非同期通信エラー")
+            }
+        });
+    });
+
+
+    /**
+     * 検索欄「日付」
+     */
+    $("input#date").flatpickr({mode: "range",
+        minDate: "today",
+        dateFormat: "m月d日",
+        conjunction: " :: "
+    });
+    $("input#date").prop('readonly', false);
+    date = $("input#date").attr("value");
+    $("input#date").val(date);
+    $("input#date").change(function() {
+        $(this).val($(this).val().replace(/to/,"〜"))
+    });
+
+
+    /**
+     * 検索欄「人数」
+     */
+    $("input#member_adult").on("input", function(){
+        $(".contents_search_member_candidate_adult span").text($(this).val()+"人");
+    });
+    $("input#member_child").on("input", function(){
+        $(".contents_search_member_candidate_child span").text($(this).val()+"人");
+    });
+    $(".contents_search_member_candidate_update button").on("click", function(){
+        adult = $("input#member_adult").val();
+        child = $("input#member_child").val();
+        $("input#member").val("大人"+adult+"名、子ども"+child+"名");
+        $(".contents_search_member_candidate").fadeOut(500);
+    });
+    $("input#member").focus(function(){
+        $(".contents_search_member_candidate").fadeIn(500);
+    })
+
+
     /**
      * 並び替えドロップボックス
      */

@@ -9,11 +9,13 @@ def index(request):
    return render(request, 'camp/index.html')
 
 def search(request):
+   print(request.POST)
    if request.POST:  # TOP、検索画面より検索時
       search_param = {
          "place": request.POST.get('place'),
          "date": request.POST.get('date'),
-         "member": request.POST.get('member')
+         "member_adult": request.POST.get('member_adult'),
+         "member_child": request.POST.get('member_child'),
       }
       hosts = Host.objects.all()
       host_images = Host_Image.objects.all()
@@ -21,7 +23,7 @@ def search(request):
       host_prices = Host_Price.objects.all()
       host_tags = Host_Tag.objects.all()
    else:
-      search_param = { "place": "", "date": "", "member": "" }
+      search_param = { "place": "", "date": "", "member_adult": "", "member_child": "" }
       hosts = Host.objects.all()
       host_images = Host_Image.objects.all()
       host_places = Host_Place.objects.all()

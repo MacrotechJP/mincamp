@@ -23,16 +23,30 @@
         {% csrf_token %}
         <div class="contents_search">
             <div class="contents_search_place">
-                <input type="text" id="place" name="place" value="{{ search_param.place }}" required/>
+                <input type="text" id="place" name="place" value="{{ search_param.place }}" autocomplete="off" required/>
                 <label for="place">場所</label>
+                <div class="contents_search_place_candidate"><ul></ul></div>
             </div>
             <div class="contents_search_date">
-                <input type="text" id="date" name="date" value="{{ search_param.date }}" required/>
+                <input type="text" id="date" name="date" value="{{ search_param.date }}" autocomplete="off" required/>
                 <label for="date">日付</label>
             </div>
             <div class="contents_search_member">
-                <input type="text" id="member" name="member" value="{{ search_param.member }}" required/>
+                <input type="text" id="member" name="member" autocomplete="off" value="大人{{ search_param.member_adult }}名、子ども{{ search_param.member_child }}名" required/>
                 <label for="member">人数</label>
+                <div class="contents_search_member_candidate" style="display:none;">
+                    <div class="contents_search_member_candidate_adult">
+                        大人&nbsp;<span>{{ search_param.member_adult }}人</span>
+                        <input type="range" id="member_adult" min="1" max="20" name="member_adult" value="{{ search_param.member_adult }}">
+                    </div>
+                    <div class="contents_search_member_candidate_child">
+                        子ども(0~17歳)&nbsp;<span>{{ search_param.member_child }}人</span>
+                        <input type="range" id="member_child" min="0" max="20" name="member_child"  value="{{ search_param.member_child }}">
+                    </div>
+                    <div class="contents_search_member_candidate_update">
+                        <button type="button" class="btn btn-primary">完了</button>
+                    </div>
+                </div>
             </div>
             <div class="contents_search_submit">
                 <button type="submit">検索</button>
