@@ -32,6 +32,7 @@ $(function(){
                                 search_address += value.long_name
                             }
                         });
+                        if (search_address.slice(-1)=="、") search_address = search_address.slice( 0, -1 );
                         $(".contents_top_left_search_upper_place_candidate ul").append("<li value='"+search_address+"'><i class='fas fa-map-marker-alt'></i>&nbsp;"+search_address+"</li>");
                     })
                 }
