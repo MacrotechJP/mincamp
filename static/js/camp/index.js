@@ -10,6 +10,7 @@ $(function(){
     })
     $("input#place").keyup(function() {
         input_word = $(this).val();
+        $(".contents_top_left_search_upper_place_candidate ul").empty();
         $.ajax({
             url: 'https://maps.googleapis.com/maps/api/geocode/json',
             data: {
@@ -33,7 +34,6 @@ $(function(){
     });
 
 
-
     /**
      * 検索欄「日付」
      */
@@ -46,6 +46,27 @@ $(function(){
     $("input#date").change(function() {
         $(this).val($(this).val().replace(/to/,"〜"))
     });
+
+
+    /**
+     * 検索欄「人数」
+     */
+    $("input#member_adult").on("input", function(){
+        $(".contents_top_left_search_upper_member_candidate_adult span").text($(this).val()+"人");
+    });
+    $("input#member_child").on("input", function(){
+        $(".contents_top_left_search_upper_member_candidate_child span").text($(this).val()+"人");
+    });
+    $(".contents_top_left_search_upper_member_candidate_update button").on("click", function(){
+        adult = $("input#member_adult").val();
+        child = $("input#member_child").val();
+        $("input#member").val("大人"+adult+"名、子ども"+child+"名");
+        $(".contents_top_left_search_upper_member_candidate").fadeOut(500);
+    });
+    $("input#member").focus(function(){
+        $(".contents_top_left_search_upper_member_candidate").fadeIn(500);
+    })
+
 
     /** キャンプカテゴリー自動スライダー */
     let mainSliderSelector = '.main-slider',
