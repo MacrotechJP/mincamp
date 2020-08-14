@@ -1,6 +1,7 @@
 import datetime
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.shortcuts import redirect
 from basicauth.decorators import basic_auth_required
 from django.db.models import Q
 from .models import *
@@ -47,21 +48,13 @@ def search(request):
          host.host_place = Host_Place.objects.get(host_id=host.id)
          host.host_price = Host_Price.objects.filter(host_id__exact=host.id).filter(Q(start_date__lte=date["start"], end_date__gte=date["start"]) | Q(start_date__lte=date["start"], end_date__isnull=True))[0]
          host.host_tags = Tag.objects.filter(pk__in=Host_Tag.objects.filter(host_id__exact=host.id).values_list('tag_id', flat=True))
-
+      context = {
+         "search_param": search_param,
+         "hosts": hosts
+      }
+      return render(request, 'camp/search.html', context)
    else:
-      search_param = { "place": "", "date": "", "member_adult": "", "member_child": "" }
-      hosts = Host.objects.all()
-      host_images = Host_Image.objects.all()
-      host_places = Host_Place.objects.all()
-      host_prices = Host_Price.objects.all()
-      host_tags = Host_Tag.objects.all()
-      
-
-   context = {
-      "search_param": search_param,
-      "hosts": hosts
-   }
-   return render(request, 'camp/search.html', context)
+      return redirect('/')
 
 def detail(request, id):
    host_id = decrypto_hex_to_text(id, "mincamp")                  # ホストIDを複合
