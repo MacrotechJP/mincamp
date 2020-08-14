@@ -55,8 +55,18 @@ $(function(){
     date = $("input#date").attr("value");
     $("input#date").val(date);
     $("input#date").change(function() {
+        $("input#date_start").val($(this)[0]["_flatpickr"]["selectedDates"][0]);
+        $("input#date_end").val($(this)[0]["_flatpickr"]["selectedDates"][1]);
         $(this).val($(this).val().replace(/to/,"〜"))
     });
+
+    //////
+    // const config = {
+    //     onChange: function() {
+    //         console.log(this.selectedDates);
+    //     }
+    // }
+    // let fp = flatpickr('input#date', config);
 
 
     /**

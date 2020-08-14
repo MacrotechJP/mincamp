@@ -29,6 +29,8 @@
             </div>
             <div class="contents_search_date">
                 <input type="text" id="date" name="date" value="{{ search_param.date }}" autocomplete="off" required/>
+                <input type="hidden" id="date_start" name="date_start" value="{{ search_param.date_start }}"/>
+                <input type="hidden" id="date_end" name="date_end" value="{{ search_param.date_end }}"/>
                 <label for="date">日付</label>
             </div>
             <div class="contents_search_member">
@@ -210,15 +212,17 @@
                                 <div class="prev" data-id="{{ host.cipher }}" disabled><div class="icon ion-chevron-left"><i class="fas fa-angle-left"></i></div></div>
                                 <div class="next" data-id="{{ host.cipher }}"><div class="icon ion-chevron-right"><i class="fas fa-angle-right"></i></div></div>
                             </div>
-                            <div class="images_rotation" data-id="{{ host.cipher }}">
-                                <div class="images_rotation_view" data-id="{{ host.cipher }}" data-izimodal-iframeurl="{{ host.street_view }}"></div>
-                            </div>
+                            {% if host.street_view %}
+                                <div class="images_rotation" data-id="{{ host.cipher }}">
+                                    <div class="images_rotation_view" data-id="{{ host.cipher }}" data-izimodal-iframeurl="{{ host.street_view }}"></div>
+                                </div>
+                            {% endif %}
                         </div>
                         <div class="details">
                             <div class="details_header">
                                 <div class="details_header_left" data-id="{{ host.cipher }}">
                                     <h5 class="details_header_left_title" title="{{ host.title }}">{{ host.title }}</h5>
-                                    <h6 class="details_header_left_place text-muted">{{host.host_places.country}}・{{host.host_places.prefectures}}・{{host.host_places.city}}</h6>
+                                    <h6 class="details_header_left_place text-muted">{{host.host_place.country}}・{{host.host_place.prefectures}}・{{host.host_place.city}}</h6>
                                 </div>
                                 <div class="details_header_right">
                                     <button data-id="{{ host.cipher }}">興味なし</button>
@@ -242,8 +246,11 @@
                                 </div>
                                 <div class="details_main_right">
                                     <div class="details_main_right_price">
-                                        {% comment %} <span>¥ 8,500</span><h5>¥ 8,174</h5> {% endcomment %}
-                                        <h5>¥ {{ host.host_prices | intcomma }}</h5>
+                                        {% if host.host_price.discount_value %}
+                                            <span>¥ {{ host.host_price.value | intcomma }}</span><h5>¥ {{ host.host_price.discount_value | intcomma }}</h5>
+                                        {% else %}
+                                            <h5>¥ {{ host.host_price.value | intcomma }}</h5>
+                                        {% endif %}
                                     </div>
                                     <div class="details_main_right_message">
                                         <span>（１泊あたり）</span>

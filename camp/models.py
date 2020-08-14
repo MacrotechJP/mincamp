@@ -12,12 +12,12 @@ class Tag(models.Model):
 class Host(models.Model):
     class Meta:
         verbose_name_plural = 'ホスト'
-    owner = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='オーナー')
-    title = models.CharField(max_length=200,                  verbose_name='タイトル')
-    description = models.CharField(max_length=200,            verbose_name='概要')
-    street_view = models.CharField(max_length=200,            verbose_name='ストリートビューURL')
-    created_at = models.DateTimeField(auto_now_add=True,      verbose_name='作成日時')
-    updated_at = models.DateTimeField(auto_now=True,          verbose_name='更新日時')
+    owner = models.ForeignKey(User, on_delete=models.CASCADE,             verbose_name='オーナー')
+    title = models.CharField(max_length=200,                              verbose_name='タイトル')
+    description = models.CharField(max_length=200,                        verbose_name='概要')
+    street_view = models.CharField(max_length=200, null=True, blank=True, verbose_name='ストリートビューURL')
+    created_at = models.DateTimeField(auto_now_add=True,                  verbose_name='作成日時')
+    updated_at = models.DateTimeField(auto_now=True,                      verbose_name='更新日時')
 
 class Host_Image(models.Model):
     class Meta:
@@ -45,7 +45,7 @@ class Host_Price(models.Model):
         verbose_name_plural = 'ホスト料金'
     host = models.ForeignKey(Host, on_delete=models.CASCADE,     verbose_name='ホスト外部キー')
     start_date = models.DateField(                               verbose_name='開始日時')
-    end_date = models.DateField(                                 verbose_name='終了日時')
+    end_date = models.DateField(null=True, blank=True ,          verbose_name='終了日時')
     value = models.IntegerField(                                 verbose_name='価格')
     discount_value = models.IntegerField(null=True, blank=True , verbose_name='割引価格')
     created_at = models.DateTimeField(auto_now_add=True,         verbose_name='作成日時')

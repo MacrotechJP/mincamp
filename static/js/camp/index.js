@@ -54,6 +54,8 @@ $(function(){
     });
     $("input#date").prop('readonly', false);
     $("input#date").change(function() {
+        $("input#date_start").val($(this)[0]["_flatpickr"]["selectedDates"][0]);
+        $("input#date_end").val($(this)[0]["_flatpickr"]["selectedDates"][1]);
         $(this).val($(this).val().replace(/to/,"〜"))
     });
 
