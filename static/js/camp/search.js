@@ -60,14 +60,6 @@ $(function(){
         $(this).val($(this).val().replace(/to/,"〜"))
     });
 
-    //////
-    // const config = {
-    //     onChange: function() {
-    //         console.log(this.selectedDates);
-    //     }
-    // }
-    // let fp = flatpickr('input#date', config);
-
 
     /**
      * 検索欄「人数」
@@ -299,7 +291,11 @@ $(document).ready(function() {
      */
     $(".contents_main_hosts .details .details_header .details_header_left, .contents_main_hosts .details .details_main").on("click",function(){
         host_id = $(this).data("id")
-        window.open('http://localhost:8000/camp/detail/'+host_id);
+        date_start = $("input#date_start").val().replace(" 00:00:00 GMT+0900 (日本標準時)","");
+        date_end = $("input#date_end").val().replace(" 00:00:00 GMT+0900 (日本標準時)","");
+        member_adult = $("input#member_adult").val();
+        member_child = $("input#member_child").val();
+        window.open('http://localhost:8000/camp/detail/'+host_id+"?date_start="+date_start+"&date_end="+date_end+"&member_adult="+member_adult+"&member_child="+member_child);
     })
 
 

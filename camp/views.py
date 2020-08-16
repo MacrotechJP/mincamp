@@ -11,7 +11,7 @@ def index(request):
    return render(request, 'camp/index.html')
 
 def search(request):
-   print(request.POST)
+   # print(request.POST)
    if request.POST:  # TOP、検索画面より検索時
       # リクエストパラメーター
       search_param = {
@@ -39,15 +39,16 @@ def search(request):
          "start": date_start,
          "end": date_end
       }
-      # テンプレート処理データ
-      host_ids = Host_Place.objects.filter(country=place["country"], prefectures=place["prefectures"]).filter(city__icontains=place["city"]).values_list("host_id", flat=True)
-      hosts = Host.objects.filter(pk__in=host_ids)
+      # DB検索
+      hosts = Host.objects.filter(country=place["country"], prefectures=place["prefectures"]).filter(city__icontains=place["city"])
+      # hosts = Host.objects.filter(pk__in=host_ids)
       for host in hosts:
          host.cipher = crypto_text_to_hex(str(host.id), "mincamp")   # ホストIDを暗号化
-         host.host_images = Host_Image.objects.filter(host_id__exact=host.id).all()
-         host.host_place = Host_Place.objects.get(host_id=host.id)
+         host.host_images = Host_Image.objects.filter(host_id__exact=host.id)
+         # host.host_place = Host_Place.objects.get(host_id=host.id)
          host.host_price = Host_Price.objects.filter(host_id__exact=host.id).filter(Q(start_date__lte=date["start"], end_date__gte=date["start"]) | Q(start_date__lte=date["start"], end_date__isnull=True))[0]
          host.host_tags = Tag.objects.filter(pk__in=Host_Tag.objects.filter(host_id__exact=host.id).values_list('tag_id', flat=True))
+      # テンプレート処理データ
       context = {
          "search_param": search_param,
          "hosts": hosts
@@ -57,8 +58,26 @@ def search(request):
       return redirect('/')
 
 def detail(request, id):
-   host_id = decrypto_hex_to_text(id, "mincamp")                  # ホストIDを複合
-   return render(request, 'camp/detail.html')
+   host_id = decrypto_hex_to_text(id, "mincamp")                  # ホストIDを復号
+   search_param = {
+      "date_start": request.GET.get('date_start'),
+      "date_end": request.GET.get('date_end'),
+      "member_adult": request.GET.get('member_adult'),
+      "member_child": request.GET.get('member_child'),
+   }
+
+   host = {
+      "user_info": "",
+      "master": Host.objects.get(id=host_id),
+      "images": Host_Image.objects.filter(host_id__exact=host_id),
+      "place": "",
+      "tags": Tag.objects.filter(pk__in=Host_Tag.objects.filter(host_id__exact=host_id).values_list('tag_id', flat=True))
+   }
+   context = {
+      "search_param": search_param,
+      "host": host
+   }
+   return render(request, 'camp/detail.html', context)
 
 def reservation_apply(request):
    return render(request, 'camp/reservation_apply.html')

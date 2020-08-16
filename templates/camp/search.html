@@ -190,7 +190,7 @@
                 {% for host in hosts %}
                     <li data-id="{{ host.cipher }}">
                         <div class="images">
-                            {% for host_images in host.host_images %}
+                            {% for host_images in host.host_images reversed %}
                                 <figure data-id="{{ host.cipher }}"><img src="{{ host_images.url }}"/></figure>
                             {% endfor %}
                             <div class="images_control">
@@ -207,7 +207,7 @@
                             <div class="details_header">
                                 <div class="details_header_left" data-id="{{ host.cipher }}">
                                     <h5 class="details_header_left_title" title="{{ host.title }}">{{ host.title }}</h5>
-                                    <h6 class="details_header_left_place text-muted">{{host.host_place.country}}・{{host.host_place.prefectures}}・{{host.host_place.city}}</h6>
+                                    <h6 class="details_header_left_place text-muted">{{host.country}}・{{host.prefectures}}・{{host.city}}</h6>
                                 </div>
                                 <div class="details_header_right">
                                     <button data-id="{{ host.cipher }}">興味なし</button>
@@ -246,7 +246,7 @@
                         </div>
                     </li>
                 {% endfor %}
-                
+
                 <li data-id="000000">
                     <div class="images">
                         <figure data-id="000000"><img src="https://mincamp.jp/img/%E3%80%90%E3%82%88%E3%81%AA%E3%81%84%E3%81%95%E3%82%93%E6%A7%98%E3%80%91%E2%91%A0.jpg"/></figure>

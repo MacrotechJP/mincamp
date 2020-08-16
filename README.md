@@ -8,6 +8,10 @@
 ```bash
 $ python manage.py runserver 
 ```
+モックデータ作成
+```bash
+$ python mock_insert.py
+```
  
 # Herokuデプロイ
 1. 「.gitignore」を作成する。

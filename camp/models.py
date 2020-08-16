@@ -16,6 +16,11 @@ class Host(models.Model):
     title = models.CharField(max_length=200,                              verbose_name='タイトル')
     description = models.CharField(max_length=200,                        verbose_name='概要')
     street_view = models.CharField(max_length=200, null=True, blank=True, verbose_name='ストリートビューURL')
+    country = models.CharField(max_length=200,                            verbose_name='国')
+    prefectures = models.CharField(max_length=200,                        verbose_name='都道府県')
+    city = models.CharField(max_length=200,                               verbose_name='市区町村')
+    address1 = models.CharField(max_length=200, null=True, blank=True,    verbose_name='丁、番地、号')
+    address2 = models.CharField(max_length=200, null=True, blank=True,    verbose_name='マンション、アパート等')
     created_at = models.DateTimeField(auto_now_add=True,                  verbose_name='作成日時')
     updated_at = models.DateTimeField(auto_now=True,                      verbose_name='更新日時')
 
@@ -27,18 +32,6 @@ class Host_Image(models.Model):
     url = models.CharField(max_length=200,                   verbose_name='URL')
     created_at = models.DateTimeField(auto_now_add=True,     verbose_name='作成日時')
     updated_at = models.DateTimeField(auto_now=True,         verbose_name='更新日時')
-
-class Host_Place(models.Model):
-    class Meta:
-        verbose_name_plural = 'ホスト場所'
-    host = models.ForeignKey(Host, on_delete=models.CASCADE,           verbose_name='ホスト外部キー')
-    country = models.CharField(max_length=200,                         verbose_name='国')
-    prefectures = models.CharField(max_length=200,                     verbose_name='都道府県')
-    city = models.CharField(max_length=200,                            verbose_name='市区町村')
-    address1 = models.CharField(max_length=200, null=True, blank=True, verbose_name='丁、番地、号')
-    address2 = models.CharField(max_length=200, null=True, blank=True, verbose_name='マンション、アパート等')
-    created_at = models.DateTimeField(auto_now_add=True,               verbose_name='作成日時')
-    updated_at = models.DateTimeField(auto_now=True,                   verbose_name='更新日時')
 
 class Host_Price(models.Model):
     class Meta:

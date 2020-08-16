@@ -33,52 +33,47 @@
     </div>
     <div class="contents_images">
         <div class="contents_images_main">
-            <img src="https://mincamp.jp/img/%E3%80%90%E3%82%88%E3%81%AA%E3%81%84%E3%81%95%E3%82%93%E6%A7%98%E3%80%91%E2%91%A0.jpg">
+            <img src="{{ host.images.0.url }}">
             <button data-izimodal-open=".host-images"><i class="far fa-images"></i>&nbsp;&nbsp;全て表示</button>
-            <div class="host-images" data-izimodal-title="グループの1つ目のコンテンツです" data-izimodal-subtitle="直立。※ヘッダータイトル下部説明文">
-                <figure style="margin:0;">
-                    <img src="https://mincamp.jp/img/%E3%80%90%E3%82%88%E3%81%AA%E3%81%84%E3%81%95%E3%82%93%E6%A7%98%E3%80%91%E2%91%A0.jpg" width="100%" height="100%"/>
-                </figure>
-            </div>
-            <div class="host-images" data-izimodal-title="グループの2つ目のコンテンツです" data-izimodal-subtitle="直立。※ヘッダータイトル下部説明文">
-                <figure style="margin:0;">
-                    <img src="https://a0.muscache.com/im/pictures/a1115318-6331-4f65-96a5-d6a640c1a030.jpg?aki_policy=xx_large" width="100%" height="100%"/>
-                </figure>
-            </div>
-            <div class="host-images" data-izimodal-title="グループの3つ目のコンテンツです" data-izimodal-subtitle="直立。※ヘッダータイトル下部説明文">
-                <figure style="margin:0;">
-                    <img src="https://a0.muscache.com/im/pictures/f765d77f-f4da-4fa1-a2dd-009ce0c56f3b.jpg?aki_policy=x_large" width="100%" height="100%"/>
-                </figure>
-            </div>
+            {% for image in host.images %}
+                <div class="host-images" data-izimodal-title="{{ image.title }}" data-izimodal-subtitle="直立。※ヘッダータイトル下部説明文">
+                    <figure style="margin:0;">
+                        <img src="{{ image.url }}" width="100%" height="100%"/>
+                    </figure>
+                </div>
+            {% endfor %}
         </div>
         <div class="contents_images_sub">
             <div class="contents_images_sub_image">
-                <img src="https://mincamp.jp/img/%E3%80%90%E3%82%88%E3%81%AA%E3%81%84%E3%81%95%E3%82%93%E6%A7%98%E3%80%91%E2%91%A3.jpg"/>
+                <img src="{{ host.images.1.url }}"/>
             </div>
             <div class="contents_images_sub_image">
-                <img src="https://mincamp.jp/img/%E3%80%90%E3%82%88%E3%81%AA%E3%81%84%E3%81%95%E3%82%93%E6%A7%98%E3%80%91%E2%91%A2.jpg"/>
+                <img src="{{ host.images.2.url }}"/>
             </div>
             <div class="contents_images_sub_image">
-                <img src="https://mincamp.jp/img/%E3%80%90%E3%82%88%E3%81%AA%E3%81%84%E3%81%95%E3%82%93%E6%A7%98%E3%80%91%E2%91%A0.jpg"/>
+                <img src="{{ host.images.3.url }}"/>
             </div>
             <div class="contents_images_sub_image">
-                <img src="https://mincamp.jp/img/%E3%80%90%E3%82%88%E3%81%AA%E3%81%84%E3%81%95%E3%82%93%E6%A7%98%E3%80%91%E2%91%A0.jpg">
+                <img src="{{ host.images.4.url }}">
             </div>
         </div>
     </div>
     <div class="contents_main-info">
         <div class="contents_main-info_left">
             <div class="contents_main-info_left_title">
-                <p>エアストリームやカフェもあるオシャレ空間で自然を堪能しましょう！</p>
+                <p>{{ host.master.title }}</p>
             </div>
             <div class="contents_main-info_left_review">
                 <span class="contents_main-info_left_review_rate rate4-5"></span>
             </div>
             <div class="contents_main-info_left_tag">
-                <span class="badge badge-pill badge-danger"><i class="fas fa-award"></i>グッドホスト</span>
+                {% for tag in host.tags %}
+                    <span class="badge badge-pill badge-danger"><i class="fas fa-award"></i>{{ tag.name }}</span>
+                {% endfor %}
+                {% comment %} <span class="badge badge-pill badge-danger"><i class="fas fa-award"></i>グッドホスト</span>
                 <span class="badge badge-pill badge-success">BBQ</span>
                 <span class="badge badge-pill badge-success">キャンプ</span>
-                <span class="badge badge-pill badge-info">トイレ有り</span>
+                <span class="badge badge-pill badge-info">トイレ有り</span> {% endcomment %}
             </div>
             <hr>
             <div class="contents_main-info_left_facility">
@@ -323,21 +318,21 @@
         <div class="contents_main-info_right">
             <div class="contents_main-info_right_booking">
                 <div class="contents_main-info_right_booking_price-then">
-                    <span class="old-price">¥ 6,500</span><h4>¥ 5,000</h4><span>/泊</span>
+                    <span class="old-price">¥ 6,500</span><h4>¥ 5,000</h4><span>/泊(平均)</span>
                 </div>
                 <div class="contents_main-info_right_booking_date">
                     <div class="contents_main-info_right_booking_date-start">
-                        <input type="text" id="start-date" required="required" value="7月1日18時00分"/>
+                        <input type="text" id="start-date" required="required" value="{{ search_param.date_start }}"/>
                         <label for="start-date">開始日時</label>
                     </div>
                     <span style="display: flex;align-items: center;"><i class="fas fa-angle-double-right"></i></span>
                     <div class="contents_main-info_right_booking_date-end">
-                        <input type="text" id="end-date" required="required" value="7月2日09時00分"/>
+                        <input type="text" id="end-date" required="required" value="{{ search_param.date_end }}"/>
                         <label for="end-date">終了日時</label>
                     </div>
                 </div>
                 <div class="contents_main-info_right_booking_members">
-                    <input type="text" id="members" required="required" value="大人２名 子供３名"/>
+                    <input type="text" id="members" required="required" value="大人{{ search_param.member_adult }}名、子ども{{ search_param.member_child }}名"/>
                     <label for="members">利用人数</label>
                 </div>
                 <div class="contents_main-info_right_booking_price-total">

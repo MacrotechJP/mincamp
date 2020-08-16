@@ -1,12 +1,10 @@
 from django.contrib import admin
 
-# Register your models here.
 from camp.models import *
 admin.site.register(Tag)
 
 admin.site.register(Host)
 admin.site.register(Host_Image)
-admin.site.register(Host_Place)
 admin.site.register(Host_Price)
 admin.site.register(Host_Tag)
 
