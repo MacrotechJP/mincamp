@@ -10,8 +10,7 @@ from .models import *
 def index(request):
    return render(request, 'camp/index.html')
 
-def search(request):
-   # print(request.POST)
+def search(request): # ホスト一覧
    if request.POST:  # TOP、検索画面より検索時
       # リクエストパラメーター
       search_param = {
@@ -41,11 +40,9 @@ def search(request):
       }
       # DB検索
       hosts = Host.objects.filter(country=place["country"], prefectures=place["prefectures"]).filter(city__icontains=place["city"])
-      # hosts = Host.objects.filter(pk__in=host_ids)
       for host in hosts:
          host.cipher = crypto_text_to_hex(str(host.id), "mincamp")   # ホストIDを暗号化
          host.host_images = Host_Image.objects.filter(host_id__exact=host.id)
-         # host.host_place = Host_Place.objects.get(host_id=host.id)
          host.host_price = Host_Price.objects.filter(host_id__exact=host.id).filter(Q(start_date__lte=date["start"], end_date__gte=date["start"]) | Q(start_date__lte=date["start"], end_date__isnull=True))[0]
          host.host_tags = Tag.objects.filter(pk__in=Host_Tag.objects.filter(host_id__exact=host.id).values_list('tag_id', flat=True))
       # テンプレート処理データ
@@ -57,24 +54,37 @@ def search(request):
    else:
       return redirect('/')
 
-def detail(request, id):
+def detail(request, id):   # ホスト詳細
+   # リクエストパラメーター
    host_id = decrypto_hex_to_text(id, "mincamp")                  # ホストIDを復号
-   search_param = {
-      "date_start": request.GET.get('date_start'),
-      "date_end": request.GET.get('date_end'),
-      "member_adult": request.GET.get('member_adult'),
-      "member_child": request.GET.get('member_child'),
-   }
-
-   host = {
-      "user_info": "",
-      "master": Host.objects.get(id=host_id),
-      "images": Host_Image.objects.filter(host_id__exact=host_id),
-      "place": "",
-      "tags": Tag.objects.filter(pk__in=Host_Tag.objects.filter(host_id__exact=host_id).values_list('tag_id', flat=True))
-   }
+   date_start = request.GET.get('date_start')
+   date_end = request.GET.get('date_end')
+   member_adult = request.GET.get('member_adult')
+   member_child = request.GET.get('member_child')
+   # DB検索用変数
+   date_start_str = date_start
+   date_start_convert = datetime.datetime.strptime(date_start_str, '%a %b %d %Y')
+   date_start = datetime.date(date_start_convert.year, date_start_convert.month, date_start_convert.day)
+   date_end_str = date_end
+   date_end_convert = datetime.datetime.strptime(date_end_str, '%a %b %d %Y')
+   date_end = datetime.date(date_end_convert.year, date_end_convert.month, date_end_convert.day)
+   
+   # DB検索
+   host = Host.objects.get(id=host_id)
+   host.host_images = Host_Image.objects.filter(host_id__exact=host.id)
+   host.host_price = "7000"
+   # host.host_price = Host_Price.objects.filter(host_id__exact=host.id).filter(Q(start_date__lte=date_start, end_date__gte=date_start) | Q(start_date__lte=date_start, end_date__isnull=True))[0]
+   host.host_tags = Tag.objects.filter(pk__in=Host_Tag.objects.filter(host_id__exact=host.id).values_list('tag_id', flat=True))
+   
+   print(host.owner.id)
+   # テンプレート処理データ
    context = {
-      "search_param": search_param,
+      "search_param": {
+         "date_start": date_start,
+         "date_end": date_end,
+         "member_adult": member_adult,
+         "member_child": member_child,
+      },
       "host": host
    }
    return render(request, 'camp/detail.html', context)

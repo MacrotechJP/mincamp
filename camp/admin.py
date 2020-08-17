@@ -8,6 +8,8 @@ admin.site.register(Host_Image)
 admin.site.register(Host_Price)
 admin.site.register(Host_Tag)
 
+admin.site.register(Info)
+
 admin.site.register(Reservation)
 admin.site.register(Reservation_Cost)
 admin.site.register(Reservation_Review)

@@ -13,12 +13,13 @@ def insert():
     # Tag.objects.get_or_create(name="テスト", color="red")
     Host.objects.get_or_create(
         owner=User.objects.get(pk=49),
-        title="これはテストタイトルです",
-        description="これはテスト概要です",
+        title="エアストリームやカフェもあるオシャレ空間で自然を堪能しましょう！",
+        description="エアストリームでカフェを営業しております！美味しいハンバーガーはいかがでしょうか？お庭でのキャンプで檜原村の自然を感じてください。",
         country="日本",
-        prefectures="大阪府",
-        city="大阪市住吉区杉本",
-        address1="１丁目２−４"
+        prefectures="東京都",
+        city="西多摩郡檜原村南郷",
+        address1="６２１０",
+        max_acceptable_users=10
     )
 
 if __name__ == "__main__":

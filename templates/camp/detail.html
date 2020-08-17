@@ -33,9 +33,9 @@
     </div>
     <div class="contents_images">
         <div class="contents_images_main">
-            <img src="{{ host.images.0.url }}">
+            <img src="{{ host.host_images.0.url }}">
             <button data-izimodal-open=".host-images"><i class="far fa-images"></i>&nbsp;&nbsp;全て表示</button>
-            {% for image in host.images %}
+            {% for image in host.host_images %}
                 <div class="host-images" data-izimodal-title="{{ image.title }}" data-izimodal-subtitle="直立。※ヘッダータイトル下部説明文">
                     <figure style="margin:0;">
                         <img src="{{ image.url }}" width="100%" height="100%"/>
@@ -45,29 +45,29 @@
         </div>
         <div class="contents_images_sub">
             <div class="contents_images_sub_image">
-                <img src="{{ host.images.1.url }}"/>
+                <img src="{{ host.host_images.1.url }}"/>
             </div>
             <div class="contents_images_sub_image">
-                <img src="{{ host.images.2.url }}"/>
+                <img src="{{ host.host_images.2.url }}"/>
             </div>
             <div class="contents_images_sub_image">
-                <img src="{{ host.images.3.url }}"/>
+                <img src="{{ host.host_images.3.url }}"/>
             </div>
             <div class="contents_images_sub_image">
-                <img src="{{ host.images.4.url }}">
+                <img src="{{ host.host_images.4.url }}">
             </div>
         </div>
     </div>
     <div class="contents_main-info">
         <div class="contents_main-info_left">
             <div class="contents_main-info_left_title">
-                <p>{{ host.master.title }}</p>
+                <p>{{ host.title }}</p>
             </div>
             <div class="contents_main-info_left_review">
                 <span class="contents_main-info_left_review_rate rate4-5"></span>
             </div>
             <div class="contents_main-info_left_tag">
-                {% for tag in host.tags %}
+                {% for tag in host.host_tags %}
                     <span class="badge badge-pill badge-danger"><i class="fas fa-award"></i>{{ tag.name }}</span>
                 {% endfor %}
                 {% comment %} <span class="badge badge-pill badge-danger"><i class="fas fa-award"></i>グッドホスト</span>
@@ -336,10 +336,11 @@
                     <label for="members">利用人数</label>
                 </div>
                 <div class="contents_main-info_right_booking_price-total">
-                    <p class="normal"><span>利用料金（¥ 2,000 x 5H）</span><span>¥ 10,000</span></p>
-                    <p class="normal"><span>オプション料金&nbsp;<i class="fas fa-info-circle"></i></span><span>¥ 5,000</span></p>
+                    <p class="normal"><span>利用料金（¥ 2,000 x 1日）&nbsp;<i class="fas fa-info-circle" data-toggle="tooltip" data-placement="top" title="2020年8月27日〜2020年8月28日"></i></span><span>¥ 2,000</span></p>
+                    <p class="normal"><span>利用料金（¥ 3,000 x 2日）&nbsp;<i class="fas fa-info-circle" data-toggle="tooltip" data-placement="top" title="2020年8月28日〜2020年8月30日"></i></span><span>¥ 6,000</span></p>
+                    {% comment %} <p class="normal"><span>オプション料金&nbsp;<i class="fas fa-info-circle"></i></span><span>¥ 5,000</span></p>
                     <p class="discount"><span>10% クーポン割引</span><span>-¥ 1,500</span></p>
-                    <p class="discount"><span>宿泊割引</span><span>-¥ 1,000</span></p>
+                    <p class="discount"><span>宿泊割引</span><span>-¥ 1,000</span></p> {% endcomment %}
                     <hr>
                     <p class="sub-total"><span>小計&nbsp;<i class="fas fa-info-circle" data-toggle="tooltip" data-placement="top" title="税及びサービス料を含みません。税は小計の10%、サービス料は利用料金の10%となります。）"></i></span><span>¥ 12,500</span></p>
                     <p class="all-total"><span>合計</span><span>¥ 14,750</span></p>

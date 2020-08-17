@@ -1,11 +1,21 @@
 from django.db import models
 from accounts.models import User
 
+class Info(models.Model):
+    class Meta:
+        verbose_name_plural = 'お知らせ'
+    type = models.IntegerField(                          verbose_name='種別')
+    title = models.CharField(max_length=200,             verbose_name='タイトル')
+    detail = models.CharField(max_length=200,            verbose_name='内容')
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='作成日時')
+    updated_at = models.DateTimeField(auto_now=True,     verbose_name='更新日時')
+
 class Tag(models.Model):
     class Meta:
         verbose_name_plural = 'タグマスター'
+    type = models.IntegerField(                          verbose_name='種別')
     name = models.CharField(max_length=200,              verbose_name='名前')
-    color =  models.CharField(max_length=200,            verbose_name='色')
+    color = models.CharField(max_length=200,             verbose_name='色')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='作成日時')
     updated_at = models.DateTimeField(auto_now=True,     verbose_name='更新日時')
 
@@ -15,12 +25,13 @@ class Host(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE,             verbose_name='オーナー')
     title = models.CharField(max_length=200,                              verbose_name='タイトル')
     description = models.CharField(max_length=200,                        verbose_name='概要')
-    street_view = models.CharField(max_length=200, null=True, blank=True, verbose_name='ストリートビューURL')
+    street_view = models.URLField(max_length=200, null=True, blank=True,  verbose_name='ストリートビューURL')
     country = models.CharField(max_length=200,                            verbose_name='国')
     prefectures = models.CharField(max_length=200,                        verbose_name='都道府県')
     city = models.CharField(max_length=200,                               verbose_name='市区町村')
     address1 = models.CharField(max_length=200, null=True, blank=True,    verbose_name='丁、番地、号')
     address2 = models.CharField(max_length=200, null=True, blank=True,    verbose_name='マンション、アパート等')
+    max_acceptable_users = models.IntegerField(                           verbose_name='最大受入可能人数')
     created_at = models.DateTimeField(auto_now_add=True,                  verbose_name='作成日時')
     updated_at = models.DateTimeField(auto_now=True,                      verbose_name='更新日時')
 

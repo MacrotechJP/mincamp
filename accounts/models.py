@@ -89,3 +89,15 @@ class User(AbstractBaseUser, PermissionsMixin):
         メールアドレスを返す
         """
         return self.email
+
+class User_Profile(models.Model):
+    class Meta:
+        verbose_name_plural = 'ユーザー情報'
+    user = models.ForeignKey(User, on_delete=models.CASCADE,               verbose_name='ユーザー外部キー')
+    nick_name = models.CharField(max_length=200, null=True, blank=True,    verbose_name='ニックネーム')
+    introduction = models.TextField(null=True, blank=True,                 verbose_name='自己紹介')
+    image_user = models.URLField(null=True, blank=True,                    verbose_name='ユーザー画像')
+    image_cover = models.URLField(null=True, blank=True,                   verbose_name='カバー画像')
+    from_country = models.CharField(max_length=200, null=True, blank=True, verbose_name='出身地')
+    created_at = models.DateTimeField(auto_now_add=True,                   verbose_name='作成日時')
+    updated_at = models.DateTimeField(auto_now=True,                       verbose_name='更新日時')
