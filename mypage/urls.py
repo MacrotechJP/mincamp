@@ -16,8 +16,8 @@ urlpatterns = [
     # path('reservation', views.reservation, name='reservation'),                  #[予約一覧]
     # # マイリスト
     # path('mylist/favorite', views.favorite, name='favorite'),                  #[お気に入り]
-    # #ホスト情報
-    # path('host/list', views.host_list, name='host_list'),                      #[登録ホスト一覧]
+    # ホスト情報
+    path('host/list', views.host_list, name='host_list'),                      #[登録ホスト一覧]
     # path('host/profit', views.host_profit, name='host_profit'),                #[収益情報]
     # # ユーザー情報
     # # path('user/login-way', views.user_loginWay, name='user_login-way'),       #[ログイン方法]

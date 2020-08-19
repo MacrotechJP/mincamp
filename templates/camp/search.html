@@ -246,7 +246,11 @@
                         </div>
                     </li>
                 {% endfor %}
-                <hr>
+                {% if hosts|length == 0 %}
+                    <p class="not_find">検索内容に合うホストが見つかりませんでした。</p>
+                    <hr>
+                {% endif %}
+                
 
                 <li data-id="000000">
                     <div class="images">

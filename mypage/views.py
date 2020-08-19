@@ -1,8 +1,16 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from accounts.models import *
 
 def index(request):
-    return render(request, 'mypage/index.html')
+    # print(request.user)
+    user = User.objects.get(id=request.user.id)
+    user.user_profile = User_Profile.objects.get(user_id=user.id)
+    context = {
+        "user": user
+    }
+    print(user.get_full_name())
+    return render(request, 'mypage/index.html', context)
 
 # # お知らせ
 # def info_overall(request):
@@ -26,9 +34,9 @@ def index(request):
 # def favorite(request):
 #     return render(request, 'mypage/favorite/index.html')
 
-# # ホスト情報
-# def host_list(request):
-#     return render(request, 'mypage/host/list.html')
+# ホスト情報
+def host_list(request):
+    return render(request, 'mypage/host/list.html')
 
 # def host_profit(request):
 #     return render(request, 'mypage/host/profit.html')
